@@ -116,12 +116,12 @@ WST.getWSTMARTVersion = function(url){
 		}catch(e){}
 	   if(json){
 		   if(json.version && json.version!='same'){
-			   $('.wstmart-version-tips').show();
-			   $('#wstmart_version').html(json.version);
-			   $('#wstmart_down').attr('href',json.downloadUrl);
+			   $('.elexiangmart-version-tips').show();
+			   $('#elexiangmart_version').html(json.version);
+			   $('#elexiangmart_down').attr('href',json.downloadUrl);
 		   }
 		   if(json.accredit=='no'){
-			   $('.wstmart-accredit-tips').show();
+			   $('.elexiangmart-accredit-tips').show();
 		   }
 		   if(json.licenseStatus)$('#licenseStatus').html(json.licenseStatus);
 	   }

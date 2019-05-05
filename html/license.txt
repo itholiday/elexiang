@@ -8,7 +8,7 @@
 
 使用协议：
 1. WSTMart不是一个自由软件！【未经授权】您只能在不用于商业目的的前提下对程序代码进行修改和使用；不允许对程序代码以任何形式任何目的的再发布。
-2. 未经本公司书面授权许可无论用途如何、是否经过修改或美化、修改程度如何，只要使用本软件的整体或任何部分，软件首页顶部及页脚处的版权标识（Powered by WSTMart）和本公司下属网站（http://www.wstmart.net） 的链接都必须保留，不能清除或修改。
+2. 未经本公司书面授权许可无论用途如何、是否经过修改或美化、修改程度如何，只要使用本软件的整体或任何部分，软件首页顶部及页脚处的版权标识（Powered by WSTMart）和本公司下属网站（http://www.elexiangmart.net） 的链接都必须保留，不能清除或修改。
 
 限制条款：
 1. 用户可通过购买《WSTMart商业授权许可》以获得约定的WSTMart电子商务系统的使用授权。
@@ -28,9 +28,9 @@
 
 -----------------------------------------------------
 联系我们: 广州商淘信息科技有限公司
-WSTMart官方网站：http://www.wstmart.net
-WSTMart演示站：http://wstmart.shangtaosoft.com
+WSTMart官方网站：http://www.elexiangmart.net
+WSTMart演示站：http://elexiangmart.shangtaosoft.com
 客服 Q Q：153289970
 交流QQ群：590755485
 联系电话: 020-85289921/18902295525
-联系邮箱: wstmart@qq.com
+联系邮箱: elexiangmart@qq.com
