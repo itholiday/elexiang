@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <style>
+        .aui-btn {
+            color: #fff;
+        }
+
+        .manmoney {
+            text-align: center;
+            font-size: 0.65rem;
+            color: #f00;
+            padding: 0.55rem 0;
+            padding-top: 0px;
+            background: #F4F4F4;
+        }
+
+        .text {
+            background: #fff;
+            padding: 0 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .text h3 {
+            padding: 0.55rem 0;
+        }
+
+        .text p {
+            line-height: 1.2rem;
+            font-size: 0.7rem;
+        }
+
+        .yongjins {
+            padding: 0.75rem 0.75rem;
+            background: #F4F4F4;
+        }
+
+        .yongjins b {
+            color: #f00;
+        }
+
+        .bitian {
+            color: #999;
+            font-size: 0.7rem;
+            padding-top: 0.25rem;
+            line-height: 0.88rem;
+        }
+
+        .aui-list {
+            border: 0px;
+        }
+
+        .tixianshouxufei {
+            text-align: center;
+            font-size: 0.7rem;
+            padding-bottom: 1rem;
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+<script id="cashoutContent" type="text/x-dot-template">
+    <ul class="aui-list aui-form-list">
+        <div class="yongjins">
+            <p>我的积分：<b id="yongjin">0.00</b></p>
+            <p class="bitian">为确保您申请的金额能够正确无误的转入您账户，请填写真实有效的账户信息，以下信息均为必填项！</p>
+        </div>
+        <p class="manmoney"></p>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    提现金额(元)
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" id="money" placeholder="输入10的倍数" value="">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    开户人
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" id="username" placeholder="填写开户人" value="{{=it.username}}" {{? it.username!=""
+                           }}disabled{{?}}>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    银行名称
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" id="bankname" placeholder="填写银行名称" value="{{=it.bankname}}" {{? it.username!=""
+                           }}disabled{{?}}>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    银行账号
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" id="banknumber" placeholder="填写银行账号" value="{{=it.banknumber}}" {{?
+                           it.username!="" }}disabled{{?}}>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item" style="border-bottom: 0px;background: #fff;">
+            <div class="aui-list-item-inner aui-list-item-center aui-list-item-btn">
+                <div onclick="ajax()" class="aui-btn aui-btn-block aui-btn-danger" style="width: 70%;">
+                    申请提现
+                </div>
+            </div>
+        </li>
+        <p class="tixianshouxufei">提现手续费：<b id="shouxufei"></b>%</p>
+    </ul>
+</script>
+<div class="aui-content" id="cashout">
+
+</div>
+<div class="text"></div>
+</body>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/md5.min.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        updateConfig();
+        viewAjax();
+        _shangla(function () {
+            viewAjax();
+        }, 1);
+
+        FastClick.attach(document.body)
+        api.addEventListener({
+            name: 'viewappear'
+        }, function (ret, err) {
+            updateConfig();
+            viewAjax();
+        })
+    }
+
+    function viewAjax() {
+        _ajax('member/cashoutContent', function (ret, err) {
+            _loadingCloes()
+            if (ret && ret.status) {
+                var evalData = doT.template($api.html($api.byId('cashoutContent')));
+                $api.html($api.byId('cashout'), evalData(ret.data));
+                $api.html($api.dom('#yongjin'), $api.getStorage('user').eqscore)
+                $api.text($api.dom('.manmoney'), '满' + _config.yaoqing.tixianmoney + '元时才可以申请提现')
+                $api.html($api.dom('.text'), _config.yaoqing.tixiantext)
+                $api.html($api.dom('#shouxufei'), _config.yaoqing.shouxufei)
+            }
+        })
+    }
+
+    // 提交申请提现
+    function ajax() {
+        var money = Number($api.val($api.dom('#money')));
+        var bankname = $api.val($api.dom('#bankname'));
+        var username = $api.val($api.dom('#username'));
+        var banknumber = $api.val($api.dom('#banknumber'));
+        var appsecret = _appsecret;
+        if (money < _config.yaoqing.tixianmoney) {
+            _msg('最低提现' + _config.yaoqing.tixianmoney + '元');
+            return
+        }
+        if (money % 10 != 0) {
+            _msg('输入10的整数倍');
+            return
+        }
+        var maxTx = Math.floor(Number($api.getStorage('user').eqscore / _config.yaoqing.eq_rate));
+        if (money > maxTx) {
+            _msg('当前积分最多提现' + maxTx + '元');
+            return
+        }
+        if (!_money(money)) {
+            _msg('请填写正确金额')
+            return
+        }
+        if (!username) {
+            _msg('填写开户人姓名')
+            return
+        }
+        if (!bankname) {
+            _msg('填写银行名称')
+            return
+        }
+        if (!_money(banknumber)) {
+            _msg('填写银行账号')
+            return
+        }
+        var shouxufeis = (money * (_config.yaoqing.shouxufei) / 100).toFixed(2);
+        var eqscore = money * _config.yaoqing.eq_rate;
+        var moneys = money - shouxufeis;
+        var data = {
+            username: username,
+            banknumber: banknumber,
+            bankname: bankname,
+            money: money
+        };
+        var sign = getSign(data);
+        data.sign = sign;
+        api.confirm({
+            title: '确认积分',
+            msg: "申请提现：" + money + "元\r\n消耗积分：" + eqscore + "\r\n手续费：" + shouxufeis + "元\r\n实际到账：" + moneys + "元",
+            buttons: ['确定', '取消']
+        }, function (ret, err) {
+            var index = ret.buttonIndex;
+            if (index == 1) {
+                _loading()
+                _ajax('member/eqcashout', function (ret, err) {
+                    _loadingCloes()
+                    if (ret) {
+                        _alert(ret.msg)
+                        if (ret.status) {
+                            _close()
+                        }
+                    } else {
+                        console.log(JSON.stringify(err))
+                    }
+                }, data)
+            }
+        });
+    }
+
+    function _money(a) {
+        if (a == '') {
+            return false;
+        }
+        if (isNaN(a)) {
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

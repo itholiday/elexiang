@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>e乐享</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+	<style>
+		.aui-grid{
+			padding-top: 0.75rem;
+		}
+		.aui-grid [class*=aui-col-]{
+			padding: 0px;
+		}
+		.aui-grid [class*=aui-col-] img {
+			margin: 0 auto;
+			width: 88%;
+			height: 6rem;
+			margin-bottom: 1.4rem;
+		}
+		.aui-grid [class*=aui-col-] em{
+			position: absolute;
+			bottom: 0px;
+			background: #000;
+			width: 88%;
+			left:6%;
+			opacity: 0.65;
+			color: #fff;
+			height: 1.3rem;
+			line-height: 1.3rem;
+			font-size: 0.65rem;
+
+		}
+	</style>
+</head>
+<body>
+<div class="aui-content tijiaojianyi" >
+	<ul class="aui-list aui-form-list">
+		<li class="aui-list-item">
+			<div class="aui-list-item-inner">
+				<div class="aui-list-item-input">
+					<input id="title" placeholder="请输入晒单标题" style="width:100%;"/>
+				</div>
+			</div>
+		</li>
+		<li class="aui-list-item">
+			<div class="aui-list-item-inner">
+				<div class="aui-list-item-input" style="">
+					<textarea id="content" placeholder="请输入晒单内容"></textarea>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<section class="aui-grid aui-margin-b-15">
+		<div class="aui-row">
+			<div id="images">
+			</div>
+			<div class="aui-col-xs-3" tapmode onclick="img()">
+				<img src="../../image/shaidanAdd.png" />
+			</div>
+		</div>
+	</section>
+	<div style="width: 90%;margin: 2rem auto;">
+		<div class="aui-btn-block aui-btn aui-btn-info" tapmode onclick="imag()">
+			提交晒单
+		</div>
+	</div>
+	<p class="aui-text-center aui-font-size-14" style="color: #FF2D4B !important"></p>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript">
+    var UIMediaScanner;
+    apiready = function() {
+        UIMediaScanner = api.require('UIMediaScanner');
+        FastClick.attach(document.body);
+        if(_config.config.shaidan>0){
+            $api.html($api.dom('.aui-font-size-14'), '晒单成功后您将获得<b>' + _config.config.shaidan + '</b>' + _config.config.paibi);
+		}
+    }
+    function add() {
+        var imgList = ''; // 定义一个空数组
+        var txt=$('[data-url]'); // 获取所有文本框
+        if(!txt.length){
+            _msg('至少上传一张晒单图片');
+            return;
+        }
+        for (var i = 0; i < txt.length; i++) {
+            imgList += txt.eq(i).data('url') + ';';
+        }
+        _ajax('shaidan/post_shaidan', function(ret, err) {
+            _loadingCloes()
+            if (ret) {
+                if (ret.status) {
+                    updateUserInfo()
+					if(_config.config.shaidan>0){
+                        _alert(ret.msg,function(ret,err){
+                            _close()
+                        })
+					}else{
+                        _close()
+					}
+                } else {
+                    _msg(ret.msg)
+                }
+            }else{
+                console.log(JSON.stringify(err));
+			}
+        }, {
+            title:$api.val($api.dom('#title')),
+            content : $api.val($api.dom('#content')),
+            imgList:imgList,
+            shopid:api.pageParam['id']
+        })
+    }
+
+    // 打开图片
+    function img() {
+        UIMediaScanner.open({
+            type : 'picture',
+            max : 9,
+            sort : {
+                key : 'time',
+                order : 'desc'
+            },
+            texts : {
+                stateText : '已选择*项',
+                cancelText : '取消',
+                finishText : '完成'
+            },
+            classify:true,
+            styles : {
+                bg : '#fff',
+                mark : {
+                    icon : '',
+                    position : 'bottom_left',
+                    size : 20
+                },
+                nav : {
+                    bg : '#eee',
+                    stateColor : '#000',
+                    stateSize : 18,
+                    cancelBg : 'rgba(0,0,0,0)',
+                    cancelColor : '#000',
+                    cancelSize : 18,
+                    finishBg : 'rgba(0,0,0,0)',
+                    finishColor : '#000',
+                    finishSize : 18
+                }
+            },
+            exchange : true,
+            rotation : true
+        }, function(ret) {
+            api.hideProgress();
+            if (ret.eventType=='confirm') {
+                var html ='';
+                for(var i=0;i<ret.list.length;i++){
+                    var suijis=suiji();
+                    html += '<div class="aui-col-xs-3 shaidanImg" id="id'+suijis+'">';
+                    html += '	<img data-id="'+suijis+'" data-img="'+ret.list[i].path+'" src="'+ret.list[i].thumbPath+'" />';
+                    html +=	'	<em data-id="'+suijis+'">删除</em>';
+                    html +=	'</div>';
+                }
+                $('#images').prepend(html);
+                $('.aui-col-xs-3 em').click(function(){
+                    var id=$(this).data('id')
+                    $('#id'+id).remove()
+                })
+            }
+        });
+    }
+    // 随机生成字母
+    function suiji(){
+        return Math.random().toString(36).substr(2)
+    }
+    // 开始上传
+    function imag(){
+        var content = $api.val($api.dom('#content'));
+        if (!content) {
+            _msg('请输入晒单内容');
+            return;
+        }
+        var shaidanImg=$('.shaidanImg')
+        if(!shaidanImg.length){
+            _msg('至少上传一张晒单图片')
+            return;
+        }
+        var dataImg=$('div img[data-img]');
+        if(dataImg.length){
+            $('#images').find('div img[data-img]').each(function(){
+                var img=$(this).data('img');
+                var id=$(this).data('id');
+                if(api.systemType == 'ios'){
+                    UIMediaScanner.transPath({
+                        path: img
+                    }, function(ret, err) {
+                        if (ret.status) {
+                            imgAjax(ret.path,id)
+                        }
+                    });
+                }else{
+                    imgAjax(img,id)
+                }
+            })
+        }else{
+            add()
+        }
+
+
+    }
+    // 封装上传图片
+    function imgAjax(image,id){
+        if(!image){
+            _msg('图片地址出错')
+            return;
+        }
+        _loading('正在上传图片...')
+        api.ajax({
+            url: sx_url+'upload/upload_shaidanimg',
+            method: 'post',
+			headers:{auth:_token},
+            data: {
+                files: {
+                    image: image
+                }
+            },
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.status){
+                    $('#id'+id).data('url',ret.data)
+                    $('#id'+id+' [data-img]').removeAttr('data-img');
+                }else{
+                    alert("上传失败"+ret.msg)
+                }
+            } else {
+                console.log(JSON.stringify(err));
+            }
+            loadingNo()
+        });
+    }
+    // 获取图片长度比较关闭提示
+    function loadingNo(){
+        var url=$('[data-url]')
+        var imgList=$('.shaidanImg')
+        if(imgList.length == url.length){
+            add()
+        }
+    }
+</script>
+</html>

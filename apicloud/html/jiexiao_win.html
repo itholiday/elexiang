@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>e乐享</title>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/suxiang.css" />
+	<link rel="stylesheet" type="text/css" href="../css/core.css">
+	<link rel="stylesheet" type="text/css" href="../css/icon.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+</head>
+<body>
+<header class="aui-bar aui-bar-nav aui-header-bg" id="sx-header" style="border-bottom: 1px solid #e8e8e8;">
+	最新揭晓
+</header>
+<footer class="aui-bar aui-bar-tab aui-border-t" id="sx-footer">
+	<div class="aui-bar-tab-item" onclick="_index_win('index')">
+		<img src="../image/index-1.png" />
+		<div class="aui-bar-tab-label">
+			首页
+		</div>
+	</div>
+	<div class="aui-bar-tab-item" tapmode onclick="_index_win('type_win')">
+		<img src="../image/index-3.png" />
+		<div class="aui-bar-tab-label">
+			玩法
+		</div>
+	</div>
+	<div class="aui-bar-tab-item aui-active">
+		<img src="../image/index-2s.png" />
+		<div class="aui-bar-tab-label">
+			揭晓
+		</div>
+	</div>
+	<div class="aui-bar-tab-item" tapmode onclick="_index_win('user_win')">
+		<img src="../image/index-4.png" />
+		<div class="aui-bar-tab-label">
+			我的
+		</div>
+	</div>
+</footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/app.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        _openFrame('jiexiao')
+    }
+</script>
+</html>

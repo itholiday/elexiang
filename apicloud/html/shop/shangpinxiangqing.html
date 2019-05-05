@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/swiper.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/animate.min.css" />
+    <style type="text/css">
+        body {
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .colorHei {
+            color: black;
+        }
+
+        .colorHong {
+            color: red;
+        }
+
+        .aui-list .aui-list-item-label-icon.label-text {
+            line-height: 2.1rem;
+            align-items: baseline;
+            -webkit-align-items: baseline;
+        }
+        /*荣誉榜*/
+
+        .rongyubang {
+            width: 100%;
+            height: 130px;
+            background: white;
+        }
+
+        .rongyubang .buju {
+            width: 29%;
+            height: 130px;
+            /*margin: 0 auto;*/
+            text-align: center;
+        }
+
+        .rongyubang .buju .ty_tu1 {
+            width: 70px;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .rongyubang .buju .ty_tu1>img {
+            width: 100%;
+            height: auto;
+        }
+
+        .rongyubang .buju .ty_tu2 {
+            width: 103px;
+            height: auto;
+            margin: 0 auto;
+            margin-top: -6px;
+        }
+
+        .rongyubang .buju .ty_tu2>img {
+            width: 100%;
+            height: auto;
+        }
+        /*参与记录*/
+
+        .canyujilu {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin: 0 auto;
+            padding-left: 5px;
+            background: white;
+            border-bottom: 1px solid #eae9e9;
+        }
+
+        .canyujilu .tu {
+            float: left;
+        }
+
+        .canyujilu span {
+            font-size: 14px;
+            padding-top: 2px;
+            float: left;
+        }
+        /*点击查看更多*/
+
+        .liebiao {
+            width: 100% !important;
+            border-bottom: 1px solid #eae9e9 !important;
+            height: 80px;
+            margin-top: -5px;
+        }
+
+        .liebiao .touxiang {
+            width: 65px;
+            height: 45px;
+        }
+
+        .liebiao .touxiang img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .liebiao .xinxi {
+            width: 100%;
+            height: 70px;
+        }
+
+        .liebiao .xinxi .mingIP {
+            height: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        .liebiao .xinxi .colorfont {
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        .aui-btn-block {
+            height: 2rem;
+            line-height: 2rem;
+        }
+
+        #add {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            margin: 0 auto;
+            clear: both;
+            background: #f1f1f1;
+        }
+
+        #add h4 {
+            float: left;
+            width: 160px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #add div {
+            float: right;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .chengjiao {
+            position: absolute;
+            top: 2px;
+            right: 0px;
+            width: 80px;
+            /*height: 131px;*/
+        }
+
+        .yijiexiao {
+            width: 92%;
+            height: 120px;
+            border: 1px dashed #f63f54;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .yijiexiao .yjx_xinxi {
+            width: 100%;
+            height: 90px;
+        }
+
+        .yijiexiao .yjx_xinxi .yjx_touxiang {
+            width: 50px;
+            height: 50px;
+            margin-top: 20px;
+            margin-left: 15px;
+            float: left;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .yijiexiao .yjx_xinxi .yjx_touxiang img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .yijiexiao .yjx_xinxi .yjx_zhongjiang {
+            width: 100%;
+            height: 90px;
+            margin-left: 90px;
+        }
+
+        .yijiexiao .yjx_xinxi .yjx_zhongjiang h4 {
+            font-size: 12px;
+            height: 20px;
+            line-height: 22px;
+            color: #a8a4a1;
+            padding-top: 5px;
+        }
+
+        .yijiexiao h2 {
+            font-size: 15px;
+            background: #f63f54;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            padding-left: 20px;
+        }
+
+        .xianshidjs #djsTime b {
+            color: #FF2D4B;
+            font-size: 0.65rem;
+            padding-top: 0.05rem;
+        }
+
+        .xianshidjs {
+            padding-top: 0.00rem
+        }
+
+        .xianshidjs #djsTime b {
+            color: #FF2D4B;
+            font-size: 0.8rem;
+        }
+        /* 悬浮css */
+
+        .xf {
+            width: 270px;
+            height: 110px;
+            overflow: hidden;
+            position: absolute;
+            top: 80px;
+            left: 6.18px;
+            /*background: pink;*/
+        }
+
+        .xf .xf_neirong {
+            list-style: none;
+            position: absolute;
+            /*ul需要移动，必须使用绝对定位*/
+            top: 180px;
+            left: 0px;
+            /*background: red;*/
+        }
+
+        .xf .xf_neirong>li {
+            width: 260px;
+            height: 30px;
+            line-height: 30px;
+            background: gray;
+            margin-bottom: 200px;
+            /*text-align: center;*/
+            padding-left: 10px;
+            color: white;
+            font-size: 15px;
+            background: #525051;
+            opacity: 0.65;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="aui-card-list">
+        <!-- 轮播图 -->
+        <div class="aui-card-list-content" id="aui-slide">
+            <div class="aui-slide-wrap" id="lunbotu">
+                <!--轮播图内容-->
+            </div>
+            <script type="text/template" id="lunbotuContent">
+                {{~ it.picarr:item:index }}
+                <div class="aui-slide-node bg-dark">
+                    <img src="{{= item }}" />
+                </div>
+                {{~}}
+            </script>
+            <div class="aui-slide-page-wrap">
+                <!--分页容器-->
+            </div>
+        </div>
+        <div class="chengjiao">
+            <!--状态挂饰-->
+        </div>
+        <!-- 漂浮信息 -->
+        <div class="xf">
+            <ul class="xf_neirong">
+                <li></li>
+            </ul>
+        </div>
+
+
+        <script id="sx-list-0" type="text/x-dot-template">
+            <!-- 轮播图下面的标题 -->
+            <div class="aui-card-list-header aui-padded-b-0">
+                <div id="qishuhemingcheng">
+                    <span class="aui-label aui-label-danger aui-margin-r-5">第<span id="qishu">{{= it.qishu}}</span>期</span>
+                    <span id="mingcheng">{{= it.title}}</span>
+                </div>
+            </div>
+            {{? it.percent != 100}}
+            <div id='jinxingzhong' class="jiexiao" data-data="{{=it.daojishi}}">
+                <!-- 奖品价值，参与人次 -->
+                <div class="aui-card-list-footer aui-text-danger aui-font-size-12 aui-padded-t-0 aui-padded-b-0" style="min-height:1.6rem;">
+                    <span class="colorHei">奖品价值:  <span style="font-size:17px;" class="colorHong">￥<span  id="jiazhi">{{= Number(it.eqscore*_config.yaoqing.eq_rate).toFixed(2) }}</span></span>
+                    </span>
+                    <span class="colorHei">参与人次:  <span style="font-size:19px;" class="colorHong" id="canyurenshu">{{= it.canyurenshu }}</span></span>
+                </div>
+                <!-- 进度条 -->
+                <div class="jindutiao" style="width:92%;margin:0 auto;margin-top:6px;">
+                    <div class="aui-progress aui-progress-xs">
+                        <div class="aui-progress-bar" style="width:{{= it.percent }}%"></div>
+                    </div>
+                </div>
+                <!-- 剩余人次、进度     -->
+                <div class="aui-card-list-footer aui-text-danger aui-font-size-12 aui-padded-t-0 aui-padded-b-0" style="min-height:1.6rem;">
+                    <span class="colorHei">剩余人次:  <span style="font-size:19px;" class="colorHong" id="shengyurenshu">{{= it.shenyurenshu }}</span></span>
+                    <span class="colorHei">进度:  <span style="font-size:19px;" class="colorHong"><span id="jindu">{{= it.percent}}</span>%</span>
+                </div>
+            </div>
+            {{??}}
+            <div id='yijingjiexiao' class="jiexiao" data-data="{{=it.daojishi}}">
+                <div class='yijiexiao'>
+                    <div class='yjx_xinxi' style="position:relative;">
+                        <div class='yjx_touxiang'>
+                            <img src="{{= sx_upload + it.thumb}}" class="q_thumb_1 {{? it.daojishi==-1}}aui-hide{{?}}" alt="" />
+                            <img src="{{= sx_upload + it.q_user.img}}" class="q_thumb_2 {{? it.daojishi>0}}aui-hide{{?}}" alt="" />
+                        </div>
+                        <div class='yjx_zhongjiang'>
+                            <h4 class='jiangpinjiazhi {{? !it.daojishi}}aui-hide{{?}}'>奖品价值:<span style="color:#f63f54;">
+                                ￥{{= Number(it.eqscore*_config.yaoqing.eq_rate).toFixed(2)}}</span>
+                            </h4>
+                            <h4 class='xingyunzhe {{? it.daojishi>0}}aui-hide{{?}}'>幸运者:<span style="color:#f63f54;">
+                                {{? it.q_user.username}}{{= it.q_user.username}}{{??}}{{= it.q_user.mobile}}{{?}}</span>
+                            </h4>
+                            <h4 class='jiazhi {{? it.daojishi>0}}aui-hide{{?}}'>幸运者ID:{{= it.q_uid}}</h4>
+                            <h4 class='canyurenshu'>{{? it.daojishi>0}}总需人次{{??}}参与人次{{?}}:<span style="color:#f63f54;">{{? it.daojishi>0}}{{= it.zongrenshu}}{{??}}{{= it.q_gonumber}}{{?}}</span></h4>
+                            <h4 class='jiexiaoshijian {{? it.daojishi>0}}aui-hide{{?}}'>揭晓时间:{{= it.q_end_time}}</h4> {{? it.daojishi>0 }}
+                            <div class="sx-time xianshidjs" style="margin-top:10px;">
+                                <p id="djsTime">
+                                    倒计时：
+                                    <b class="min">00</b>
+                                    <b class="seperator">:</b>
+                                    <b class="sec">{{= it.ms }}</b>
+                                    <b class="seperator">:</b>
+                                    <b class="msec">{{= it.hm }}</b>
+                                </p>
+                            </div>
+                            {{?}}
+                        </div>
+                        <img src="../../image/lucky.png" alt="" style="position:absolute;top:0;right:0;width:50px;height:auto;" />
+                    </div>
+                    <h2 class="xingyunhao_1 {{? it.daojishi>0}}aui-hide{{?}}">幸运号码:{{= it.q_user_code }}</h2>
+                    <h2 class="xingyunhao_2 {{? !it.daojishi}}aui-hide{{?}}">幸运号码:等待开奖</h2>
+                </div>
+            </div>
+            {{?}}
+            <div style="width:100%;height:15px;background:#f1f1f1;"></div>
+            <!-- 开奖趋势、玩法介绍、往期揭晓 -->
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-list-in">
+                    <li class="aui-list-item" onclick="_url({url:'shop/kaijiangqushi',title:'开奖趋势',shopid:api.pageParam['goods_id']},'')">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-label-icon">
+                                <i class="aui-iconfont aui-icon-question"></i>
+                            </div>
+                            <div class="aui-list-item-inner">
+                                开奖趋势
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item" onclick="_url({url:'shop/wanfajieshao',title:'玩法介绍',goods_id:api.pageParam['goods_id']})">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-label-icon">
+                                <i class="aui-iconfont aui-icon-comment"></i>
+                            </div>
+                            <div class="aui-list-item-inner">
+                                玩法介绍
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item" tapmode onclick="_url({title:'往期揭晓',goods_id:api.pageParam['goods_id'],url:'shop/wangqijiexiao'})">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-label-icon">
+                                <i class="aui-iconfont aui-icon-calendar"></i>
+                            </div>
+                            <div class="aui-list-item-inner">
+                                往期揭晓
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </script>
+        <div id="shop_item">
+            <!--商品信息-->
+        </div>
+    </section>
+
+
+    <h3 style='text-align:center;'>荣誉榜</h3>
+    <div class="rongyubang ryb-tongyong" style='display:flex;'>
+        <div class='buju'>
+            <div class='ty_tu1'>
+                <img src="../../image/huangguan.png" alt="用户头像" />
+            </div>
+            <div class='ty_tu2'>
+                <img src="../../image/shafa.png" alt="沙发" />
+            </div>
+            <p style='width:100%;height:14px;line-height:14px;text-align:center;margin-top:5px;' id='shafahao'>0</p>
+            <h4 style='font-size:0.6rem;font-weight:600;margin-top:4px;'>第一个参加</h4>
+        </div>
+        <div class='buju' style="margin-left:6%;margin-right:6%;">
+            <div class='ty_tu1'>
+                <img src="../../image/huangguan.png" alt="用户头像" />
+            </div>
+            <div class='ty_tu2'>
+                <img src="../../image/tuhao.png" alt="土豪" />
+            </div>
+            <p style='width:100%;height:14px;line-height:14px;text-align:center;margin-top:5px;' id='tuhaohao'>0</p>
+            <h4 style='font-size:0.6rem;font-weight:600;margin-top:4px;'>参与了<span id='tuhaocishu'>0</span>人次</h4>
+        </div>
+        <div class='buju'>
+            <div class='ty_tu1'>
+                <img src="../../image/huangguan.png" alt="用户头像" />
+            </div>
+            <div class='ty_tu2'>
+                <img src="../../image/baowei.png" alt="包尾" />
+            </div>
+            <p style='width:100%;height:14px;line-height:14px;text-align:center;margin-top:5px;' id='baoweihao'>0</p>
+            <h4 style='font-size:0.6rem;font-weight:600;margin-top:4px;'>最后一个参加</h4>
+        </div>
+    </div>
+
+    <div style="width:100%;height:15px;background:#f1f1f1;"></div>
+
+    <div class="canyujilu">
+        <div class="tu" style="padding-top:1px;">
+            <img src="../../image/shangpin_liebiao.png" alt="商品列表" />
+        </div>
+        <span id='fabushijian'></span>
+        <p></p>
+    </div>
+
+
+    <!-- 参与记录的详细信息 -->
+    <script id="sx-list" type="text/x-dot-template">
+        {{ for(var i=0,lens=it.data.length; i
+        < lens; i++) { }} <li class="aui-list-item liebiao">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label-icon touxiang" onclick="_url({title:'个人主页',url:'shop/usercenter_win',uid:{{= it.data[i].uid }},username:'{{= it.data[i].username}}',uphoto:'{{= sx_upload + it.data[i].uphoto}}' })">
+                    <img src="{{= sx_upload + it.data[i].uphoto}}" alt="用户头像">
+                </div>
+                <div class="aui-list-item-inner" onclick="_url({title:'查看号码',gorecord_id:{{= it.data[i].id}},url:'shop/chakanhaoma'})">
+                    <div class="xinxi">
+                        <p style="width:108%;" class="mingIP">
+                            <span style="font-size:15px;color:#4a4a4a;">{{= it.data[i].username}}</span>
+                            <span style="color:#c4c2c2;font-size:12px;">{{= it.data[i].address}}</span>
+                            <span style="color:#c4c2c2;font-size:12px;">(ip:{{= it.data[i].ip}})</span>
+                        </p>
+                        <p style="width:105%;">
+                            <span class="colorfont">共参与了{{= it.data[i].gonumber}}次</span>
+                            <span class="colorfont">{{= it.data[i].time}}</span>
+                        </p>
+                        <h4 style='padding-top:3px;color:#ef6c72;'>查看参与号码</h4>
+                    </div>
+                </div>
+            </div>
+            </li>
+            {{ } }}
+    </script>
+
+    <div class="aui-content aui-margin-b-15" style="width:100%;margin-bottom:1000px;">
+        <ul class="aui-list aui-list-in" style='margin-bottom:35px;' id="sx-view">
+            <div id="jiazai"><img style="width: auto" src="../../image/loading_more.gif" /></div>
+        </ul>
+    </div>
+
+    <div id='add'>
+        <h4 id='zhuangtai'></h4>
+        <div class="aui-btn aui-btn-info aui-margin-r-10 aui-margin-t-10" tapmode id="canyu">立即参与</div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript" src="../../script/aui-slide.js"></script>
+<script type="text/javascript" src="../../script/echo.js"></script>
+<script type="text/javascript" src="../../script/echo.js"></script>
+
+<script type="text/javascript">
+    var UIScrollPicture;
+    var pagenum = 1;
+    apiready = function() {
+        api.parseTapmode();
+        id = api.pageParam.goods_id;
+        pk = api.pageParam.pk;
+        fenshu = api.pageParam.fenshu;
+        UIScrollPicture = api.require('UIScrollPicture');
+        shopView();
+        rongyubang();
+        xuanfu();
+        _shangla(function(ret, err) {
+            la = true;
+            isgundun = false;
+            shopView();
+            rongyubang();
+            xuanfu();
+            _lists({
+                url: 'shop/goods_go_record',
+                page: 1,
+                loading: 1,
+                data: {
+                    goods_id: id,
+                },
+            });
+        }, 1);
+        _lists({
+            url: 'shop/goods_go_record',
+            page: 1,
+            loading: 1,
+            data: {
+                goods_id: id
+            },
+        });
+        api.addEventListener({
+                name: 'viewappear'
+            }, function(ret, err) {
+                la = true;
+                isgundun = false;
+                shopView();
+                rongyubang();
+                xuanfu();
+                _lists({
+                    url: 'shop/goods_go_record',
+                    page: 1,
+                    loading: 1,
+                    data: {
+                        goods_id: id
+                    }
+                });
+            })
+            // 监听滚动
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra: {
+                threshold: threshold
+            }
+        }, function(ret, err) {
+            if (heigutgao == 1) { // heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+                pagenum += 1;
+                _lists({
+                    url: 'shop/goods_go_record',
+                    page: pagenum,
+                    data: {
+                        goods_id: id
+                    }
+                });
+                FastClick.attach(document.body);
+            }
+        });
+
+    };
+    var sinter;
+
+    function xuanfu() {
+        _ajax('shop/go_dongtai', function(ret, err) {
+            if (ret) {
+                if (ret.status) {
+                    if (ret.num > 0) {
+                        var htmlTop = '';
+                        for (var i = 0; i < ret.data.length; i++) {
+                            htmlTop += '<li style="margin-top:0px;">' + ret.data[i].username + '于<b>' + (ret.data[i].time) + '</b>购买了' + ret.data[i].gonumber + '人次</li>';
+                        }
+                        $api.html($api.dom('.xf_neirong'), htmlTop);
+
+                        (function() {
+                            clearInterval(sinter);
+                            var oUl = document.querySelector('.xf_neirong'); //获取多个里的第1个
+                            var oDiv = document.querySelectorAll('.xf')[0];
+                            var disTop = oUl.offsetHeight - oDiv.offsetHeight; // 移动最大范围的值
+                            //document.querySelectorAll();//获取多个,返回nodeList(类似于数组(array)的使用)
+
+                            // 使用元素往上移动
+                            function moveUp() {
+                                var s = 1; // 移动的距离
+                                if (oUl.offsetTop < -disTop) {
+                                    oUl.style.top = '160px';
+                                } else {
+                                    // 因为没有在html里设置过top，所以style.top只能取到一个没有长度的字符串
+                                    // 这里需要用offsetTop获取top的位置
+                                    oUl.style.top = oUl.offsetTop - s + 'px';
+                                }
+                            }
+                            sinter = setInterval(moveUp, 15);
+                        })();
+                    }
+                }
+            }
+        }, {
+            goods_id: id
+        });
+    }
+
+    var slidConfig = {
+        container: document.getElementById("aui-slide"),
+        "width": 'auto',
+        "height": 300,
+        "speed": 300,
+        "pageShow": true,
+        "pageStyle": 'dot',
+        "loop": true,
+        'dotPosition': 'center',
+        // currentPage:currentFun
+    };
+    var slide = new auiSlide(slidConfig);
+    var isopen = false;
+    var maxqishu = 0;
+
+    function shopView() {
+        _ajax('shop/goods_item', function(ret, err) {
+            api.refreshHeaderLoadDone();
+            if (ret) {
+                if (ret.status) {
+                    $('#canyu').off('click'); //取消绑定的事件
+                    // 下面的按钮旁边的状态
+                    if (ret.data.remain) {
+                        $api.html($api.byId('zhuangtai'), '剩余人次:<span style="color:red;">' + ret.data.shenyurenshu + '</span>');
+                        $('#canyu').bind('click', function() {
+                            if ($api.getStorage('token')) {
+                                //判断是否是正常购买的商品
+                                if (!pk) {
+                                    _url({
+                                        title: '确认订单',
+                                        goods_id: api.pageParam['goods_id'],
+                                        url: 'shop/querendingdan'
+                                    });
+                                }else {
+                                    _url({
+                                        title: '确认订单',
+                                        goods_id: api.pageParam['goods_id'],
+                                        pk:api.pageParam['pk'],
+                                        fenshu:api.pageParam['fenshu'],
+                                        url: 'shop/querendingdan_pk'
+                                    });
+                                }
+                            } else {
+                                _url({
+                                    title: '登录',
+                                    url: 'login'
+                                });
+                            }
+                        })
+                    } else {
+                        $api.html($api.byId('zhuangtai'), '第' + ret.data.newestqishu + '期正在进行中...');
+                        $api.addEvt($api.byId('canyu'), 'click', function() {
+                            _url({
+                                title: '商品详情',
+                                goods_id: ret.data.newestid,
+                                url: 'shop/shangpinxiangqing',
+                                pk:api.pageParam['pk'],
+                                fenshu:api.pageParam['fenshu']
+                            })
+                        });
+                    }
+                    var evalData = doT.template($api.html($api.byId('sx-list-0')));
+                    $api.html($api.byId('shop_item'), evalData(ret.data));
+                    //轮播图
+                    evalData = doT.template($api.html($api.byId('lunbotuContent')));
+                    $api.html($api.dom('#lunbotu'), evalData(ret.data));
+                    slide = new auiSlide(slidConfig);
+                    //状态挂饰
+                    var img = '<img src="../../image/finished.png" alt="">';
+                    if (ret.data.daojishi || (!ret.data.daojishi && ret.data.remain)) {
+                        img = '<img src="../../image/going.png" alt="">';
+                    }
+                    $api.html($api.dom('.chengjiao'), img);
+                    //新的一期的发布时间
+                    if (ret.from) {
+                        $api.html($api.byId('fabushijian'), '<span style="font-weight:bold;margin-top:-1px;">所有参与记录</span>(自 ' + ret.from + ' 开始)');
+                    } else {
+                        $api.html($api.byId('fabushijian'), '<span style="font-weight:bold;margin-top:-1px;">所有参与记录</span>');
+                    }
+                }
+                if (ret.data.daojishi > 0 && !isopen) {
+                    isopen = true;
+                    setSeTime({
+                        title: ret.data.title,
+                        q_gonumber: ret.data.q_gonumber,
+                        q_uid: ret.data.q_uid
+                    });
+                }
+            } else {
+                console.log(JSON.stringify(err));
+            }
+        }, {
+            goods_id: id,
+            daojishi: 1
+        });
+    }
+
+    //荣誉榜
+    function rongyubang() {
+        _ajax('shop/rongyubang',
+            function(ret, err) {
+                api.refreshHeaderLoadDone();
+                if (ret) {
+                    if (ret.status) {
+                        $api.text($api.byId('shafahao'), ret.data[0]);
+                        $api.text($api.byId('tuhaohao'), ret.data[1]);
+                        $api.text($api.byId('baoweihao'), ret.data[2]);
+                        if (ret.data[3] == null) {
+                            $api.text($api.byId('tuhaocishu'), 0);
+                        } else {
+                            $api.text($api.byId('tuhaocishu'), ret.data[3]);
+                        }
+                    }
+                } else {
+                    console.log(JSON.stringify(err));
+                }
+            }, {
+                goods_id: id
+            });
+    }
+
+    function setSeTime(param) {
+        api.refreshHeaderLoadDone();
+        var data = $('.jiexiao').attr('data-data');
+        if (data <= 1) return;
+        var times = Number(data) * 100; //毫秒数
+        countTime = setInterval(function() {
+            times = --times < 0 ? 0 : times;
+            var ms = Math.floor(times / 100).toString();
+            if (ms.length <= 1) {
+                ms = "0" + ms;
+            }
+            var hm = Math.floor(times % 100).toString();
+            if (hm.length <= 1) {
+                hm = "0" + hm;
+            }
+            if (times == 0) {
+
+                $(".xianshidjs").remove();
+                $(".jiangpinjiazhi").remove();
+                $(".xingyunzhe").removeClass('aui-hide');
+                $(".q_thumb_2").removeClass('aui-hide');
+                $(".xingyunhao_1").removeClass('aui-hide');
+                $(".jiazhi").removeClass('aui-hide');
+                $(".jiexiaoshijian").removeClass('aui-hide');
+                $(".q_thumb_1").addClass('aui-hide');
+                $(".xingyunhao_2").addClass('aui-hide');
+                $(".canyurenshu").html('参与人次:<span style="color:#f63f54;">' + param.q_gonumber + '</span>');
+                var img = '<img src="../../image/finished.png" alt="">';
+                $api.html($api.dom('.chengjiao'), img);
+
+                if (!oCount_s && !oCount_j && _user.uid == param.q_uid) {
+                    oCount_s++; //打开过了,防止多次打开
+                    api.openFrame({
+                        name: 'congratulation',
+                        url: 'widget://html/shop/congratulation.html',
+                        bounces: false,
+                        rect: {
+                            x: 0,
+                            y: 0,
+                            w: 'auto',
+                            h: 'auto'
+                        },
+                        useWKWebView: true,
+                        bgColor: 'rgba(0,0,0,0)',
+                        pageParam: {
+                            title: param.title
+                        }
+                    });
+                }
+                clearInterval(countTime)
+            }
+            // 获取分钟、毫秒数
+            $(".sec").html(ms);
+            $(".msec").html(hm);
+        }, 10);
+    }
+</script>
+
+</html>

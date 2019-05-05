@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>e乐享</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <style>
+        body{
+            background: white;
+            height: 100%;
+        }
+
+        /*支付成功和按钮*/
+        .zhifuheanniu{
+            width: 100%;
+            height: 100px;
+        }
+        .zhifuheanniu .zhifu{
+            width: 100%;
+            text-align: center;
+            color: orange;
+            height: 60px;
+            line-height: 60px;
+        }
+        .zhifuheanniu .anniu{
+            display:flex;
+            width:65%;
+            margin:0 auto;
+            background: white;
+        }
+        .zhifuheanniu .anniu>p{
+            flex: 1;
+        }
+        .zhifuheanniu .anniu .anniu_yangshi{
+            background:white !important;
+            color:black !important;
+        }
+
+        /*他买的n次的号码*/
+        .haoma{}
+        .haoma .biaoti{
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 93%;
+            height: 30px;
+            line-height: 30px;
+        }
+        .haoma ul{
+            width: 93%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .haoma ul li{
+            float: left;
+            width: 25%;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+        }
+      </style>
+  </head>
+  <body>
+        <!-- 支付成功和按钮 -->
+        <div class="zhifuheanniu">
+            <h5 class="zhifu">￥<span style="font-size:28px;" id='zf_jiage'>0.00</span></h5>
+            <div class="anniu" style="">
+                <p><div class="aui-btn aui-btn-danger aui-btn-block anniu_yangshi" onclick="_url({url:'user/gorecord_win',title:'参与记录'})">查看订单</div></p>
+                <p><div class="aui-btn aui-btn-danger aui-btn-block anniu_yangshi">丨</div></p>
+                <p><div class="aui-btn aui-btn-danger aui-btn-block anniu_yangshi" onclick="_url({},'index')">返回首页</div></p>
+            </div>
+        </div>
+        <div class="" style="width:100%;height:20px;background:#f4f4f4;"></div>
+        <!-- 他买的n次的号码 -->
+        <div class="haoma">
+            <p class="biaoti">以下是你本次获得的乐购号码：</p>
+            <ul id="liebiao_ul">
+                <script type="text/template" id="liebiao">
+                    {{~it.goucode:value:index}}
+                        <li>{{= value}}</li>
+                    {{~}}
+                </script>
+            </ul>
+        </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/app.js"></script>
+  <script type="text/javascript" src="../../script/doT.js"></script>
+
+  <script type="text/javascript">
+    apiready = function(){
+        data = api.pageParam['data'];
+        $api.text($api.byId('zf_jiage'),Number(data.moneycount).toFixed(2));
+        var evalData = doT.template($api.html($api.byId('liebiao')));
+        $api.html($api.byId('liebiao_ul'), evalData(data));
+    };
+  </script>
+  </html>

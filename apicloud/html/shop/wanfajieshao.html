@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>e乐享</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" href="../../css/aui.css">
+    <style>
+        body {
+            /*background: #f0f0f0;*/
+            background: white !important;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .zhuti{
+            width:88%;
+            margin: 0 auto;
+        }
+        .zhuti h5{
+            height: 50px;
+            line-height: 50px;
+        }
+        .zhuti h2{
+            height: 50px;
+            line-height: 50px;
+            font-weight: bold;
+        }
+        .zhuti p{
+            margin: 20px 0;
+            color: black;
+        }
+        .zhuti .p1{
+            margin-top: 15px;
+        }
+        .zhuti .p3{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zhuti" style="">
+        <h2>开奖方式</h2>
+        <p class="p1">1、商品的最后一个幸运码分配完毕后，将公示最后一个幸运码之前本站全部商品的最后100个参与时间。</p>
+        <p class="p2">2、将这100个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362，若时间为20:15:25.062则为20152562）。</p>
+        <p class="p3">3、数值A除以该商品总需人数得到的余数+原始数10000001，得到最终幸运码，拥有改幸运码者，直接获得该商品。</p>
+        <h4>注：为了防止用户批量进行毫秒级下单，预防作弊现象，毫秒百位为0自动舍去，数字将从9位修改成8位进行求和计算。（如时间为20:13:14.002，则数字为20131402）</h4>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        api.parseTapmode();
+    };
+
+    // 关闭当前的页面
+    function closeWin_() {
+        api.closeWin({
+            name: ''
+        });
+
+    }
+</script>
+
+</html>

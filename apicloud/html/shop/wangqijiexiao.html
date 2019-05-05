@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>e乐享</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" href="../../css/aui.css">
+
+    <style>
+        body {
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        .zhuti ul li {
+            width: 100%;
+            height: 110px;
+            /*margin-bottom: 15px;*/
+            background: white;
+        }
+
+        .zhuti ul li .zuotu {
+            float: left;
+            width: 35%;
+            height: 110px;
+            line-height: 60px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .zhuti ul li .zuotu .image {
+            margin: 0 auto;
+            margin-top: 15px;
+            width: 80px;
+            height: auto;;
+        }
+
+        .zhuti ul li .zuotu .image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .zhuti ul li .xinxi {
+            float: left;
+            width: 65%;
+            height: 110px;
+        }
+
+        .zhuti ul li .xinxi .top {
+            margin-top: 8px;
+            overflow:hidden;
+            font-weight:bold;
+            font-size: 14px;
+        }
+
+        .zhuti ul li .xinxi .font {
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            color: #aeadad;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体 -->
+    <div class="clear"></div>
+    <div class="zhuti">
+        <ul id="liebiao">
+
+            <script type="text/template" id="sx-list">
+                {{ for(var i=0,len=it.data.length; i< len; i++) { }}
+                <li onclick="_url({title:'商品详情',goods_id:{{= it.data[i].id }},url:'shop/shangpinxiangqing'})">
+                    <div class="zuotu">
+                        <div class="image">
+                            <img src="{{= it.data[i].thumb}}" alt="获奖的图片">
+                        </div>
+                    </div>
+                    <div class="xinxi">
+                        <h5 class="font top aui-ellipsis-1" style="color:black;">[第{{= it.data[i].qishu}}期]{{= it.data[i].title}}</h5>
+                        <p class="font">幸运者:<span style="color:black;">{{= it.data[i].q_user}}</span></p>
+                        <p class="font" style="color:red;">幸运号码:<span>{{= it.data[i].q_user_code}}</span></p>
+                        <p class="font">参与人次:<span>{{= it.data[i].q_gonumber}}</span></p>
+                        <p class="font">获得时间:<span>{{= it.data[i].q_end_time}}</span></p>
+                    </div>
+                </li>
+                <div class="" style="width:100%;height:15px;background:#f5f5f5;"></div>
+                {{ } }}
+            </script>
+            <ul class="aui-list aui-media-list" id="sx-view">
+                <div id="jiazai"><img src="../../image/loading_more.gif" /></div>
+            </ul>
+        </ul>
+
+    </div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/echo.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+
+
+<script type="text/javascript">
+    apiready = function() {
+        id = api.pageParam.goods_id;
+        // 下拉刷新
+        _shangla(function(ret, err) {
+            _lists({
+                url: 'shop/past_goods_list',
+                loading: 1,
+                page: 1,
+                data: {
+                    goods_id:id
+                }
+            })
+
+        });
+
+            // 监听滚动
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra: {
+                threshold: threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err) {
+            if (heigutgao == 1) { // heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+                pagenum += 1
+                _lists({
+                    url: 'shop/past_goods_list',
+                    page: pagenum,
+                    data: {
+                        goods_id:id
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+</html>

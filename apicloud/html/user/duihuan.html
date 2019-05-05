@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+	<style>
+		.aui-btn {
+			color: #fff;
+		}
+
+		body {
+			background: #fff;
+		}
+
+		.manmoney {
+			text-align: center;
+			font-size: 0.65rem;
+			color: #f00;
+			padding: 0.55rem 0;
+			padding-top: 0px;
+			background: #F4F4F4;
+		}
+
+		.text {
+			background: #fff;
+			padding: 0 0.75rem;
+			padding-bottom: 0.75rem;
+		}
+
+		.text h3 {
+			padding: 0.55rem 0;
+		}
+
+		.text p {
+			line-height: 1.2rem;
+			font-size: 0.6rem;
+		}
+
+		.yongjins {
+			padding: 0.75rem 0.75rem;
+			background: #F4F4F4;
+		}
+
+		.yongjins b {
+			color: #f00;
+		}
+
+		.bitian {
+			color: #999;
+			font-size: 0.5rem;
+			padding-top: 0.25rem;
+			line-height: 0.88rem;
+		}
+
+		.aui-list {
+			border: 0px;
+		}
+
+		.tixianshouxufei {
+			text-align: center;
+			font-size: 0.6rem;
+			padding-bottom: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="aui-content">
+		<ul class="aui-list aui-form-list">
+			<div class="yongjins">
+				<p>我的积分：<b id="yongjin">0</b></p>
+			</div>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						兑换数量
+					</div>
+					<div class="aui-list-item-input">
+						<input type="tel" id="money" placeholder="请输入兑换数量" value="">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item" style="border-bottom: 0px;background: #fff;">
+				<div class="aui-list-item-inner aui-list-item-center aui-list-item-btn">
+					<div onclick="ajax()" class="aui-btn aui-btn-block aui-btn-danger" style="width: 70%;">
+						兑换彩豆
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="text"></div>
+</body>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/md5.min.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript">
+	apiready = function() {
+			$api.html($api.dom('#eq_rate'), _config.yaoqing.eq_rate);
+			$api.html($api.dom('#yongjin'), _user.eqscore);
+			_shangla(function() {
+				updateUserInfo()
+				api.refreshHeaderLoadDone();
+			}, 1)
+			$(function() {
+				$('#money').bind('input propertychange', function() {
+					var money = $(this).val();
+					var max = Math.floor(_user.eqscore / _config.yaoqing.eq_rate);
+					if (money > max) {
+						$(this).val(max)
+					}
+				});
+			})
+			FastClick.attach(document.body)
+		}
+		// 提交申请提现
+	function ajax() {
+		var money = $api.val($api.dom('#money'));
+		var max = Math.floor(_user.eqscore / _config.yaoqing.eq_rate);
+		if (money > max) {
+			_msg('当前积分最多兑换' + max + '彩豆');
+			return
+		}
+		if (!_money(money)) {
+			_msg('请填写正确兑换数量')
+			return
+		}
+		var Data = {
+			money: money,
+		}
+		var sign = getSign(Data);
+		Data.sign = sign;
+		api.confirm({
+			title: '确定兑换',
+			msg: "您确定要兑换" + money + "彩豆吗？",
+			buttons: ['确定', '取消']
+		}, function(ret, err) {
+			var index = ret.buttonIndex;
+			if (index == 1) {
+				_loading()
+				_ajax('member/duihuan', function(ret, err) {
+					_loadingCloes()
+					if (ret) {
+						if (ret.status) {
+							_alert(ret.msg, function(ret) {
+								updateUserInfo();
+								_close()
+							})
+						} else {
+							_msg(ret.msg);
+						}
+					} else {
+						_alert(JSON.stringify(err))
+					}
+				}, Data)
+			}
+		});
+	}
+
+	function _money(a) {
+		if (a == '') {
+			return false;
+		}
+		if (isNaN(a)) {
+			return false;
+		}
+		return true;
+	}
+</script>
+
+</html>

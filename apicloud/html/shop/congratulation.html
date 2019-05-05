@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>e乐享</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+
+		<style>
+			 body{
+			 	background:rgba(0,0,0,0.7)
+			 }
+			 .hb{
+			 	margin-top:38%;
+			 	position: relative;
+			 	background: url('../../image/hongbao_bg.png')  no-repeat center center;
+			 	background-size: 80%;
+			 }
+			 .hb2{
+			 	position: relative;
+
+			 }
+			 .hb2 img{
+			 	width:250px;
+			 	margin: 0 auto;
+			 	position: relative;
+			 	padding-top: 80px;
+
+			 }
+			 .hb2 h2{
+			 	position: absolute;
+			 	text-align: center;
+			 	width: 100%;
+			 	color: #ffec02;
+			 	font-size: 1.5rem;
+			 	margin-top: -80px;
+			 }
+			 .hb2 h1{
+			 	position: absolute;
+			 	text-align: center;
+			 	width: 100%;
+			 	color: #fff;
+			 	font-size: 1.5rem;
+			 }
+			 .hb2 h3{
+			 	position: absolute;
+			 	text-align: center;
+			 	width: 100%;
+			 	color: #fff;
+			 	font-size: 1.2rem;
+			 	padding-top: 50px;
+			 }
+			.anniu{
+				margin: 0 auto;
+				width: 6rem;
+				margin-top: 2rem;
+			}
+			 .aui-btn{
+			 	width: 100%;
+			 	background: linear-gradient(180deg,#fff61e,#fed919) !important;
+			 	color: #fd4500 !important;
+			 }
+			 .asdlkj{
+			 	bottom: 10%;
+			 	position: fixed;
+			 	width: 100%;
+			 	margin: 0 auto;
+			 	text-align: center;
+			 	color: #fff;
+			 }
+			 .dasd{
+			 	width:250px;
+			 	margin: 0 auto;
+			 	position: absolute;
+			 	text-align: center;
+			 	top:0px;
+			 }
+			 .asdasd{
+			 	top: 0px !important;
+			 	position: absolute !important;
+			 	text-align: center;
+			 	margin: 0 auto;
+			 	width: 300px;
+			 }
+
+		</style>
+	</head>
+	<body>
+		 <div class="hb">
+		 	<div class="hb2">
+		 		<h1>恭喜你</h1>
+		 		<h3 class="ssss"></h3>
+		 		<img src="../../image/congratulation.jpg" />
+		 		<h2 class="ss"></h2>
+		 	</div>
+		 	<div class="anniu"><div class="aui-btn aui-btn-danger" Tapmode onclick="asd()">立即领取</div></div>
+
+		 </div>
+		 <div class="asdlkj" Tapmode onclick="guanbi()">关闭</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/app.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.parseTapmode();
+			$api.text($api.dom('.ssss'),'获得'+api.pageParam['title']);
+		}
+		function guanbi(){
+		    //frame打开处理后置零
+		    oCount_s = 0;
+		    oCount_j = 0;
+			api.closeFrame();
+		}
+		function asd(){
+            //frame打开处理后置零
+            oCount_s = 0;
+            oCount_j = 0;
+            _url({url:'user/yihuoshangpin',title:'获得记录'},'',true)
+            api.closeFrame({
+				name:'congratulation'
+			});
+		}
+	</script>
+</html>

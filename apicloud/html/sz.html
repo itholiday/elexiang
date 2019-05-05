@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>e乐享</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			.aui-list-item-title{
+				font-size: 0.65rem !important;
+			}
+			#fx-img img{
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 50%;
+			}
+			#nickname{
+				font-size: 0.65rem
+			}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item " id="fx-img"  tapmode onclick="touxiang()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							头像
+						</div>
+						<div class="aui-list-item-right">
+							<img id="ffxiangImgCache" ffxiang-src="{{= sx_upload +_user.img}}" src="../image/touxiang.png">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="nick()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							昵称
+						</div>
+						<div class="aui-list-item-right" id="nickname">
+							{{= _user.username}}
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							手机号码
+						</div>
+						<div class="aui-list-item-right" id="mobile">
+							{{= _user.mobile}}
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="_url({url:'pwd',title:'密码重置'})">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							密码重置
+						</div>
+						<div class="aui-list-item-right">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" tapmode onclick="_article({title:'关于我们',id:23})">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							关于我们
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="_article({title:'服务协议',id:22})">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							服务协议
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="_url({url:'about',title:'常见问题'})">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							常见问题
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15" style="display:none;">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" tapmode onclick="yindaotu()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							新特性界面
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" tapmode onclick="clearCache()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							清除缓存
+						</div>
+						<div class="aui-list-item-right clearCache">
+							正在计算
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div style="width: 90%;margin: 0 auto"><div class="aui-btn-block aui-btn aui-btn-info" tapmode onclick="out()">退出登录</div></div>
+		</script>
+		<div id="fx-view"><div id="jiazai"><img src="../image/loading_more.gif" /></div></div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/app.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			view();
+			//获取缓存大小
+			api.getCacheSize(function(ret) {
+				var clearCache = ret.size / 1024 / 1024;
+				$api.html($api.dom('.clearCache'), clearCache.toFixed(2) + "MB")
+			});
+			api.parseTapmode();
+		}
+		function view(){
+			var evalData = doT.template($api.html($api.byId('fx-list')));
+			$api.html($api.byId('fx-view'), evalData());
+			_imageCache()
+		}
+
+		// 头像
+		function touxiang() {
+			api.actionSheet({
+				title:'修改头像',
+				cancelTitle : '取消',
+				buttons : ['拍照','相册']
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				if(index!=3){
+					var sourceType='album'
+					if(index==1){
+						sourceType='camera'
+					}
+					api.getPicture({
+					    sourceType: sourceType,
+					    encodingType: 'jpg',
+					    mediaValue: 'pic',
+					    destinationType: 'url',
+					    allowEdit: true,
+					    quality: 50,
+					    targetWidth: 800,
+					    targetHeight: 800,
+					}, function(ret, err) {
+					    if (ret) {
+					        if(ret.data){
+					        	imgAjax(ret.data)
+					        }
+					    }
+					});
+				}
+			});
+		}
+		// 封装上次图片方法
+
+		function imgAjax(image){
+			if(!image){
+				_msg('图片地址出错')
+				return;
+			}
+			_loading()
+			var token = $api.getStorage('token');
+			api.ajax({
+			    url: sx_url+'upload/upload_avatar',
+			    method: 'post',
+				headers:{auth:token},
+			    data: {
+			        files: {
+			            avatar: image
+			        }
+			    },
+			}, function(ret, err) {
+				_loadingCloes();
+			    if (ret) {
+			        if(ret.status){
+			        	$api.attr($api.dom('#fx-img img'), 'src', image);
+			        	_userInfo();
+			        	_msg('头像修改成功');
+			        }
+			    } else {
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+			});
+		}
+
+		// 昵称
+		function nick() {
+			api.prompt({
+				title : '修改昵称',
+				buttons : ['确定', '取消']
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				var text = ret.text;
+				if (text && index==1) {
+					_ajax('user/change_profile',function(ret,err){
+						if(ret){
+							if(ret.status){
+								_userInfo();//更新本地用户信息
+								$('#nickname').text(text);
+							}
+							_msg(ret.msg)
+						}else{
+							api.alert({ msg: JSON.stringify(err) });
+						}
+					},{username:text},true);
+				}
+			});
+		}
+
+		// 清除缓存
+		function clearCache() {
+			api.confirm({
+			    title: '清除确认',
+			    msg: '您确认要清楚缓存空间吗？',
+			    buttons: ['取消','确认']
+			}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if(index==2){
+			    	api.showProgress({
+						style : 'default',
+						animationType : 'zoom',
+						title : '正在清除',
+						modal : false
+					});
+			    	api.clearCache(function() {
+						_loadingCloes()
+						$api.html($api.dom('.clearCache'), "0.00MB")
+						_msg('清除完成')
+					});
+			    }
+			});
+		}
+		// 退出登录
+		function out(){
+			api.confirm({
+			    title: '退出确认',
+			    msg: '确定要退出登录吗？',
+			    buttons: ['取消', '确定退出']
+			}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if(index==2){
+			    	_uot();
+			    	_msg('退出成功')
+			    	setTimeout(function(){
+			    		_close();
+			    	},1000)
+			    }
+			});
+		}
+		// 引导页
+		function yindaotu(){
+			_openFrames('yindaotu',1,1);
+		}
+	</script>
+</html>

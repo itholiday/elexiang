@@ -1,0 +1,563 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/suxiang.css" />
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        .aui-grid .aui-col-xs-6 img {
+            width: 5.5rem;
+            height: 5.5rem;
+        }
+
+        .aui-grid .aui-col-xs-6 .aui-grid-label {
+            font-size: 0.75rem;
+            margin-top: 0.15rem;
+        }
+
+        .sx-list .sx-btn {
+            width: 48%;
+            margin: 0 auto;
+            margin-top: 0.25rem;
+        }
+
+        .sx-list .sx-money,
+        .sx-list .xianshidjs #djsTime b {
+            color: #FF2D4B;
+            font-size: 0.65rem;
+            padding-top: 0.05rem;
+        }
+
+        .sx-list .sx-money {
+            font-size: 0.5rem;
+        }
+
+        .sx-list .sx-money span {
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding-left: 0.25rem;
+        }
+
+        .sx-list .xianshidjs {
+            padding-top: 0.00rem
+        }
+
+        .sx-list .xianshidjs #djsTime b {
+            color: #FF2D4B;
+            font-size: 0.8rem;
+        }
+
+        .sx-list .aui-btn {
+            border-radius: 0px;
+            font-size: 0.55rem;
+            line-height: 1.25rem;
+            height: 1.25rem;
+            border-radius: 0.55rem;
+        }
+
+        .sx-list .sx-img {
+            position: relative;
+        }
+
+        .sx-list .sx-chengjiao .sx-img2 {
+            opacity: 0.55;
+        }
+
+        .sx-list .sx-chengjiao i {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sx-chengjiao .aui-btn {
+            color: #fff;
+        }
+
+        .aui-col-xs-6:active {
+            background: #fff;
+        }
+
+        #i10 {
+            left: 0.75rem
+        }
+
+        .swiper-containers {
+            width: 100%;
+            background: #fff;
+        }
+
+        .swiper-container {
+            width: 95%;
+            background: #F4F4F4 url('../image/ic_top_line.png') no-repeat 0.5rem center;
+            /*设置图片大小*/
+            background-size: 0.91rem;
+            border-radius: 10px;
+        }
+
+        .swiper-slide {
+            font-size: 0.75rem;
+        }
+
+        .swiper-wrapper {
+            height: 28px;
+            line-height: 30px;
+        }
+
+        .swiper-slide a {}
+        /*文字的信息*/
+
+        .swiper-containers .aui-ellipsis-2 {
+            font-size: 14px;
+            -webkit-line-clamp: 1 !important;
+            padding-left: 2rem;
+            padding-right: 0.2rem;
+        }
+
+        .swiper-containers .aui-ellipsis-2 b {
+            color: #FF2D4B
+        }
+
+        .aui-active {
+            border-bottom: 2px solid red !important;
+        }
+
+        .sx-as1 .aui-col-5 img {
+            width: 2.2rem !important;
+        }
+
+        .sx-as1 .aui-col-5 {
+            padding: 0.25rem 0 !important;
+        }
+
+        .aui-tab .aui-tab-item {
+            line-height: 1.9rem;
+            height: 1.8rem;
+        }
+        /*商品的边框*/
+
+        .sj_hang_tuzi {
+            width: 50%;
+            height: auto;
+            float: left;
+            /*border-top: 1px solid #f4f4f4;*/
+            border-right: 1px solid #f4f4f4;
+            border-bottom: 1px solid #f4f4f4;
+            padding-bottom: 15px;
+            padding-right: 2%;
+            padding-left: 2%
+        }
+
+        .sj_hang_tuzi:first-child {
+            border-top: 1px solid #f4f4f4;
+        }
+
+        .sj_hang_tuzi:nth-child(2) {
+            border-top: 1px solid #f4f4f4;
+        }
+
+        .sj_hang_tuzi .sj_hang_tu {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        .sj_hang_tuzi .sj_hang_tu img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sj_hang_tuzi .biaoti {
+            font-size: 13px;
+            color: gray;
+            width: 95%;
+            height: 23px;
+            line-height: 20px;
+            margin: 0 auto;
+        }
+
+        .sj_hang_tuzi .jindutiao {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .aui-tab-item.aui-active {
+            color: red;
+            border-bottom: 2px solid #FF2D4B;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="aui-grid sx-as1" style="margin-top:200px;">
+        <div class="aui-row aui-padded-l-15 aui-padded-r-15 aui-margin-b-10 aui-margin-t-10">
+            <div class="aui-col-5" tapmode onclick="_url({url:'jisu',title:'极速秒开',what:'jisu'},'')">
+                <img src="../image/index-yaoqing.png" />
+                <div class="aui-grid-label">
+                    极速秒开
+                </div>
+            </div>
+            <div class="aui-col-5" tapmode onclick="_url({url:'jiexiao',title:'最新揭晓'},'')">
+                <img src="../image/index-zhuanpan.png" />
+                <div class="aui-grid-label">
+                    最新揭晓
+                </div>
+            </div>
+            <div class="aui-col-5" tapmode onclick="_url({url:'user/chongzhi',title:'充值'},'',true)">
+                <img src="../image/index-cz.png" />
+                <div class="aui-grid-label">
+                    充值彩豆
+                </div>
+            </div>
+            <div class="aui-col-5" tapmode onclick="_url({url:'user/yaoqing',title:'邀请好友'},'',true)">
+                <img src="../image/index-chongzhi.png" />
+                <div class="aui-grid-label">
+                    分享好友
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 公告信息的轮播 -->
+    <div class="swiper-containers aui-padded-b-5">
+        <div class="swiper-container">
+            <div class="swiper-wrapper"></div>
+        </div>
+    </div>
+    <div class="" style="width:100%;height:12px;background:white;"></div>
+    <div class="aui-tab tab_yangshi" id="tab">
+        <div class="aui-tab-item aui-active" data-id='1' tapmode onclick="tabs(this)" style="border-left:#efefef;">
+            人气
+        </div>
+        <div class="aui-tab-item" data-id='2' tapmode onclick="tabs(this)">
+            最新
+        </div>
+        <div class="aui-tab-item" data-id='3' tapmode onclick="tabs(this)">
+            进度
+        </div>
+        <div class="aui-tab-item" data-id='4' tapmode onclick="tabs(this)">
+            人次
+        </div>
+    </div>
+    <script id="sx-list" type="text/x-dot-template">
+        {{ for(var i=0,len=it.data.length; i
+        < len; i++) { }} <div class="sj_hang_tuzi" tapmode id="i_{{=it.data[i].id}}" onclick="_url({title:'商品详情',goods_id:{{=it.data[i].id}},url:'shop/shangpinxiangqing',pk:{{=it.data[i].pk}},fenshu:{{= it.data[i].zongrenshu/it.data[i].pkrenshu}}})">
+            <div class="sj_hang_tu">
+                <img src="{{= it.data[i].thumb }}" />
+            </div>
+            <p class="aui-ellipsis-2 biaoti">{{= it.data[i].title }}</p>
+            <div class="aui-progress aui-progress-xxs jindutiao">
+                <div id="good_{{=it.data[i].id}}" class="aui-progress-bar" style="width: {{= it.data[i].proccess }}%;"></div>
+            </div>
+            <div class="jiagehejindu">
+                <h4 style="color: red;float: left;font-size:12px;">￥{{= it.data[i].yunjiage }}&nbsp;彩豆/人次</h4>
+                <h4 id="h4_good_{{=it.data[i].id}}" style="color: red;float: right;font-size:12px;">进度&nbsp;{{= it.data[i].proccess }}%</h4>
+            </div>
+            </div>
+            {{ } }}
+    </script>
+
+    <section class="aui-grid sx-list" id="sx-view">
+        <div id="jiazai"><img src="../image/loading_more.gif" /></div>
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../script/app.js"></script>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="../script/aui-tab.js"></script>
+<script type="text/javascript">
+    var UIScrollPicture, tingzhi = 1,
+        tab = 1,
+        taburl = 'index/get_index_goods',
+        timeID,
+        data = {}
+    var setint = null;
+    var page=1;
+    apiready = function() {
+        setint = setInterval(function() {
+            AgainData();
+        }, 20000)
+        api.addEventListener({
+            name: 'viewappear'
+        }, function() {
+            AgainData();
+            clearInterval(setint);
+            setint = setInterval(function() {
+                AgainData();
+            }, 20000)
+        })
+        api.execScript({
+            frameName: 'index',
+            script: 'tingzhiss()'
+        });
+        UIScrollPicture = api.require('UIScrollPicture');
+        // tab  1热拍   2十彩豆专区
+        _shangla(function() {
+            clearTimeout(timeID);
+            api.cancelAjax({
+                tag: 'publish'
+            });
+            if (!$api.getStorage('user')) {
+                tab = 1
+            }
+            config()
+        }, 1)
+        config()
+            // 监听滚动
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra: {
+                threshold: threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err) {
+            if (heigutgao == 1) { // heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+                pagenum += 1
+                _lists({
+                    url: 'index/get_index_goods',
+                    page: pagenum,
+                    data: data
+                });
+                // 当数据写入成功  把 heigutgao 设置1
+            }
+        });
+        //监听APP版本更新   请勿删除，否则无法上架更新导致出现下架一概不负责
+        _gengxin();
+    }
+
+    function AgainData() {
+        var tab = $('#tab .aui-active').data('id')
+        if (tab == 1) {
+            data = {
+                values: {
+                    limit: 100,
+                    type: 'renqi'
+                }
+            };
+        } else if (tab == 2) {
+            data = {
+                values: {
+                    limit: 100,
+                    type: 'zuixin'
+                }
+            };
+        } else if (tab == 3) {
+            data = {
+                values: {
+                    limit: 100,
+                    type: 'jindu'
+                }
+            };
+        } else {
+            data = {
+                values: {
+                    limit: 100,
+                    type: 'renci'
+                }
+            };
+        }
+        api.ajax({
+            url: sx_url + taburl,
+            data: data
+        }, function(ret, err) {
+            if (ret) {
+                for (var i = 0; i < ret.data.length; i++) {
+                    var good = $api.dom("#good_" + ret.data[i].id);
+                    var h4good = $api.dom("#h4_good_" + ret.data[i].id);
+                    if (good) {
+                        $api.css(good, 'width: ' + ret.data[i].proccess + '%');
+                        $api.html(h4good, '进度&nbsp;' + ret.data[i].proccess + '%');
+                    }
+                }
+            } else {
+                console.log(JSON.stringify(ret.data));
+            }
+        });
+    }
+
+    function tabs(thiss) {
+        page=1;
+        var usertab = $(thiss).data('id');
+        $('#sx-view').html('<div id="jiazai"><img src="../image/loading_more.gif" /></div>')
+        $('#tab .aui-active').removeClass('aui-active');
+        $(thiss).addClass('aui-active')
+        tab = $('#tab .aui-active').data('id')
+        if (tab == 1) {
+            taburl = 'index/get_index_goods';
+            data = {
+                type: 'renqi',
+                limit: 6
+            };
+        } else if (tab == 2) {
+            taburl = 'index/get_index_goods';
+            data = {
+                type: 'zuixin',
+                limit: 6
+            };
+        } else if (tab == 3) {
+            taburl = 'index/get_index_goods';
+            data = {
+                type: 'jindu',
+                limit: 6
+            };
+        } else {
+            taburl = 'index/get_index_goods';
+            data = {
+                type: 'renci',
+                limit: 6
+            };
+        }
+        _lists({
+            url: taburl,
+            page: page,
+            loading: 1,
+            data: data
+        });
+    }
+
+    function timeshuaxin() {
+        api.refreshHeaderLoading();
+    }
+
+    function slide() {
+        UIScrollPicture.open({
+            rect: {
+                x: 0,
+                y: 0,
+                w: api.winWidth,
+                h: 200
+            },
+            data: {
+                paths: _config.slide.img
+            },
+            styles: {
+                indicator: {
+                    align: 'center',
+                    color: '#ddd',
+                    activeColor: '#FF2D4B'
+                }
+            },
+            placeholderImg: 'widget://image/loading.png',
+            contentMode: 'scaleToFill',
+            interval: 5,
+            loop: true,
+            fixedOn: api.frameName,
+            fixed: false
+        }, function(ret, err) {
+            if (ret.eventType == 'click') {
+                if (_config.slide.info[ret.index].url) {
+                    if (_config.slide.info[ret.index].urltype == 1) {
+                        var a = checknum(_config.slide.info[ret.index].url);
+                        if (a) {
+                            shopUrl(_config.slide.info[ret.index].url)
+                        } else {
+                            _url({
+                                url: _config.slide.info[ret.index].url,
+                                title: _config.slide.info[ret.index].title
+                            }, '', true)
+                        }
+                    } else {
+                        //外部链接
+                        _url({
+                            url: _config.slide.info[ret.index].url,
+                            title: _config.slide.info[ret.index].title
+                        }, 'curl')
+                    }
+                }
+            }
+        });
+        //更新图片
+        _gengxin()
+    }
+
+    function tingzhis(type) {
+        tingzhi = type
+        if (type == 1) {
+            tingzhi = 1;
+        }
+    }
+
+    var dlisons = 0;
+
+    // 获取配置分类
+    function config() {
+        _ajax('index/config', function(ret, err) {
+            if (ret) {
+                $api.setStorage('config', ret);
+                _config = ret;
+                if (dlisons == 0) {
+                    dlisons = 1;
+                    var htmlTop = '';
+                    if (ret.top) {
+                        for (var i = 0; i < ret.top.length; i++) {
+                            htmlTop += '<div class="swiper-slide aui-ellipsis-2"  tapmode \
+                            onclick="_url({title:\'商品详情\',url:\'shop/shangpinxiangqing\',goods_id:' + ret.top[i].shopid + '})">恭喜 <a>' + ret.top[i].username +
+                                '</a>以<b>￥' + (ret.top[i].moneycount) + '</b>彩豆获得了' + ret.top[i].shopname + '</div>';
+                        }
+                    }
+                    $('.swiper-wrapper').html(htmlTop);
+                    api.parseTapmode();
+                    var swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        direction: 'vertical',
+                        slidesPerView: 1,
+                        paginationClickable: true,
+                        autoplayDisableOnInteraction: false,
+                        loop: true,
+                        autoplay: 2500
+                    });
+                }
+                api.execScript({
+                    frameName: 'index',
+                    script: 'title("' + ret.config.title + '")'
+                });
+                slide()
+                _lists({
+                    url: taburl,
+                    page: 1,
+                    loading: 1,
+                    data: {
+                        limit: 6
+                    }
+                });
+            } else {
+                setTimeout(function() {
+                    config()
+                }, 1500)
+            }
+        })
+    }
+
+    // 获取新商品信息
+    function shopUrl(id) {
+        _url({
+            title: '商品详情',
+            goods_id: id,
+            url: 'shop/shangpinxiangqing'
+        })
+    }
+
+    // 判断是否数字
+    function checknum(a) {
+        if (!a || a == '') {
+            return false;
+        }
+        if (isNaN(a)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+
+</html>

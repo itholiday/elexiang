@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>e乐享</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/suxiang.css" />
+
+	</head>
+	<body>
+		<footer class="aui-bar aui-bar-tab aui-border-t" id="sx-footer">
+			<div class="aui-bar-tab-item" onclick="_index_win('index')">
+				<img src="../image/index-1.png" />
+				<div class="aui-bar-tab-label">
+					首页
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('type_win')">
+				<img src="../image/index-3.png" />
+				<div class="aui-bar-tab-label">
+					玩法
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('jiexiao_win')">
+				<img src="../image/index-2.png" />
+				<div class="aui-bar-tab-label">
+					揭晓
+				</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active">
+				<img src="../image/index-4s.png" />
+				<div class="aui-bar-tab-label">
+					我的
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/app.js"></script>
+	<script type="text/javascript">
+		var gengxin = 0;
+		apiready = function() {
+			_openFrame('user', 1)
+			// 回到屏幕
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				if (gengxin == 1) {
+					// 更新用户记录
+					api.execScript({
+						frameName : 'user',
+						script : 'viewAjax()'
+					});
+				}
+				gengxin = 1;
+			});
+			//应用进入后台事件
+			api.addEventListener({
+				name : 'pause'
+			}, function(ret, err) {
+				time = Date.parse(new Date());
+				time = time + likaitime
+				$api.setStorage('time', time);
+			});
+			// 应用从后台回到前台事件
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				time = Date.parse(new Date());
+				if ($api.getStorage('time')) {
+					if (time > $api.getStorage('time')) {
+						_hone()
+					}
+				}
+			});
+		}
+	</script>
+</html>

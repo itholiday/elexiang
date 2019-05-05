@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>e乐享</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+	<style>
+		body {
+			box-sizing: border-box;
+		}
+
+		.aui-card-list {
+			margin-bottom: 0;
+		}
+
+		#main {
+			padding: 0;
+			position: relative;
+		}
+
+		.xinxi {
+			width: 100%;
+			height: 110px;
+			margin: 0 auto;
+		}
+
+		.xinxi_tu {
+			width: 70px;
+			height: 70px;
+			float: left;
+		}
+
+		.xinxi_tu img {
+			line-height: 70px;
+			width: 100%;
+			height: auto;
+		}
+
+		.xinxi .xinxi_zi {
+			width: 65%;
+			height: 95px;
+			margin: 0 auto;
+			/*margin-top: 15px;*/
+			/*padding-top: 15px;*/
+			margin-left: 20px;
+			float: left;
+		}
+
+		.xinxi .xinxi_zi h4 {
+			height: 30px;
+			line-height: 30px;
+			font-size: 14px;
+		}
+		.sd_xinxi{
+			width: 95%;
+			height: auto;
+			margin: 0 auto;
+			margin-top: 15px;
+		}
+		.sd_xinxi .sd_xinxi_biaoti{
+			font-size: 16px;
+		}
+		.sd_xinxi h5{
+			height: 25px;
+			line-height: 25px;
+			padding-left: 20px;
+			font-size: 15px;
+		}
+		.sd_xinxi .sd_xinxi_neirong{
+			height: auto;
+			line-height: 15px;
+			font-size: 14px;
+			color: #7c7c7c;
+			margin-top: 10px;
+			margin-bottom: 15px;
+		}
+		.sd_xinxi .sd_xinxi_tuji{
+			width: 70%;
+			height: auto;
+			margin: 0 auto;
+			margin-bottom: 15px;
+		}
+		.sd_xinxi .sd_xinxi_tuji img{
+			margin-bottom: 15px;
+		}
+	</style>
+</head>
+
+<body id="sx-view">
+	<div id="wrap">
+
+	</div>
+	<script type="text/x-dot-template" id="wrapContent">
+	<div id="main">
+		<section class="aui-content aui-padded-l-5 aui-padded-r-10 aui-padded-t-5">
+			<div class="aui-row aui-row-padded">
+				<div class="">
+					<div class="aui-card-list xinxi" style="margin:0 auto;width:95%;">
+						<div class="aui-card-list-content xinxi_tu" style="margin-top:24px;">
+							<img src="{{= sx_upload + it.thumb}}" alt="">
+						</div>
+						<div class="xinxi_zi" style="margin-top:9px;margin-left:20px;">
+							<h4 class="huojiangzhe">
+								<span class="shuxing">幸运号码：{{= it.q_user_code}}</span>
+							</h4>
+							<h4 class="bencicanyu" style="color:#797979;">
+								<span class="shuxing">参与人次：{{= it.gonumber}}人次</span>
+							</h4>
+							<h4 class="jiexiaoshijian" style="color:#acacac;">
+								<span class="shuxing">揭晓时间：{{= it.q_end_time}}</span>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div style="width:100%;height:8px;background:#e8e8e8;"></div>
+			</div>
+		</section>
+		<div class="sd_xinxi">
+			<!-- 标题 -->
+			<div class="sd_xinxi_biaoti">
+				{{= it.sd_title }}
+			</div>
+			<h5>{{= it.sd_time }}</h5>
+			<!-- 内容 -->
+			<div class="sd_xinxi_neirong">
+				{{= it.sd_content }}
+			</div>
+			<!-- 图集 -->
+			<div class="sd_xinxi_tuji">
+				{{~ it.sd_photolist:pic:index}}
+				<img src="{{= sx_upload + pic }}" alt=""/>
+				{{~}}
+			</div>
+		</div>
+	</div>
+	</script>
+
+
+
+</body>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript">
+	apiready = function() {
+		var evalData = doT.template($api.html($api.byId('wrapContent')));
+		$api.html($api.dom('#wrap'), evalData(api.pageParam));
+	}
+
+</script>
+
+</html>

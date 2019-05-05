@@ -1,0 +1,94 @@
+.sx-user-1{
+	background: url('../image/user-by.jpg')  no-repeat;
+	background-size: 100%;
+	height: 150px;
+	position: relative;
+} 
+.sx-user-1 i{
+	color: #fff;
+	position: absolute;
+	right: 1rem;
+	top: 1.8rem;
+	font-size: 1rem;
+}
+.sx-user-2-1{
+	margin:0 auto;
+	width: 100%;
+	text-align: center;
+	background: #fff;
+	padding-bottom: 0.3rem;
+}
+.sx-user-2-1 img{
+	position: relative;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	border:1px solid #FFF;
+	background: #FFF;
+	padding: 0.1rem;
+	margin:0 auto;
+	margin-top: -35px;
+}
+.sx-user-2-1 p{
+	color: #333;
+	font-size: 0.65rem;
+}
+.sx-user-2-2 .aui-btn-info{
+	padding:0 1.5rem;
+	border-radius: 0.75rem;
+	margin-top: 0.35rem;
+}
+.sx-user-3,.sx-user-4{
+	margin-top:0.45rem;
+}
+.sx-user-3{
+	position: relative;
+}
+.sx-user-3 .aui-grid [class*=aui-col-] img{
+	width: 1.2rem;
+}
+.sx-user-3 .sx-user-3-1{
+	padding-top: 0.45rem;
+	padding-left:0.75rem;
+	padding-bottom: 0.35rem;
+	font-size: 0.65rem;
+}
+.sx-user-3 .aui-list-item-arrow:before{
+	top: 1rem;
+}
+.sx-user-4 .aui-list-item-inner{
+	font-size: 0.65rem;
+}
+.sx-user-4 img{
+	width: 1.2rem;
+	height: 1rem;
+}
+#smobile{
+	 
+}
+.sx-user-2-2{
+	border-top: 1px solid #e8e8e8;
+}
+.sx-user-2-2 [class*=aui-col-]{
+	padding: 0.5rem 0 !important;
+}
+.sx-user-2-2 .sx-colsx{
+	width: 22% !important;
+}
+.sx-user-2-2 .sx-colsx2{
+	width: 34% !important;
+}
+.sx-user-2-2  .aui-grid-label{
+	margin-top: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+
+

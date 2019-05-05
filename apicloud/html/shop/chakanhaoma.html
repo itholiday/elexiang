@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>e乐享</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" href="../../css/aui.css">
+
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .zhuti{
+            width: 100%;
+            height: auto;
+            background: #e1dfdf;
+            margin-top: 6px;
+        }
+        .zhuti h4{
+            margin-left: 10px;
+            height: auto;
+        }
+        .zhuti h5{
+            padding-left: 10px;
+            /*height: 30px;*/
+            height: auto;
+            line-height: 30px;
+            border-bottom: 1px solid gray;
+        }
+        .zhuti ul{
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+        }
+        .zhuti ul li{
+            float: left;
+            width: 25%;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zhuti" style="background:white">
+        <h4>[第<span id="qishu"></span>期]<span id="shangpinming"></span></h4>
+        <h5><span id="yonghuming"></span>本次一共参与了<span id="cishu"></span>人次，以下是获得乐购号码</h5>
+        <ul id="liebiao_ul">
+            <script type="text/template" id="liebiao">
+                {{~it.goucode:value:index}}
+                    <li>{{= value}}</li>
+                {{~}}
+            </script>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+
+<script type="text/javascript">
+    apiready = function() {
+        initThisPage();
+    };
+
+    function initThisPage() {
+        var id = api.pageParam.gorecord_id;
+        api.ajax({
+            url: sx_url + 'shop/go_record_item',
+            method: 'post',
+            data: {
+                values: {
+                    gorecord_id:id
+                }
+            }
+        },function(ret, err){
+            api.refreshHeaderLoadDone();
+            if (ret) {
+                $api.byId('qishu').innerHTML = ret.data.shopqishu;
+                $api.byId('shangpinming').innerHTML = ret.data.shopname;
+                $api.byId('yonghuming').innerHTML = ret.data.username;
+                $api.byId('cishu').innerHTML = ret.data.gonumber;
+
+                var liebiao = $api.byId('liebiao').innerHTML;
+                var fnLunbo = doT.template(liebiao);
+                liebiao = fnLunbo(ret.data);
+                $api.byId('liebiao_ul').innerHTML = liebiao;
+
+            } else {
+                console.log( JSON.stringify( err ) );
+            }
+        });
+    }
+
+</script>
+
+</html>

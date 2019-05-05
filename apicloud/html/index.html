@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/suxiang.css" />
+	<style>
+		.aui-pull-left img{
+			width: 1.15rem;
+			height: 1.1rem
+		}
+		.aui-pull-right img{
+			width: 1.1rem;
+		}
+
+	</style>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav" id="sx-header">
+	<a class="aui-pull-left aui-btn" tapmode onclick="searchs()">
+		<img src="../image/search.png" />
+	</a>
+	<div class="aui-title" style="font-size: 1rem;">e乐享</div>
+	<a class="aui-pull-right aui-btn" tapmode onclick="_url({url:'tongzhi',title:'公告'})">
+		<img src="../image/gonggao.png" />
+	</a>
+</header>
+<footer class="aui-bar aui-bar-tab aui-border-t" id="sx-footer">
+	<div class="aui-bar-tab-item aui-active">
+		<img src="../image/index-1s.png" />
+		<div class="aui-bar-tab-label">
+			首页
+		</div>
+	</div>
+	<div class="aui-bar-tab-item" tapmode onclick="_index_win('type_win')">
+		<img src="../image/index-3.png" />
+		<div class="aui-bar-tab-label">
+			玩法
+		</div>
+	</div>
+	<div class="aui-bar-tab-item" tapmode onclick="_index_win('jiexiao_win')">
+		<img src="../image/index-2.png" />
+		<div class="aui-bar-tab-label">
+			揭晓
+		</div>
+	</div>
+	<div class="aui-bar-tab-item" tapmode onclick="_index_win('user_win')">
+		<img src="../image/index-4.png" />
+		<div class="aui-bar-tab-label">
+			我的
+		</div>
+	</div>
+</footer>
+</body>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/app.js"></script>
+<script type="text/javascript">
+    var time='',tingzhis=0;
+    apiready = function() {
+        //$api.rmStorage('yindaotu')
+        // 回到屏幕
+        api.addEventListener({
+            name : 'viewappear'
+        }, function(ret, err) {
+            _heibai();
+            if(tingzhis==1){
+                api.execScript({
+                    frameName : 'index_frm',
+                    script : 'tingzhis(1)'
+                });
+            }
+        });
+        // 屏幕消失
+        api.addEventListener({
+            name : 'viewdisappear'
+        }, function(ret, err) {
+            _heibai(1);
+            api.execScript({
+                frameName : 'index_frm',
+                script : 'tingzhis(0)'
+            });
+        });
+        api.addEventListener({
+            name : 'smartupdatefinish'
+        }, function(ret, err) {
+            alert('APP自动修复完成，需要重启APP才能生效');
+            api.rebootApp();
+        });
+        _openFrame('index_frm');
+        //应用进入后台事件
+        api.addEventListener({
+            name:'pause'
+        }, function(ret, err){
+            time = Date.parse(new Date());
+            time=time+likaitime
+            $api.setStorage('time',time);
+        });
+        // 应用从后台回到前台事件
+        api.addEventListener({
+            name:'resume'
+        }, function(ret, err){
+            time = Date.parse(new Date());
+            if($api.getStorage('time')){
+                if(time > $api.getStorage('time')){
+                    api.execScript({
+                        frameName : 'index_frm',
+                        script : 'timeshuaxin()'
+                    });
+                }
+            }
+        });
+        userInfo()
+    };
+    function title(title) {
+        $api.text($api.dom('.aui-title'), title)
+    }
+
+    // 更新会员数据
+    function userInfo() {
+        _ajax('member/info', function(ret, err) {
+            if (ret) {
+                if (ret.status) {
+                    $api.setStorage('user', ret.data);
+                } else {
+                    _uot();
+                }
+            } else {
+                _uot()
+            }
+        })
+    }
+    function tingzhiss(){
+        tingzhis=1;
+    }
+    function searchs(){
+        api.openWin({
+            name : 'search',
+            url : html_win+'search.html',
+            reload:true,
+            bounces:false,
+            animation:{
+                type:"fade",                //动画类型（详见动画类型常量）
+                subType:"from_bottom",       //动画子类型（详见动画子类型常量）
+                duration:300
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>e乐享</title>
+		<link rel="stylesheet" type="text/css" href="../css/core.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon.css">
+		<link rel="stylesheet" type="text/css" href="../css/home.css">
+	</head>
+	<body>
+		<header class="aui-header-default aui-header-fixed aui-header-bg" id="sx-header" style="height:65px;;">
+			<div tapmode onclick="_close()" class="aui-header-item"> <i class="aui-icon aui-icon-back-white"></i> </div>
+			<div class="aui-header-center aui-header-center-clear">
+				<div class="aui-header-center-logo">
+					<div class="aui-car-white-Typeface" style="white-space:nowrap;">加载中</div>
+				</div>
+			</div>
+			<div  class="aui-header-item-icon"   style="min-width:0;"> </div>
+		</header>
+
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/app.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				_heibai()
+			});
+			_heibai()
+			var title = api.pageParam['title'];
+			if (!title) {
+				title = '商品详细'
+			}
+			$api.html($api.dom('.aui-car-white-Typeface'), api.pageParam['title'])
+			_openFrame(api.pageParam['url'], '', '1', api.pageParam, api.pageParam['useHi'])
+			//应用进入后台事件
+			api.addEventListener({
+				name : 'pause'
+			}, function(ret, err) {
+				time = Date.parse(new Date());
+				time = time + likaitime
+				$api.setStorage('time', time);
+			});
+			// 应用从后台回到前台事件
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				time = Date.parse(new Date());
+				if ($api.getStorage('time')) {
+					if (time > $api.getStorage('time')) {
+						_hone()
+					}
+				}
+			});
+		}
+	</script>
+</html>

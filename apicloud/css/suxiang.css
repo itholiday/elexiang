@@ -1,0 +1,25 @@
+ /*
+  *
+  * APP专业技术开发，专注于开发夺宝和竞拍
+  * QQ：474944111
+  * QQ：1424445608
+  * 微信：ifangzhan
+  * 名称：星澜科技科技有限公司
+  * 网站：www.suxiangw.com
+  */
+#sx-footer{
+	padding-top: 0.25rem;
+	z-index: 99999999;
+}
+#sx-footer .aui-bar-tab-item{
+	height: 2.2rem;
+}
+#sx-footer .aui-bar-tab-label{
+	padding-top:0.15rem;
+	font-size: 0.55rem;
+}
+#sx-footer .aui-bar-tab-item img{
+	width: 0.95rem;
+	height: 0.95rem;
+	margin: 0 auto;
+}

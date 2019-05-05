@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>e乐享</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/view.css" />
+	<style>
+		.sx-tab-2 .aui-list-item-media {
+			width: 3.5rem;
+			height: auto;
+			padding: 0.5rem 0;
+			position: relative;
+			margin-right: 0.35rem;
+		}
+
+		.sx-tab-2 .aui-list-item-media .chengjiao {
+			position: absolute;
+			width: 100%;
+			height: auto;
+			left: 0;
+			top: 0.75rem;
+		}
+
+		.sx-tab-2 .aui-list-item-media .aui-img-round {
+			width: 100%;
+			border-radius: 0px;
+			height: 100%;
+		}
+
+		.chengjiao .aui-img-round {
+			opacity: 0.55;
+		}
+
+		.sx-tab-2-1 {
+			width: 65% !important;
+		}
+
+		.sx-tab-2-2-2 {
+			position: relative !important;
+		}
+
+		em {
+			position: absolute;
+			bottom: 0.75rem;
+			right: 0.75rem;
+			padding: 0.2rem 1.15rem;
+			border: 1px solid #FF2D4B;
+			font-size: 0.65rem;
+			color: #FF2D4B;
+		}
+
+		.chajia {
+			background: #FF2D4B;
+			font-size: 0.65rem;
+			padding: 0.2rem 0.75rem;
+			color: #fff;
+			margin-right: 0.75rem;
+		}
+
+		.aui-pull-left {
+			font-size: 0.65rem;
+		}
+
+		.aui-bar-nav a,
+		.aui-bar-nav .aui-btn .aui-iconfont,
+		.aui-bar-nav {
+			color: #333
+		}
+
+		.asdlkhjasd {
+			border-bottom: 1px solid #e8e8e8;
+			overflow: hidden
+		}
+
+		.asdpoiasd {
+			clear: both;
+			border-bottom: 1px solid #e8e8e8;
+			background: #F6F4F0
+		}
+
+		.asdpoiasd .aui-tab {
+			background: #F6F4F0
+		}
+
+		.aui-tab-item.aui-active {
+			border-bottom: 2px solid #FF2D4B
+		}
+	</style>
+</head>
+<body>
+	<div class="aui-content sx-tab-2" style="display: block">
+		<script id="sx-list" type="text/x-dot-template">
+			{{ for(var i=0,len=it.data.length; i< len; i++) { }} {{? !state }}
+			<li class="aui-list-item aui-list-item-middle" data-data='{{= JSON.stringify(it.data[i]) }}' tapmode onclick="shaidanView(this)">
+				<div class="aui-media-list-item-inner">
+					<div class="aui-list-item-media chengjiao">
+						<img src="{{= sx_upload + it.data[i].sd_thumbs }}" class="aui-img-round ">
+						<img class="chengjiao" src="../../image/shaidanchenggong.png">
+					</div>
+					<div class="sx-tab-2-1 aui-list-item-inner">
+						<div class="aui-list-item-text">
+							<div class="aui-ellipsis-1">
+								晒单者:{{= it.data[i].q_user.username }}
+							</div>
+						</div>
+						<div class="aui-list-item-text">
+							<div class="aui-ellipsis-1">
+								{{= it.data[i].sd_title }}
+							</div>
+						</div>
+						<div class="aui-list-item-text">
+							<div class="aui-ellipsis-1">
+								{{= it.data[i].sd_content }}
+							</div>
+						</div>
+						<div class="aui-list-item-text">
+							<div class="aui-ellipsis-1">
+								晒单时间：{{= it.data[i].sd_time }}
+							</div>
+						</div>
+					</div>
+				</div>
+				</li>
+				{{??}}
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner" tapmode onclick="_url({title:'商品详情',goods_id:{{= it.data[i].id }},url:'shop/shangpinxiangqing'})">
+						<div class="aui-list-item-media ">
+							<img id="ffxiangImgCache" ffxiang-src="{{= sx_upload + it.data[i].thumb }}" src="../../image/loading200.png" class="aui-img-round ">
+						</div>
+						<div class="sx-tab-2-1 aui-list-item-inner">
+							<div class="aui-list-item-text  ">
+								<div class="aui-ellipsis-1">
+									{{= it.data[i].title }}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									幸运码：{{= it.data[i].q_user_code }}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									揭晓时间：{{= it.data[i].q_end_time }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="overflow: hidden" class="aui-padded-b-10">
+						<span class="aui-pull-right chajia" tapmode onclick="shaidanAdd({{= it.data[i].id }})">立即晒单</span>
+					</div>
+				</li>
+				{{?}} {{ } }}
+		</script>
+		<ul class="aui-list aui-media-list" id="sx-view">
+			<div id="jiazai"><img src="../../image/loading_more.gif" /></div>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+<script type="text/javascript">
+	var likai = 0;
+	apiready = function() {
+	    state = api.pageParam['state'];
+        type = api.pageParam['type'];
+			_shangla(function() {
+				_lists({
+					url: 'member/get_shaidan_list',
+					page: 1,
+					loading: 1,
+					data:{state:api.pageParam['state'],type:type}
+				});
+			});
+			// 监听滚动
+			api.addEventListener({
+				name: 'scrolltobottom',
+				extra: {
+					threshold: threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) { // heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1;
+					_lists({
+						url: 'member/get_shaidan_list',
+						page: pagenum,
+                        data:{state:api.pageParam['state'],type:type}
+					});
+				}
+			});
+			// 回到屏幕
+			api.addEventListener({
+				name: 'viewappear'
+			}, function(ret, err) {
+				if (likai == 1) {
+					_lists({
+						url: 'member/get_shaidan_list',
+						page: 1,
+						loading: 1,
+                        data:{state:api.pageParam['state']}
+					});
+				}
+			});
+		}
+	// 晒单详细页面
+	function shaidanView(thiss) {
+		_urls({
+			thiss: thiss,
+			title: '晒单详细',
+			url: 'user/shaidanView'
+		})
+	}
+
+	function shaidanAdd(id) {
+		_url({
+			id: id,
+			title: '晒单分享',
+			url: 'user/shaidanAdd'
+		})
+	}
+</script>
+
+</html>

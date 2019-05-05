@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>e乐享</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			.kfu ul{
+				padding-bottom: 0.45rem
+			}
+			.kfu .aui-list .aui-list-item,.aui-list{
+				background: #FFF;
+				border: 0px;
+			}
+			.kfu .aui-list .aui-list-item,.kfu .aui-list .aui-list-item-middle > .aui-list-item-media, .aui-list .aui-list-item-middle > .aui-list-item-inner, .aui-list .aui-list-item-middle > *{
+				min-height:1.2rem;
+				font-size: 0.6rem
+			}
+		</style>
+	</head>
+	<body>
+		<script id="sx-list" type="text/x-dot-template">
+			<div class="aui-content kfu">
+				<ul class="aui-list aui-list-in">
+					<li class="aui-list-header aui-font-size-14">
+						联系方式
+					</li>
+					<li class=" aui-padded-t-10 aui-list-item aui-list-item-middle aui-font-size-14">
+						<div class="aui-list-item-inner">
+							如以下常见问题未能帮助到您，请联系我们。
+						</div>
+					</li>
+					<li class="aui-list-item aui-list-item-middle aui-font-size-14">
+						<div class="aui-list-item-inner">
+							<span>QQ客服：<a href="mqqwpa://im/chat?chat_type=wpa&uin={{= sx.config.qq}}&version=1&src_type=web">{{= sx.config.qq}}</a></span>
+						</div>
+					</li>
+					<li class="aui-list-item aui-list-item-middle aui-font-size-14">
+						<div class="aui-list-item-inner">
+							服务时间：{{= sx.config.gongzuori}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="aui-content">
+				<ul class="aui-list aui-list-in">
+					<li class="aui-list-header aui-font-size-14">
+						常见问题
+					</li>
+					{{ for(var is=0,lens=it.length; is < lens; is++) { }}
+					<li class="aui-list-item aui-list-item-middle aui-font-size-14" tapmode data-data='{{= it[is].content }}' onclick="view(this,'{{= it[is].title}}')">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							{{= it[is].title }}
+						</div>
+					</li>
+					{{ } }}
+				</ul>
+			</div>
+		<div class="aui-content aui-margin-15">
+			<p class="aui-text-center aui-padded-b-15 aui-font-size-12">所有解释权归{{= sx.config.title}}所有</p>
+		</div>
+		</script>
+		<div id="sx-view"><div id="jiazai"><img src="../image/loading_more.gif" /></div></div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/app.js"></script>
+	<script type="text/javascript">
+		var sx;
+		apiready = function() {
+			sx=$api.getStorage('config');
+			_ajax('article/article_list', function(ret, err) {
+				if (ret) {
+				    if(ret.status){
+                        //渲染模版
+                        var evalData = doT.template($api.html($api.byId('sx-list')));
+                        $api.html($api.byId('sx-view'), evalData(ret.data));
+					}
+                    api.parseTapmode();
+				}
+			},{cate_id:1});
+		}
+		function view(thiss,title){
+			var content=$api.attr(thiss,'data-data');
+				var data = {
+					url :'aboutView',
+					title:title,
+					content:content
+				};
+			_url(data)
+		}
+	</script>
+	</html>

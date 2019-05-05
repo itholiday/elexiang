@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>e乐享</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+	<style>
+		.aui-btn-block {
+			height: 2rem;
+			line-height: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="aui-content aui-margin-b-15">
+		<ul class="aui-list aui-form-list">
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						收货人
+					</div>
+					<div class="aui-list-item-input">
+						<input type="text" id="shouhuoren" placeholder="请输入姓名">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						手机号码
+					</div>
+					<div class="aui-list-item-input">
+						<input type="tel" id="mobile" placeholder="请输入手机号码">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						地区
+					</div>
+					<div class="aui-list-item-input" tapmode onclick="diqu()">
+						<input type="text" id="diqu" readonly placeholder="请选择地区">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						详细地址
+					</div>
+					<div class="aui-list-item-input">
+						<input type="text" id="jiedao" placeholder="请输入详细地址">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label">
+							备注
+						</div>
+						<div class="aui-list-item-input">
+							<input type="text" id="mark" placeholder="公司,家">
+						</div>
+					</div>
+				</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						设为默认
+					</div>
+					<div class="aui-list-item-input">
+						<input type="checkbox" name="default" id="moren" value="Y" class="aui-switch">
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="aui-text-center aui-padded-15 aui-font-size-12">
+		( 实物收货地址，用户实物奖品中奖后发货 )
+	</div>
+	<div style="width: 90%;margin: 0 auto">
+		<div class="aui-btn-block aui-btn aui-btn-info" tapmode onclick="add()">
+			保存
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript" src="../../script/app.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript">
+	var citySelector = '';
+    var id = 0;
+    var addOn = 1;
+    var province = '';
+	var city = '';
+	var county = '';
+	apiready = function() {
+		FastClick.attach(document.body);
+		citySelector = api.require('citySelector');
+		if (api.pageParam['id']) {
+			id = api.pageParam['id']
+			view();
+		}
+	}
+
+	function add() {
+		var shouhuoren = $api.val($api.dom('#shouhuoren'));
+		if (!shouhuoren) {
+			_msg('请输入姓名');
+			return;
+		}
+		var mobile = $api.val($api.dom('#mobile'));
+		if (!mobile) {
+			_msg('请输入手机号码');
+			return;
+		}
+		var diqu = $api.val($api.dom('#diqu'));
+		if (!diqu) {
+			_msg('请选择地区');
+			return;
+		}
+		var jiedao = $api.val($api.dom('#jiedao'));
+		if (!jiedao) {
+			_msg('请输入详细地址');
+			return;
+		}
+		var moren = $("#moren:checked").val() ? $("#moren:checked").val() : 'N';
+		var mark = $api.val($api.dom('#mark')) ? $api.val($api.dom('#mark')) : '家';
+		var xian = '';
+		var data = {
+			shouhuoren: shouhuoren,
+			mobile: mobile,
+			xian: xian,
+			jiedao: jiedao,
+			sheng: province,
+			shi: city,
+			default: moren,
+			mark: mark,
+			youbian: '465125',
+			address_id: id
+		}
+		var url = id ? "user/update_address" : "user/add_address";
+		_ajax(url, function(ret, err) {
+			if (ret) {
+				addOn = 0;
+                _msg(ret.msg)
+				if (ret.status) {
+					_close()
+				}
+			}
+		}, data, true)
+	}
+
+	// 选择地区
+	function diqu() {
+		var citySelector = api.require('citySelector');
+		citySelector.open({
+			y:api.frameHeight - 244,
+			fixedOn: api.frameName,
+			anim: true,
+			selectedColor: '#FF2D4B',
+		}, function(ret, err) {
+			if (ret) {
+				$('#diqu').val(ret.province + ret.city + ret.county);
+				province = ret.province;
+				city = ret.city;
+				xian = ret.county;
+			}
+		});
+	}
+
+	function view() {
+		var data = api.pageParam;
+		if (data.shouhuoren) {
+			$('#shouhuoren').val(data.shouhuoren);
+			$('#mobile').val(data.mobile);
+			$('#diqu').val(data.sheng + (data.shi == '' ? '' : data.shi) + data.xian);
+			$('#jiedao').val(data.jiedao);
+			$('#mark').val(data.mark);
+			province = data.sheng;
+			city = data.shi;
+			county = data.xian;
+			if (data.default == 'Y') {
+				$("#moren").attr("checked", true);
+			}
+		}
+		$('.aui-btn-info').text('修改')
+	}
+</script>
+
+</html>
