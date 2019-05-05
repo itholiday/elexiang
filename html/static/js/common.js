@@ -392,12 +392,12 @@ WST.setValues = function(obj){
 
 $(function(){
 	/**
-	 * 获取WSTMart基础配置
+	 * 获取企鹅资源网基础配置
 	 * @type {object}
 	 */
 	WST.conf = window.conf;
 	/* 基础对象检测 */
-	WST.conf || $.error("WSTMart基础配置没有正确加载！");
+	WST.conf || $.error("企鹅资源网基础配置没有正确加载！");
 	/**
 	 * 解析URL
 	 * @param  {string} url 被解析的URL
