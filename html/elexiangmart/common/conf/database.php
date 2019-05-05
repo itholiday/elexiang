@@ -5,11 +5,11 @@
 			// 服务器地址
 			'hostname'       => '127.0.0.1',
 			// 数据库名
-			'database'       => 'test_1014la_cn',
+			'database'       => 'elexiang',
 			// 用户名
-			'username'       => 'test_1014la_cn',
+			'username'       => 'elexiang',
 			// 密码
-			'password'       => 'mLnfDiEyHzhajfsS',
+			'password'       => '48mKBfBYDmEtr5hS',
 			// 端口
 			'hostport'       => '',
 			// 连接dsn
