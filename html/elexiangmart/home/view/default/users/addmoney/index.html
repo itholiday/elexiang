@@ -1,0 +1,55 @@
+{extend name="default/users/base" /}
+{block name="title"}首页-买家中心{__block__}{/block}
+{block name="css"}
+<link href="__STATIC__/plugins/validator/jquery.validator.css?v={$v}" rel="stylesheet">
+{/block}
+{block name="content"}
+<form id="userEditForm" autocomplete="off" >
+    <div id='tab' class="wst-tab-box">
+        <ul class="wst-tab-nav uinfo-nav">
+            <li id="wst-msg-li-0">余额充值<span style="display:none;" class="wst-order-tips-box"></span></li>
+        </ul>
+        <div class="wst-tab-content" style='width:99%;border:none;'>
+            <div class='wst-tab-item'>
+                <table class='wst-form uinfo-form' >
+                    <tr>
+                        <th>第一步：</th>
+                        <td class="uinfo">
+                            购买充值卡密
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2' style="text-align:center">
+                            <button type="button"  class="wst-sec-but u-btn" onclick="buyCard()">前去购买</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>第二步：</th>
+                        <td>
+                            <textarea name="cardPwd" id="cardPwd" cols="60" rows="10" placeholder="请在文本框中粘贴收到的卡密，一行一个。"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2' style="text-align:center">
+                            <button type="button"  class="wst-sec-but u-btn" id="addmoney">立即充值</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__STATIC__/plugins/validator/jquery.validator.js?v={$v}"></script>
+<script type="text/javascript" src="__STATIC__/plugins/validator/local/zh-CN.js?v={$v}"></script>
+<script>
+    function buyCard() {
+        window.open("http://t.cn/EoA88ug", "_blank");
+    }
+    $('#addmoney').click(function () {
+        var cardPwd = $('#cardPwd').val()
+        alert(cardPwd)
+    })
+</script>
+{/block}

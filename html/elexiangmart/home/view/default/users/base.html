@@ -175,9 +175,15 @@ $(function() {
 {block name="js"}{/block}
 <script>
 function getMenus(menuId,menuUrl){
-    $.post(WST.U('home/index/getMenuSession'), {menuId:menuId}, function(data){
-    	location.href=WST.U(menuUrl);
-    });
+	if(menuUrl.substr(0,7).toLowerCase() == "http://"){
+		window.open(menuUrl,'_blank');
+	}else if(menuUrl.substr(0,8).toLowerCase() == "https://"){
+		window.open(menuUrl,'_blank');
+	}else{
+		$.post(WST.U('home/index/getMenuSession'), {menuId:menuId}, function(data){
+			location.href=WST.U(menuUrl);
+		});
+	}
 }
 </script>
 </body>

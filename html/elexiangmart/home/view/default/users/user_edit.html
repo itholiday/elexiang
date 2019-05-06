@@ -23,6 +23,12 @@
 	      </td>
 	      <td class="gray" style='padding-left:15px;'>个人头像：</td>
 	    </tr>
+			<tr>
+				<th>余额<font color='red'>  </font>：</th>
+				<td width="130" class="gray">
+					<div>{:session('WST_USER.userMoney')}|<span><a href="{:url('addmoney/index')}" target="_blank">充值</a></span></div>
+				</td>
+			</tr>
 	  <tr>
 	      <th width='100'><font color='red'>*</font>昵称：</th>
 	          <td class="uinfo">

@@ -4,7 +4,6 @@ use elexiangmart\common\model\Users as MUsers;
 use elexiangmart\common\model\LogSms;
 /**
  * ============================================================================
-
  * 用户控制器
  */
 class Users extends Base{

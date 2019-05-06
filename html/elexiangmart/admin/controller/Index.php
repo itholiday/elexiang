@@ -94,7 +94,7 @@ class Index extends Base{
     	$license = WSTConf("CONF.mallLicense");
     	$host = request()->root(true);
     	$url = base64_encode('version='.$version.'&version_md5='.$key."&license=".$license."&host=".$host);
-    	$content = file_get_contents('http://www.elexiangmart.net/index.php?m=Api&c=Download&a=getLastVersion&key='.$url);
+    	$content = file_get_contents('http://www.1014la.cn/index.php?m=Api&c=Download&a=getLastVersion&key='.$url);
     	$json = json_decode($content,true);
         if($json['version'] ==  $version){
     		$json['version'] = "same";
@@ -115,7 +115,7 @@ class Index extends Base{
     	$license = input('license');
     	$host = request()->root(true);
     	$key = base64_encode('host='.request()->root(true).'&license='.$license);
-    	$content = file_get_contents('http://www.elexiangmart.net/index.php?m=Api&c=License&a=verifyLicense&key='.$key);
+    	$content = file_get_contents('http://www.1014la.cn/index.php?m=Api&c=License&a=verifyLicense&key='.$key);
     	$json = json_decode($content,true);
     	$rs = array('status'=>1);
     	if(isset($json['status']) && $json['status']==1){
