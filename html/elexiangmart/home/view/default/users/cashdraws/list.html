@@ -8,8 +8,8 @@
   <div class='user-logo'><img height='100' width='100'src='__ROOT__/{:session("WST_USER.userPhoto")}'></div>
   <div class='user-info'> 
      <div class='userName'>{:session('WST_USER.loginName')}</div>
-     <div class='userScore'>可用资金：<font color='red' id='userMoney'>¥0</font><a href='javascript:toDrawMoney()' style='margin-left:45px;'>申请提现</a></div>
-     <div class='userScore'>冻结资金：<font color='red' id='lockMoney'>¥0</font></div>
+     <div class='userScore'>可用资金：<font color='red' id='userMoney'>¥{$object['userMoney']}</font><a href='javascript:toDrawMoney()' style='margin-left:45px;'>申请提现</a></div>
+     <div class='userScore'>冻结资金：<font color='red' id='lockMoney'>¥{$object['lockMoney']}</font></div>
   </div>
 </div>
 <div class='wst-user-content'>

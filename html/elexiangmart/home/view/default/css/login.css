@@ -33,7 +33,7 @@ input.wst-login-input,input.wst-regist-input{
 }
 .wst-login-input:focus,.wst-regist-input:focus,.wst-login-codein:focus,.wst-regist-codein:focus,.wst-regist-codemo:focus{
 	border-radius:6px;
-	border:1px solid #eb654a;
+	border:1px solid #57b50b;
 }
 .wst-table{
 	margin-top:20px;
@@ -66,7 +66,7 @@ input.wst-login-codein,input.wst-regist-codein{
 .wst-login-but{
  display: block;
  position: relative;
- background:#eb5f43;
+ background:#57b50b;
  color: #ffffff;
  text-align: center;
  font-family: 'Ubuntu', sans-serif;
@@ -79,7 +79,7 @@ input.wst-login-codein,input.wst-regist-codein{
  transition: all 0.15s ease-in;
 }
 .wst-login-but:hover {
- background: #dd553a;
+ background: #479f00;
 }
 .wst-login-but:before {
  content: ' ';
@@ -123,7 +123,7 @@ input.wst-login-codein,input.wst-regist-codein{
 .wst-regist-head{
 	font-size:28px;
 	font-family:"楷体"; 
-	color:#e86e55;
+	color:#d90000;
 	text-align:center;
 }
 input.wst-regist-input{
@@ -167,9 +167,9 @@ input.wst-regist-codemo{
 }
 .wst-regist-but{
 	outline: none;
-	background:#eb5f43;
+	background:#57b50b;
  	color: #ffffff;
- 	border: 1px solid #d33110;
+ 	border: 1px solid #077f1a;
  	border-radius:3px;
  	cursor:pointer;
 }
@@ -193,7 +193,7 @@ input.wst-regist-codemo{
 	width: 160px;
 }
 dl.doing{
-	border-top-color: #04bd3d;
+	border-top-color: #f14949;
 }
 .doing .s-num{
 	background-position: -23px 0;
@@ -209,7 +209,7 @@ dl.doing{
 	border-radius:25px;
 }
 .s-num{
-	background: #04bd3d;
+	background: #f14949;
 }
 .s-num1{
 	background: #ccc;
@@ -257,7 +257,7 @@ input.wst-forget-codein,input.wst-forget-codein2{
 }
 .wst-forget-input:focus,.wst-forget-codein:focus,.wst-forget-codein2:focus{
 	border-radius:3px;
-	border:1px solid #eb654a;
+	border:1px solid #57b50b;
 }
 .wst-forget-codeim,.wst-forget-codeim2{
 	width:116px;

@@ -62,10 +62,6 @@ label{margin-right:10px;}
 			     <td>{$object['shopQQ']}</td>
 			  </tr>
 			  <tr>
-			     <th>阿里旺旺：</th>
-			     <td>{$object['shopWangWang']}</td>
-			  </tr>
-			  <tr>
 			     <th>店铺地址：</th>
 			     <td>
 			       {$object['areaName']}
@@ -91,7 +87,7 @@ label{margin-right:10px;}
 			     <td>¥{$object['freight']}</td>
 			  </tr>
 			  <tr>
-			     <th>服务时间：</th>
+			     <th>营业时间：</th>
 			     <td>{$object['serviceStartTime']}至{$object['serviceEndTime']}
 			     </td>
 			  </tr>
@@ -100,21 +96,18 @@ label{margin-right:10px;}
         <div class="wst-tab-item" style="display:none;">
            <table class='wst-form'>
               <tr>
-			     <th width='150'>开卡银行：</th>
+			     <th width='150'>所属银行：</th>
 			     <td>{$object['bankName']}</td>
 			  </tr>
-			  <tr>
-			     <th width='150'>开卡地区：</th>
-			     <td>{$object['bankAreaName']}</td>
-			  </tr>
               <tr>
-			     <th>卡号：</th>
+			     <th>银行卡账号：</th>
 			     <td>{$object['bankNo']}</td>
 			  </tr>
 			  <tr>
 			     <th>持卡人：</th>
 			     <td>{$object['bankUserName']}</td>
 			  </tr>
+			  
            </table>
         </div>
      </form>

@@ -75,8 +75,8 @@
 
 .wst-menu li:hover,li.wst-menua{
 	font-weight: bolder;
-	color: #e23e3d;
-	border-left: 2px solid #e23e3d;
+	color: #077f1a;
+	border-left: 2px solid #57b50b;
 }
 
 .wst-menu .selected {
@@ -163,8 +163,8 @@ a:active,a:hover {
 
 }
 .wst-shop-nav {
-	background-color: #e45050;
-	border-top:6px solid #e45050;
+	background-color: #57b50b;
+	border-top:6px solid #57b50b;
 	text-align: center;
 }
 
@@ -396,9 +396,9 @@ a.wst-lite-in:hover{
 	background:#ffffff;
 	margin:20px 35px 0px 0px;
 }
-.wst-lite-sea .search{border:2px solid #e23c3d;height: 35px;position: relative;}
-.wst-lite-sea .search .j-search-type{width:78px;top:0;line-height:36px;position: absolute;padding:0;border-right:2px solid #e23c3d;border-left:2px solid #e23c3d;cursor: pointer;left:-2px;text-align:center;}
-.wst-lite-sea .search .j-type-list{width:70px;top:35px;line-height:36px;position: absolute;padding:0 4px;border:2px solid #e23c3d;cursor: pointer;background-color: #fff;left:-2px;z-index: 100;border-top:0;display: none;text-align: center;}
+.wst-lite-sea .search{border:2px solid #57b50b;height: 36px;position: relative;}
+.wst-lite-sea .search .j-search-type{width:78px;top:0;line-height:36px;position: absolute;padding:0;border-right:2px solid #57b50b;border-left:2px solid #57b50b;cursor: pointer;left:-2px;text-align:center;}
+.wst-lite-sea .search .j-type-list{width:70px;top:35px;line-height:36px;position: absolute;padding:0 4px;border:2px solid #57b50b;cursor: pointer;background-color: #fff;left:-2px;z-index: 100;border-top:0;display: none;text-align: center;}
 .wst-lite-sea .search .j-search-type i {
   top: 15px;
   right: 6px;
@@ -443,10 +443,10 @@ a.wst-lite-in:hover{
     background:url(../img/btn_search_red.png) 22px 6px no-repeat;
 }
 
-.wst-lite-cart{float:right;width:163px;height:56px;margin-top:12px;background:url(../img/img_cart_bg.png) no-repeat;position: relative;cursor:pointer;}
-.wst-lite-cart .word{float:left;width:112px;margin-top:15px;padding: 5px 6px 7px 52px;color: #ffffff;font-size:16px;font-family: "microsoft yahei";}
+.wst-lite-cart{float:right;width:163px;height:40px;margin-top:12px;background:url(../img/img_cart_bg.png) no-repeat;position: relative;cursor:pointer;margin-top:20px;}
+.wst-lite-cart .word{float:left;width:112px;padding: 5px 6px 7px 52px;color: #ffffff;font-size:16px;font-family: "microsoft yahei";line-height:30px;}
 .wst-lite-cart .num{font-size:17px;color: #fcff00;}
-.wst-lite-carts{width:332px;min-height:130px;margin-top:22px;border:1px solid #dedbdb;position: absolute;z-index: 1200;background-color:#ffffff;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);border-top-left-radius: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;left:-171px;top:22px;}
+.wst-lite-carts{width:332px;min-height:130px;margin-top:18px;border:1px solid #dedbdb;position: absolute;z-index: 1200;background-color:#ffffff;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);border-top-left-radius: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;left:-171px;top:22px;}
 .wst-lite-carts:after{top:-16px;border-color:transparent transparent #ffffff;}
 .wst-lite-carts .carts{background:url(../img/top_icon_cartdown.png) 28px 47px no-repeat;width:332px;height:130px;text-indent:4.5em;line-height:130px;font-size:15px;color: #b9b6b6;}
 .wst-lite-cart .goods{float:left;width:96.666666%;border-bottom: 1px dashed #bfbfbf;padding:5px;}
@@ -864,7 +864,7 @@ select::-ms-expand { display: none; }
 	color:#ffffff;
 	background:#E45050;
 }
-.wst-user-tbar{height:35px;padding:2px;clear:both;}
+.wst-user-tbar{height:25px;padding:2px;clear:both;}
 .wst-user-content{padding:2px;clear:both;margin-top:10px;}
 /*a按钮*/
 /*红*/
@@ -990,9 +990,9 @@ select::-ms-expand { display: none; }
 .order-box .log-box .arrow2{color: #7ebb53;}
 .order-box .log-box .state{float:left;width:100%;margin-left:18px;}
 .order-box .log-box .state2{float:left;width:100%;position: relative;}
-.order-box .log-box .state2 p{float:left;width:178px;height:50px;text-align:left;margin-left:12px;color:#f05858;font-size: 15px;}
+.order-box .log-box .state2 p{float:left;width:100px;height:50px;text-align:center;margin-right:88px;color:#f05858;font-size: 15px;}
 .order-box .log-box .state2 .path{position: absolute;z-index: 10;}
-.order-box .log-box .state2 .path span{float:left;width:178px;height:50px;text-align:left;margin-left:12px;background: #ffffff;}
+.order-box .log-box .state2 .path span{float:left;width:100px;height:50px;text-align:center;margin-right:88px;background: #ffffff;}
 
 
 
@@ -1169,7 +1169,7 @@ select::-ms-expand { display: none; }
   border-radius: 3px;
 }
 .wst-msg-tips-box{
-    background-color: #f0a869;
+    background-color: #57b50b;
     border-radius: 12px;
     color: white;
     cursor: pointer;

@@ -39,7 +39,7 @@
 				{{# for(var i = 0; i < d.length; i++){ }}
 				<tr>
 				    <td>{{i+1}}</td>
-					<td><a style='color:blue' href='javascript:view("{{d[i].settlementId}}")'>{{d[i].settlementNo}}</a></td>
+					<td><a href='javascript:view("{{d[i].settlementNo}}")'>{{d[i].settlementNo}}</a></td>
 					<td>{{# if(d[i].settlementType==1){ }}定时{{# }else{ }}手动{{# } }}</td>
 					<td>¥{{d[i].settlementMoney}}</td>
                     <td>¥{{d[i].commissionFee}}</td>

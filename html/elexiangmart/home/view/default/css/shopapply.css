@@ -1,11 +1,14 @@
 @CHARSET "UTF-8";
 .wst-shopapp-but{
 	outline: none;
-	background:#eb5f43;
+	background:#57b50b;
  	color: #ffffff;
- 	border: 1px solid #d33110;
+ 	border: 1px solid #479f00;
  	border-radius:3px;
  	cursor:pointer;
+}
+.wst-shopapp-but:hover{
+	background:#479f00;
 }
 .wst-shopapp-but:not(.disabled):not(:disabled):active, .wst-shopapp-but.active{
 	background: #dd553a;

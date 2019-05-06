@@ -8,7 +8,7 @@ function waitPayByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -44,7 +44,7 @@ function waitReceiveByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows.length){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -95,7 +95,7 @@ function waitAppraiseByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows.length){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -131,7 +131,7 @@ function finishByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows.length){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -245,7 +245,7 @@ function cancelByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -281,7 +281,7 @@ function abnormalByPage(p){
 		$('#loading').hide();
 	    var json = WST.toJson(data);
 	    $('.j-order-row').remove();
-	    if(json.status==1){
+	    if(json.status==1 && json.data.Rows.length){
 	    	json = json.data;
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
@@ -378,7 +378,7 @@ function upload(n){
           if(json.status==1){
           var tdiv = $("<div style='width:75px;float:left;margin-right:5px;'>"+
                        "<img class='appraise_pic"+n+"' width='75' height='75' src='"+WST.conf.ROOT+"/"+json.savePath+json.thumb+"' v='"+json.savePath+json.name+"'></div>");
-          var btn = $('<div style="position:relative;top:-80px;left:60px;cursor:pointer;" ><img src="'+WST.conf.ROOT+'/elexiangmart/home/View/default/img/seller_icon_error.png"></div>');
+          var btn = $('<div style="position:relative;top:-80px;left:60px;cursor:pointer;" ><img src="'+WST.conf.ROOT+'/wstmart/home/View/default/img/seller_icon_error.png"></div>');
           tdiv.append(btn);
           $('#picBox'+n).append(tdiv);
           btn.on('click','img',function(){
@@ -492,30 +492,30 @@ function showImg(id){
     });
 }
 function userAppraise(p){
-  $('#list').html('<img src="'+WST.conf.ROOT+'/elexiangmart/home/view/default/img/loading.gif">正在加载数据...');
+  $('#list').html('<img src="'+WST.conf.ROOT+'/wstmart/home/view/default/img/loading.gif">正在加载数据...');
   var params = {};
   params = WST.getParams('.s-query');
   params.key = $.trim($('#key').val());
-  params.page = p;
+  params.p = p;
   $.post(WST.U('home/goodsappraises/userAppraise'),params,function(data,textStatus){
       var json = WST.toJson(data);
-      if(!json.data.Rows){
+      if(!json.data){
       	$('#list').html('');
       }
-      if(json.status==1){
+      if(json.status==1 && json.data){
           var gettpl = document.getElementById('tblist').innerHTML;
-          laytpl(gettpl).render(json.data.Rows, function(html){
+          laytpl(gettpl).render(json.data, function(html){
             $('#list').html(html);
-            for(var g=0;g<=json.data.Rows.length;g++){
+            for(var g=0;g<=json.data.length;g++){
               showImg(g);
             }
            $('.j-lazyImg').lazyload({ effect: "fadeIn",failurelimit : 10,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});
           });
-          if(json.data.TotalPage>1){
+          if(json.totalPage>1){
             laypage({
                cont: 'pager', 
-               pages:json.data.TotalPage, 
-               curr: json.data.CurrentPage,
+               pages:json.Total, 
+               curr: json.CurrentPage,
                skin: '#e23e3d',
                groups: 3,
                jump: function(e, first){
@@ -524,6 +524,8 @@ function userAppraise(p){
                     }
                   } 
             });
+
+
           }else{
             $('#pager').empty();
           }
@@ -542,7 +544,7 @@ function userComplainInit(){
           if(json.status==1){
           var tdiv = $("<div style='width:75px;float:left;margin-right:5px;'>"+
                        "<img class='complain_pic"+"' width='75' height='75' src='"+WST.conf.ROOT+"/"+json.savePath+json.thumb+"' v='"+json.savePath+json.name+"'></div>");
-          var btn = $('<div style="position:relative;top:-80px;left:60px;cursor:pointer;" ><img src="'+WST.conf.ROOT+'/elexiangmart/home/View/default/img/seller_icon_error.png"></div>');
+          var btn = $('<div style="position:relative;top:-80px;left:60px;cursor:pointer;" ><img src="'+WST.conf.ROOT+'/wstmart/home/View/default/img/seller_icon_error.png"></div>');
           tdiv.append(btn);
           $('#picBox').append(tdiv);
           btn.on('click','img',function(){
@@ -605,14 +607,14 @@ function toView(id){
   location.href=WST.U('home/ordercomplains/getUserComplainDetail',{'id':id});
 }
 function complainByPage(p){
-  $('#list').html('<img src="'+WST.conf.ROOT+'/elexiangmart/home/view/default/img/loading.gif">正在加载数据...');
+  $('#list').html('<img src="'+WST.conf.ROOT+'/wstmart/home/view/default/img/loading.gif">正在加载数据...');
   var params = {};
   params = WST.getParams('.s-query');
   params.key = $.trim($('#key').val());
   params.page = p;
   $.post(WST.U('home/ordercomplains/queryUserComplainByPage'),params,function(data,textStatus){
       var json = WST.toJson(data);
-      if(json.status==1){
+      if(json.status==1 && json.data){
           var gettpl = document.getElementById('tblist').innerHTML;
           laytpl(gettpl).render(json.data.Rows, function(html){
             $('#list').html(html);

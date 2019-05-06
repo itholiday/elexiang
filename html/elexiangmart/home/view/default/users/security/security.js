@@ -13,29 +13,9 @@ $(function(){
       }
     });
 })
-function vePayForm(){
-	//修改密码
-	myorm = $('#payform').validator({
-          valid: function(form){
-            var params = WST.getParams('.ipt');
-            var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
-            $.post(WST.U('home/users/payPassEdit'),params,function(data,textStatus){
-              layer.close(loading);
-              var json = WST.toJson(data);
-              if(json.status=='1'){
-                  WST.msg(json.msg,{icon:1,time:2000},function(){
-                	   location.href=WST.U('home/users/security');
-                  });
-              }else{
-                    WST.msg(json.msg,{icon:2});
-              }
-            });
-      }
-    })
-}
 function veMyorm(){
-  //修改密码
-  myorm = $('#myorm').validator({
+	//修改密码
+	myorm = $('#myorm').validator({
             fields: {
                 newPass: {
                   rule:"required;length[6~20]",
@@ -56,7 +36,7 @@ function veMyorm(){
               var json = WST.toJson(data);
               if(json.status=='1'){
                   WST.msg("操作成功",{icon:1,time:2000},function(){
-                    location.href=WST.U('home/users/security');
+                	  location.href=WST.U('home/users/security');
                   });
               }else{
                     WST.msg(json.msg,{icon:2});
@@ -80,25 +60,27 @@ function veemailForm(){
 		        msg:{required:"请输入邮箱",email:"请输入有效的邮箱"},
 		        tip:"请输入邮箱",
             },
-            secretCode: {
-              rule:"required",
-              msg:{required:"请输入校验码"},
-              tip:"请输入校验码",
-	            target:"#secretErr"
+            verifyCode: {
+	            rule:"required",
+	            msg:{required:"请输入验证码"},
+	            tip:"请输入验证码",
+	            target:"#verify"
             }
         },
         
       valid: function(form){
         var params = WST.getParams('.ipt');
         var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
-        $.post(WST.U('home/users/emailEdit'),params,function(data,textStatus){
+        $.post(WST.U('home/users/getEmailVerify'),params,function(data,textStatus){
           layer.close(loading);
           var json = WST.toJson(data);
           if(json.status=='1'){
-             var redirect = WST.U('home/users/doneEmailBind');
-             var edit = $('#editEmail').val();
-             if(edit)redirect=WST.U('home/users/editEmail3');
-  			     WST.msg('验证通过',{icon:1},function(){location.href=redirect});
+  			WST.msg('邮箱已发送，请注册查收');
+  	        setTimeout(function(){ 
+  	          $('#emailForm').hide();
+  	          $('#inemail').html($('#userEmail').val());
+  	          $('#prompt').show();
+  	        },1000);
           }else{
                 WST.msg(json.msg,{icon:2});
                 WST.getVerify('#verifyImg');
@@ -107,46 +89,6 @@ function veemailForm(){
       }
     });
 }
-function sendEmail(edit){
-  var url = 'home/users/getEmailVerify';
-  if(isSend )return;
-  if(!$('#verifyCode').isValid())return;
-  if(!edit){
-      if(!$('#userEmail').isValid())return;
-  }else{
-      url = 'home/users/getEmailVerifyt';
-  }
-  var loading = WST.msg('正在发送邮件，请稍后...', {icon: 16,time:60000});
-  var params = WST.getParams('.ipt');
-  $.post(WST.U(url),params,function(data,textStatus){
-    layer.close(loading);
-    var json = WST.toJson(data);
-    if(json.status=='1'){
-      WST.msg('邮箱已发送，请注册查收');
-      isSend = true;
-      time = 120;
-      $('#timeSend').attr('disabled', 'disabled').css('background','#e8e6e6');
-      $('#timeSend').html('发送验证邮件(120)');
-      var task = setInterval(function(){
-        time--;
-        $('#timeSend').html('发送验证邮件('+time+")");
-        if(time==0){
-          isSend = false;           
-          clearInterval(task);
-          $('#timeSend').html("重新发送验证邮件");
-          $('#timeSend').removeAttr('disabled').css('background','#e23e3d');
-        }
-      },1000);
-    }else{
-          WST.msg(json.msg,{icon:2});
-          WST.getVerify('#verifyImg');
-    }
-  });
-}
-
-
-
-
 function vephoneForm(){
     //绑定手机号
 	phoneForm = $('#phoneForm').validator({
@@ -170,16 +112,31 @@ function vephoneForm(){
     });
 }
 function vegetemailForm(){
+	if(isSend )return;
+	isSend = true;
     //修改邮箱
 	getemailForm = $('#getemailForm').validator({
       valid: function(form){
         var params = WST.getParams('.ipt');
         var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
-        $.post(WST.U('home/users/emailEditt'),params,function(data,textStatus){
+        $.post(WST.U('home/users/getEmailVerifyt'),params,function(data,textStatus){
           layer.close(loading);
           var json = WST.toJson(data);
           if(json.status=='1'){
-              WST.msg('验证通过',{icon:1},function(){location.href=WST.U('home/users/editEmail2')})
+  			WST.msg('邮箱已发送，请注册查收');
+			time = 120;
+			$('#timeSend1').attr('disabled', 'disabled').css('background','#e8e6e6');
+			$('#timeSend1').html('发送验证邮件(120)');
+			var task = setInterval(function(){
+				time--;
+				$('#timeSend1').html('发送验证邮件('+time+")");
+				if(time==0){
+					isSend = false;						
+					clearInterval(task);
+					$('#timeSend1').html("重新发送验证邮件");
+					$('#timeSend1').removeAttr('disabled').css('background','#e23e3d');
+				}
+			},1000);
           }else{
                 WST.msg(json.msg,{icon:2});
                 WST.getVerify('#verifyImg');

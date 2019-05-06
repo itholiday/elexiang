@@ -40,17 +40,9 @@
 			</td>
 		</tr>
            <tr>
-           	<th align='right'><font color='red'>*</font>校验码：</th>
-             <td style='height:60px;'>
-           		<input id="secretCode" style="ime-mode:disabled;width:250px;" data-rule="校验码:required;" data-target="#secretErr" name="secretCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
-                 <button id="timeSend" class="wst-sec-but" type="button"  onclick="sendEmail(true)" style="width:120px;height: 30px;margin-top:5px;">发送验证邮件</button><span id="secretErr"></span>
+             <td colspan='2' style='padding-left:101px;height:60px;'>
+                 <button id="timeSend1" class="wst-sec-but" type="submit" style="width:120px;height: 30px;">发送验证邮件</button>
              </td>
-           </tr>
-
-           <tr>
-           	<td colspan="2">
-           		<button id="next" class="wst-sec-but" type="submit" style="width:120px;height: 30px;margin-left:180px">下一步</button>
-           	</td>
            </tr>
         </table>
       </form>
@@ -68,7 +60,7 @@
        <tr>
 	        <th align='right'>验证码 <font color='red'>*</font>：</th>
 			<td>
-				<input id="verifyCode" data-rule="验证码:required" data-target="#verify" style="ime-mode:disabled;width:250px;" name="verifyCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
+				<input id="verifyCode" style="ime-mode:disabled;width:250px;" name="verifyCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
 				<label class="wst-sec-img">
 					<img id='verifyImg' src="{:url('home/users/getVerify')}" onclick='javascript:WST.getVerify("#verifyImg")' style="width:110px;"> 
 				</label>      	
@@ -76,19 +68,10 @@
 			</td>
 		</tr>
            <tr>
-           	<th align='right'><font color='red'>*</font>校验码：</th>
-             <td style='height:60px;'>
-           		<input id="secretCode" style="ime-mode:disabled;width:250px;" data-rule="校验码:required;" data-target="#secretErr" name="secretCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
-                 <button id="timeSend" class="wst-sec-but" type="button"  onclick="sendEmail()" style="width:120px;height: 30px;margin-top:5px;">发送验证邮件</button><span id="secretErr"></span>
+             <td colspan='2' style='padding-left:105px;height:60px;'>
+                 <button id="timeSend" class="wst-sec-but" type="submit" style="width:120px;height: 30px;">发送验证邮件</button>
              </td>
            </tr>
-
-           <tr>
-           	<td colspan="2">
-           		<button id="next" class="wst-sec-but" type="submit" style="width:120px;height: 30px;margin-left:180px">下一步</button>
-           	</td>
-           </tr>
-           <input type="hidden" id="editEmail" value="1">
         </table>
       </form>
 {/if}
@@ -98,6 +81,15 @@
 	<span class="wst-sec-sub">您已成功绑定邮箱！</span>
 </div>
 {/if}
+<div id="prompt" class="wst-sec-prompt hide">
+	<div class="wst-lfloat">
+	<p><span>已发送验证邮箱至：</span><span id="inemail" style=" font-weight: bold;"></span></p>
+	<p class="wst-sec-p1">验证邮箱30分钟内有效，请尽快登陆您的邮箱点击验证链接完成验证</p>
+	<p style="color:#f10b0b;">(请立即完成验证，邮箱验证不通过则绑定邮箱失败)</p>
+	<p class="wst-sec-p1" style="font-weight: bold;">没收到邮箱？</p>
+	<p class="wst-sec-p2">1.检查您的垃圾箱或广告箱，邮件有可能被误认为垃圾或广告邮件；或选择<a style="color:#006898;" onclick="location.href=WST.U('home/users/editEmail')">重新发送</a></p>
+	</div>
+</div>
 {/block}
 {block name="js"}
 	<script type='text/javascript' src='__STYLE__/users/security/security.js?v={$v}'></script>

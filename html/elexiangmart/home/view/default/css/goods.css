@@ -6,18 +6,18 @@
 .wst-filters .item .drop-down{float:left;margin-right:5px;border: 1px solid #ddd;display: inline-block;height: 22px;line-height: 22px;padding: 0 4px 0 8px;vertical-align: top;position: relative;background-color: #fff;  }
 .wst-filters .item .drop-down .drop-down-arrow{display: inline-block;width: 20px;height: 20px;vertical-align: top;background: url(../img/search.png) no-repeat 4px 7px;-webkit-transition: background-position .15s ease-in-out;-moz-transition: background-position .15s ease-in-out;transition: background-position .15s ease-in-out;}
   
-.wst-filters .item .drop-down.hover{border-color:#df2003;border-bottom:0;z-index: 2}
+.wst-filters .item .drop-down.hover{border-color:#57b50b;border-bottom:0;z-index: 2}
 .wst-filters .item .drop-down.hover .drop-down-arrow{background-position: 4px -44px;}
-.wst-filters .item .dorp-down-layer{border: 1px solid #ddd;border-top:0;display:none;left:0px;top:22px;position:absolute;z-index: 1;background:#fff;min-width: 320px;border: 1px solid #df2003;}
+.wst-filters .item .dorp-down-layer{border: 1px solid #ddd;border-top:0;display:none;left:0px;top:22px;position:absolute;z-index: 1;background:#fff;min-width: 320px;border: 1px solid #57b50b;}
 
 
 .wst-filters .item .dorp-down-layer div{float:left;width:140px;  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 4px 8px;}
 
 .wst-filters .item .dorp-down-layer div:hover, .wst-filters .item .dorp-down-layer a:hover{color:#df2003;}
 .wst-filters .item .v-item{color:#666;border: 1px solid #ddd;cursor: pointer;display: inline-block;font-size: 12px;height: 22px;line-height: 22px;margin: 0 5px 5px 0;padding: 0 30px 0 4px;position: relative;vertical-align: top;}
-.wst-filters .item .v-item:hover{border-color: #e4393c;}
+.wst-filters .item .v-item:hover{border-color: #57b50b;}
 .wst-filters .item .v-item i{  display: block;position: absolute;  width: 25px;height: 22px;right: 0;text-align:center;font-style: normal;top: 0;}
-.wst-filters .item .v-item:hover i{background-color: #e4393c;color: #fff;}
+.wst-filters .item .v-item:hover i{background-color: #57b50b;color: #fff;}
 
 /**商品移动效果**/
 .goods-pics{width: 352px;margin-top:10px;}
@@ -67,8 +67,8 @@
 .buy .btn{}
 .buy .addBtn{border-radius:3px;cursor:pointer;display:block;font-family:"Hiragino Sans GB","microsoft yahei",sans-serif;font-size: 16px;height: 38px;line-height:38px;text-align:center;background:#FFE4D0;border:1px solid #F0CAB6;color:#f40;width:150px;float:left;margin-right:20px;}
 .buy .addBtn:hover{background:#f40;color:#fff;}
-.buy .buyBtn{border-radius:3px;cursor:pointer;display:block;font-family:"Hiragino Sans GB","microsoft yahei",sans-serif;font-size: 16px;height: 38px;line-height:38px;text-align:center;background:#FF4400;color:#fff;width:150px;float:left;}
-.buy .buyBtn:hover{background:#df2003;color:#fff;}
+.buy .buyBtn{border-radius:3px;cursor:pointer;display:block;font-family:"Hiragino Sans GB","microsoft yahei",sans-serif;font-size: 16px;height: 38px;line-height:38px;text-align:center;background:#57b50b;color:#fff;width:150px;float:left;}
+.buy .buyBtn:hover{background:#479d01;color:#fff;}
 .wst-favorite{float: left;border: 1px solid #ededed;border-radius: 2px;margin-left:10px;padding:0px 33px;}
 .buy .favorite{height:38px;line-height:38px;padding:5px 5px 5px 25px;}
 .buy .j-fav,.footer .j-fav:hover{background:url(../img/iconfont_guanzhu_sel.png) 4px 5px no-repeat;}
@@ -130,7 +130,7 @@
 .wst-tab-box {width: 100%;height: auto;margin: 0px auto;}
 .wst-tab-nav {margin: 0;padding: 0;height: 31px;}
 .wst-tab-nav li {cursor: pointer;float: left;margin: 0 0px;list-style: none;border: 1px solid #ddd;border-bottom: none;line-height: 30px;text-align: center;color: #000000;padding-left: 10px;padding-right: 10px;}
-.wst-tab-nav .on {border-top: 1px solid #ff2704;border-bottom: 1px solid #ffffff;border-left: 1px solid #ff2704;border-right: 1px solid #ff2704;color: #ff2704;font-weight:bold;background:url(../img/img_bg_xpjssel.png) -24px -3px no-repeat;}
+.wst-tab-nav .on {border-top: 1px solid #57b50b;border-bottom: 1px solid #ffffff;border-left: 1px solid #57b50b;border-right: 1px solid #57b50b;color: #57b50b;font-weight:bold;background:url(../img/img_bg_xpjssel.png) -24px -3px no-repeat;}
 .wst-tab-content {padding: 5px;width: 99%;height: auto;border: 1px solid #ddd;background: #FFF;}
 .wst-tab-item img{width:100%;}
 .wst-attrs-list{width:100%;border-collapse:collapse;border-spacing:0;empty-cells: show;}

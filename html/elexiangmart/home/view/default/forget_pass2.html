@@ -72,42 +72,24 @@
                        </tr>
                       {if($forgetInfo['userEmail'] != '')}
                     <tr class="email-verify wst-login-tr">
-          						<td class="wst-regist-td">验证码</td>
-          						<td>
-          							<div class="wst-forget-code2">
-          							<input id="verifyCode" style="ime-mode:disabled;" name="verifyCode"  class="ipt wst-forget-codein2" data-rule="验证码 required;" data-msg-required="请输入验证码" data-tip="请输入验证码" data-target="#verify" tabindex="6" autocomplete="off" maxlength="6" type="text"  data-target="#verifyCodeTips" placeholder="验证码"/>
-          							<img id='verifyImg' class='wst-forget-codeim2' src="{:url('home/users/getVerify')}" onclick='javascript:WST.getVerify("#verifyImg")'><span id="verifyCodeTips"></span>
-          						   	</div>
-          						   	<label style="float:left;margin:10px 0px 0px 5px;">看不清？<a style="color:#69b7b5;" href="javascript:WST.getVerify('#verifyImg')">换一张</a></label><span id="verify" class="wst-lfloat"></span>
-          						</td>
-          					</tr>
-
-                    <tr class="email-verify wst-login-tr">
-                          <td class="wst-forget-td">邮箱校验码</td>
-                          <td >
-                              <input type="text" class="ipt wst-forget-input" style='width:230px;' name="secretCode" id="secretCode" data-rule="校验码required;" data-msg-required="请输入校验码" data-tip="请输入校验码" placeholder="校验码" data-target="#notice">
-                              <button id="sendEmailBtn" class="wst-forget-obtain" type="button" onclick="javascript:forgetEmail();">点击获取校验码</button>
-                          </td>
-                          <td id="notice">
-                            
-                          </td>
-                      </tr>
-                      
-
-
+						<td class="wst-regist-td">验证码</td>
+						<td>
+							<div class="wst-forget-code2">
+							<input id="verifyCode" style="ime-mode:disabled;" name="verifyCode"  class="ipt wst-forget-codein2" data-rule="验证码 required;" data-msg-required="请输入验证码" data-tip="请输入验证码" data-target="#verify" tabindex="6" autocomplete="off" maxlength="6" type="text"  data-target="#verifyCodeTips" placeholder="验证码"/>
+							<img id='verifyImg' class='wst-forget-codeim2' src="{:url('home/users/getVerify')}" onclick='javascript:WST.getVerify("#verifyImg")'><span id="verifyCodeTips"></span>
+						   	</div>
+						   	<label style="float:left;margin:10px 0px 0px 5px;">看不清？<a style="color:#69b7b5;" href="javascript:WST.getVerify('#verifyImg')">换一张</a></label><span id="verify" class="wst-lfloat"></span>
+						</td>
+					</tr>
 	                <tr class="email-verify wst-login-tr">
-        						<td colspan="2" style="padding-left:282px;">
-        							<input type="button" class="wst-regist-but" value="下一步" style="width: 120px;height:32px;" onclick="javascript:resetPass()"/>
-        						</td>
-        					</tr>
+						<td colspan="2" style="padding-left:282px;">
+							<input type="button" class="wst-regist-but" value="发送验证邮件" style="width: 120px;height:32px;" onclick="javascript:forgetEmail()"/>
+						</td>
+					</tr>
                           {/if}
                    </tbody></table>
                </form>
-
-               <!-- <div id="email-prompt" style="margin-top:50px;font-size:20px;text-align: center;display: none;">邮箱成功发送，请登录邮箱查收<span style="color: #E23C3D;font-size:20px;">（30分钟有效）</span></div> -->
-
-
-
+               <div id="email-prompt" style="margin-top:50px;font-size:20px;text-align: center;display: none;">邮箱成功发送，请登录邮箱查收<span style="color: #E23C3D;font-size:20px;">（30分钟有效）</span></div>
            </div>
 	</div>
    <form method="post" id="phoneVerify" autocomplete="off" style="display:none;">

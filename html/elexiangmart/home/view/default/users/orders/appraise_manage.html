@@ -52,7 +52,7 @@
    </tr>
       <tr>
         <td colspan='5'>评价：{{d[i]['content']}}
-          {{#  if(d[i]['images']){ var img = d[i]['images'].split(','); var length = img.length;  }}
+          {{#  if(d[i]['images']!=''){ var img = d[i]['images'].split(','); var length = img.length;  }}
           <div id="img-file-{{i}}">
           {{#  for(var g=0;g<length;g++){  }}
                  <img src="__ROOT__/{{img[g].replace('.','_thumb.')}}" layer-src="__ROOT__/{{img[g]}}" width="30" height="30" />
@@ -69,9 +69,6 @@
       </tr>
    {{# } }}
    </script>
-   <tr class='empty-row'>
-        <td colspan='4' id='pager' align="center" style='padding:5px 0px 5px 0px'>&nbsp;</td>
-    </tr>
   </table>
 </div>
 {/block}

@@ -19,7 +19,7 @@
        <tr>
 	        <th align='right'><font color='red'>*</font>验证码：</th>
 			<td>
-				<input id="verifyCode" data-rule="验证码:required" data-target="#verify" style="ime-mode:disabled;width:250px;" name="verifyCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
+				<input id="verifyCode" style="ime-mode:disabled;width:250px;" name="verifyCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
 				<label class="wst-sec-img">
 					<img id='verifyImg' src="{:url('home/users/getVerify')}" onclick='javascript:WST.getVerify("#verifyImg")' style="width:110px;"> 
 				</label>      	
@@ -27,16 +27,9 @@
 			</td>
 		</tr>
            <tr>
-           	<th align='right'><font color='red'>*</font>校验码：</th>
-             <td style='height:60px;'>
-             	<input id="secretCode" style="ime-mode:disabled;width:250px;" name="secretCode"  class="ipt wst-lfloat" tabindex="6" autocomplete="off" maxlength="6" type="text"/>
-                 <button id="timeSend" class="wst-sec-but" type="button" onclick="sendEmail()"  style="width:120px;height: 30px;margin-top:5px;">发送验证邮件</button><span id="secretErr"></span>
+             <td colspan='2' style='padding-left:105px;height:60px;'>
+                 <button id="timeSend" class="wst-sec-but" type="submit" style="width:120px;height: 30px;">发送验证邮件</button>
              </td>
-           </tr>
-           <tr>
-           	<td colspan="2">
-           		<button id="next" class="wst-sec-but" type="submit" style="width:120px;height: 30px;margin-left:180px">下一步</button>
-           	</td>
            </tr>
         </table>
       </form>

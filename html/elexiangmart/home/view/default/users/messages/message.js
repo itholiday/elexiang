@@ -58,48 +58,48 @@ WST.confirm({content:"您确定要删除该消息吗？", yes:function(tips){
 }});
 }
 function batchDel(){
+WST.confirm({content:"您确定要删除该消息吗？", yes:function(tips){
     var ids = WST.getChks('.chk');
     if(ids==''){
-      WST.msg('请选择要删除的消息!', {icon: 5});
+      WST.msg('请先选择消息!', {icon: 5});
       return;
     }
-    WST.confirm({content:"您确定要删除该消息吗？", yes:function(tips){
-        var params = {};
-        params.ids = ids;
-        var load = WST.load({msg:'请稍后...'});
-        $.post(WST.U('home/messages/batchDel'),params,function(data,textStatus){
-          layer.close(load);
-          var json = WST.toJson(data);
-          if(json.status=='1'){
-            WST.msg('操作成功',{icon:1},function(){
-                 queryByList();
-            });
-          }else{
-            WST.msg('操作失败',{icon:5});
-          }
+    var params = {};
+    params.ids = ids;
+    var load = WST.load({msg:'请稍后...'});
+    $.post(WST.U('home/messages/batchDel'),params,function(data,textStatus){
+      layer.close(load);
+      var json = WST.toJson(data);
+      if(json.status=='1'){
+        WST.msg('操作成功',{icon:1},function(){
+             queryByList();
         });
-    }});
+      }else{
+        WST.msg('操作失败',{icon:5});
+      }
+    });
+}});
 }
 function batchRead(){
+WST.confirm({content:"您确定要将这些消息标记为已读吗？", yes:function(tips){
     var ids = WST.getChks('.chk');
     if(ids==''){
-      WST.msg('请选择处理的消息!', {icon: 5});
+      WST.msg('请先选择消息!', {icon: 5});
       return;
     }
-    WST.confirm({content:"您确定要将这些消息标记为已读吗？", yes:function(tips){
-        var params = {};
-        params.ids = ids;
-        var load = WST.load({msg:'请稍后...'});
-        $.post(WST.U('home/messages/batchRead'),params,function(data,textStatus){
-          layer.close(load);
-          var json = WST.toJson(data);
-          if(json.status=='1'){
-            WST.msg('操作成功',{icon:1},function(){
-                 queryByList();
-            });
-          }else{
-            WST.msg('操作失败',{icon:5});
-          }
+    var params = {};
+    params.ids = ids;
+    var load = WST.load({msg:'请稍后...'});
+    $.post(WST.U('home/messages/batchRead'),params,function(data,textStatus){
+      layer.close(load);
+      var json = WST.toJson(data);
+      if(json.status=='1'){
+        WST.msg('操作成功',{icon:1},function(){
+             queryByList();
         });
-    }});
+      }else{
+        WST.msg('操作失败',{icon:5});
+      }
+    });
+}});
 }

@@ -126,7 +126,7 @@
     margin-left: 5px;
     color: #FFF;
     vertical-align: middle;
-    background: #C81623 none repeat scroll 0% 0%;
+    background: #57b50b none repeat scroll 0% 0%;
 }
 
 .tbar-panel-cart .tbar-panel-footer {
@@ -167,7 +167,7 @@
     height: 35px;
     font: 16px/35px "微软雅黑";
     text-align: center;
-    background: #C81623 none repeat scroll 0% 0%;
+    background: #57b50b none repeat scroll 0% 0%;
     color: #FFF;
 }
 .tbar-cart-list{
@@ -450,24 +450,24 @@
 
 .tbar-tab-hover {
     left: -60px;
-    background-color: #C81623;
+    background-color: #57b50b;
 }
 .tbar-tab-footer-hover {
 	left: -48px;
-    background-color: #C81623;
+    background-color: #57b50b;
 }
 .tbar-tab-selected {
-    background-color: #C81623;
+    background-color: #57b50b;
 }
 .tbar-tab-selected .tab-sub{
-    color: #C81623;
+    color: #57b50b;
 	background-color: #FFF;
 	background-image: linear-gradient(to bottom, #FFF 0px, #FFF 100%);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 	text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
 }
 .tbar-tab-click-selected{
-	 background-color: #C81623;
+	 background-color: #57b50b;
 }
 .tbar-tab-click-selected .tab-sub{
     color: #C81623;

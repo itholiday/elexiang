@@ -97,13 +97,13 @@
 	width: 360px;
 	margin-right:3px;
 	padding-left:8px;
-	border:1px solid #fc6047;
+	border:1px solid #57b50b;
 }
 .wst-shop-sea .search{
 	float:left;
 	width:60px;
-	height:32px;
-	line-height: 32px;
+	height:38px;
+	line-height: 38px;
 	text-align: center;
 	color: #ffffff;
 	margin-left:6px;
@@ -132,7 +132,7 @@
 
 
 .wst-shop-nav {
-	background-color: #fc6047;
+	background-color: #57b50b;
 	text-align: 100%;
 }
 .wst-nav-box {
@@ -149,7 +149,7 @@
 	font-family:"microsoft yahei";
 }
 .wst-nav-box li:hover,.wst-nav-box .wst-nav-boxa{
-	background:#cb2004;
+	background:#077f1a;
 	background-size: cover;
 }
 .wst-nav-box .liselect {
@@ -326,7 +326,7 @@
 	line-height: 30px;
 	color:#ffffff;
 	opacity: 0.8;
-	background:#d0260c;
+	background:#077f1a;
 	display: block;
 	position:absolute;
 	left:0px;
@@ -363,11 +363,11 @@
 .wst-shop-rect .wst-shop-recta{
 	float:right;
 	height:26px;
-	color:#ff5605;
+	color:#222222;
 	line-height: 26px;
 	padding:0px 12px;
 	border-radius:2px;
-	border: 1px solid #dadada;
+	border: 1px solid #222222;
 }
 .wst-shop-rect .wst-shop-recta2{
 	float:right;
@@ -380,8 +380,8 @@
 }
 .wst-shop-rect .wst-shop-recta:hover{
 	color:#ffffff;
-	background:#ff5605;
-	border: 1px solid #ff5605;
+	background:#57b50b;
+	border: 1px solid #57b50b;
 }
 .wst-shop-list{
 	padding:10px 0px;
@@ -401,12 +401,12 @@
 	border: 1px solid #e9e7e7;
 }
 .wst-shop-listh a:hover{
-	border: 1px solid #ff8043;
+	border: 1px solid #57b50b;
 }
 a.wst-shop-a{
 	color:#ffffff;
-	background:#ff8043;
-	border: 1px solid #ff8043;
+	background:#57b50b;
+	border: 1px solid #57b50b;
 }
 .wst-shop-store,.wst-shop-store2,.wst-shop-store3{
 	float:right;
@@ -435,7 +435,7 @@ input.wst-price-ipt{
 	border: 1px solid #e9e7e7;
 }
 input.wst-price-ipt:focus{
-	border: 1px solid #ff8043;
+	border: 1px solid #57b50b;
 }
 .wst-price-ipt1{
 	position: absolute;
@@ -496,4 +496,3 @@ input.wst-price-ipt:focus{
 .wst-shop-pa{
 	padding:28px 0px 35px 300px;
 }
-.wst-shop-info2 img.wangwang{padding-top:1px;width:65px;height:22px}

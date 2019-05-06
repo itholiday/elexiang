@@ -49,7 +49,8 @@ function forgetPwd(){
 	        		if(modes==1){
 	        			location.href=json.url;
 	        		}else{
-	        			disableBtn();
+	        			$('#forgetPwdForm2').hide();
+	        			$('#email-prompt').show();
 	        		}
 	        	}else if(step==3){
 	        		location.href=WST.U('home/users/forgetPassf');
@@ -121,35 +122,4 @@ function forgetPhone(){
 function forgetEmail(){
 	if(!$('#verifyCode').isValid())return;
 	forgetPwd();
-}
-/*重置密码*/
-function resetPass(){
-	if(!$('#secretCode').isValid())return;
-	var secretCode = $('#secretCode').val();
-	$.post(WST.U('home/users/forgetPasss'),{secretCode:secretCode},function(data){
-		var json = WST.toJson(data);
-		if(json.status==1){
-			location.href=WST.U('home/users/resetPass');
-		}else{
-			WST.msg(json.msg,{icon:2});
-			return false;
-		}
-	})
-}
-
-/*禁用发送按钮*/
-function disableBtn(){
-	time = 120;
-	$('#sendEmailBtn').attr('disabled', 'disabled').css({'background':'#e8e6e6','color':'#a7a7a7'});
-	$('#sendEmailBtn').html('获取邮箱验证码(120)').css('width','130px');
-	var task = setInterval(function(){
-		time--;
-		$('#sendEmailBtn').html('获取邮箱验证码('+time+")");
-		if(time==0){
-			isSend = false;						
-			clearInterval(task);
-			$('#sendEmailBtn').html("重新获取验证码").css('width','100px');
-			$('#sendEmailBtn').removeAttr('disabled').css({'background':'#f0efef','color':'#110f0f'});
-		}
-	},1000);
 }

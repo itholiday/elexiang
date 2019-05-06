@@ -29,9 +29,6 @@
 		<div class="wst-sec-lists">{if ($data['loginPwd'])}<span class="wst-sec-green"><img src="__STYLE__/img/user_icon_yyz.png"/>已设置</span>{else}<span class="wst-sec-ash"><img src="__STYLE__/img/icon_wyz.png"/>未设置</span>{/if}
 		<span class="wst-sec-w">&nbsp;登录密码</span>&nbsp;&nbsp;登陆密码用于会员的登陆以及进行登陆的一系列操作，{if ($data['loginPwd'])}建议您定期更改密码{else}您还没有设置密码{/if}
 		<a class="wst-user-buta wst-rfloat" onclick="location.href=WST.U('home/users/editPass')">{if ($data['loginPwd'])}修改密码{else}立即设置{/if}</a></div>
-		<div class="wst-sec-lists">{if ($data['payPwd'])}<span class="wst-sec-green"><img src="__STYLE__/img/user_icon_yyz.png"/>已设置</span>{else}<span class="wst-sec-ash"><img src="__STYLE__/img/icon_wyz.png"/>未设置</span>{/if}
-		<span class="wst-sec-w">&nbsp;支付密码</span>&nbsp;&nbsp;支付密码用于会员的提现账号设置及提现申请操作，{if ($data['payPwd'])}建议您定期更改支付密码{else}您还没有设置支付密码{/if}
-		<a class="wst-user-buta wst-rfloat" onclick="location.href=WST.U('home/users/editPayPass')">{if ($data['payPwd'])}修改密码{else}立即设置{/if}</a></div>
 		<div class="wst-sec-lists">{if ($data['userEmail'])}<span class="wst-sec-green"><img src="__STYLE__/img/user_icon_yyz.png"/>已验证</span>{else}<span class="wst-sec-ash"><img src="__STYLE__/img/icon_wyz.png"/>未验证</span>{/if}
 		<span class="wst-sec-w">&nbsp;邮箱验证</span>&nbsp;&nbsp;邮箱验证方便您及时接收优惠促销信息，以及积分、优惠卷和账户余额变动的提醒。{if ($data['userEmail'])}您的绑定邮箱：{$data['userEmail']}{else}您还没有验证邮箱{/if}
 		<a class="wst-user-buta wst-rfloat" onclick="location.href=WST.U('home/users/editEmail')">{if ($data['userEmail'])}修改邮箱{else}立即验证{/if}</a></div>

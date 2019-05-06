@@ -8,7 +8,8 @@ $(function(){
 	}});
 });
 function view(val){
-    location.href=WST.U('home/settlements/view','id='+val);
+    $('#settlementNo_2').val(val);
+	$('#tab').find('.wst-tab-nav li').eq(2).click();
 }
 function getQueryPage(p){
 	var params = {};
@@ -50,7 +51,7 @@ function settlement(){
 		return;
 	}
 	var load = WST.load({msg:'正在提交申请，请稍后...'});
-	WST.confirm({content:'您确定要申请结算这些订单吗？',yes:function(){
+	if(WST.confirm({content:'您确定要申请结算这些订单吗？',yes:function(){
         $.post(WST.U('home/settlements/settlement'),{ids:ids.join(',')},function(data,textStatus){
 			layer.close(load);
 			var json = WST.toJson(data);
@@ -62,7 +63,7 @@ function settlement(){
 		    	WST.msg(json.msg);
 		    }
 		});
-	}});
+	}}));
 }
 function getUnSettledOrderPage(p){
     var params = {};
