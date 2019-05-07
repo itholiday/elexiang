@@ -5,11 +5,11 @@ use think\Db;
 /**
  * ============================================================================
 
- * 商品类
+ * 资源类
  */
 class Goods extends CGoods{
      /**
-      *  上架商品列表
+      *  上架资源列表
       */
 	public function saleByPage(){
 		$shopId = (int)session('WST_USER.shopId');
@@ -42,7 +42,7 @@ class Goods extends CGoods{
 		return $rs;
 	}
 	/**
-	 * 审核中的商品
+	 * 审核中的资源
 	 */
     public function auditByPage(){
     	$shopId = (int)session('WST_USER.shopId');
@@ -73,7 +73,7 @@ class Goods extends CGoods{
 		return $rs;
 	}
 	/**
-	 * 仓库中的商品
+	 * 仓库中的资源
 	 */
     public function storeByPage(){
     	$shopId = (int)session('WST_USER.shopId');
@@ -103,7 +103,7 @@ class Goods extends CGoods{
 		return $rs;
 	}
 	/**
-	 * 违规的商品 
+	 * 违规的资源 
 	 */
 	public function illegalByPage(){
 		$shopId = (int)session('WST_USER.shopId');
@@ -135,7 +135,7 @@ class Goods extends CGoods{
 	}
 	
 	/**
-	 * 新增商品
+	 * 新增资源
 	 */
 	public function add(){
 		$shopId = (int)session('WST_USER.shopId');
@@ -158,14 +158,14 @@ class Goods extends CGoods{
 			$result = $this->validate(true)->allowField(true)->save($data);
 			if(false !== $result){
 				$goodsId = $this->goodsId;
-				//商品图片
+				//资源图片
 				WSTUseImages(0, $goodsId, $data['goodsImg']);
-				//商品相册
+				//资源相册
 				WSTUseImages(0, $goodsId, $data['gallery']);
-				//商品描述图片
+				//资源描述图片
 				WSTEditorImageRocord(0, $goodsId, '',$data['goodsDesc']);
 
-				//建立商品评分记录
+				//建立资源评分记录
 				$gs = [];
 				$gs['goodsId'] = $goodsId;
 				$gs['shopId'] = $shopId;
@@ -236,7 +236,7 @@ class Goods extends CGoods{
     	                $this->where('goodsId',$goodsId)->update(['isSpec'=>1,'shopPrice'=>$defaultPrice,'goodsStock'=>$totalStock]);
 		    		}
     	        }
-    	        //保存商品属性
+    	        //保存资源属性
 		    	$attrsArray = [];
 		    	$attrRs = Db::name('attributes')->where(['goodsCatId'=>['in',$goodsCats],'isShow'=>1,'dataFlag'=>1,'attrType'=>['<>',0]])
 		    		            ->field('attrId')->select();
@@ -263,7 +263,7 @@ class Goods extends CGoods{
 	}
 	
 	/**
-	 * 编辑商品资料
+	 * 编辑资源资料
 	 */
 	public function edit(){
 		$shopId = (int)session('WST_USER.shopId');
@@ -272,7 +272,7 @@ class Goods extends CGoods{
 		$data = input('post.');
 		WSTUnset($data,'goodsId,dataFlag,statusRemarks,goodsStatus,createTime');
 		$ogoods = $this->where('goodsId',$goodsId)->field('goodsStatus')->find();
-		//违规商品不能直接上架
+		//违规资源不能直接上架
 		if($ogoods['goodsStatus']!=1){
 			$data['goodsStatus'] = 0;
 		}
@@ -282,11 +282,11 @@ class Goods extends CGoods{
 		$data['isSpec'] = ($specsIds!='')?1:0;
 		Db::startTrans();
         try{
-        	//商品图片
+        	//资源图片
 			WSTUseImages(0, $goodsId, $data['goodsImg'],'goods','goodsImg');
-			//商品相册
+			//资源相册
 			WSTUseImages(0, $goodsId, $data['gallery'],'goods','gallery');
-			// 商品描述图片
+			// 资源描述图片
 	        $desc = $this->where('goodsId',$goodsId)->value('goodsDesc');
 			WSTEditorImageRocord(0, $goodsId, $desc, $data['goodsDesc']);
 
@@ -294,7 +294,7 @@ class Goods extends CGoods{
 			$result = $this->validate(true)->allowField(true)->save($data,['goodsId'=>$goodsId]);
 			if(false !== $result){
 				/**
-				 * 编辑的时候如果不想影响商品销售规格的销量，那么就要在保存的时候区别对待已经存在的规格和销售规格记录。
+				 * 编辑的时候如果不想影响资源销售规格的销量，那么就要在保存的时候区别对待已经存在的规格和销售规格记录。
 				 * $specNameMap的保存关系是：array('页面上生成的规格值ID'=>数据库里规则值的ID)
 				 * $specIdMap的保存关系是:array('页面上生成的销售规格ID'=>数据库里销售规格ID)
 				 */
@@ -402,10 +402,10 @@ class Goods extends CGoods{
 		    		//更新推荐规格和总库存
     	            $this->where('goodsId',$goodsId)->update(['isSpec'=>1,'shopPrice'=>$defaultPrice,'goodsStock'=>$totalStock]);
     	        }
-    	        //保存商品属性
-    	        //删除之前的商品属性
+    	        //保存资源属性
+    	        //删除之前的资源属性
     	        Db::name('goods_attributes')->where(['goodsId'=>$goodsId,'shopId'=>$shopId])->delete();
-    	        //新增商品属性
+    	        //新增资源属性
 		    	$attrsArray = [];
 		    	$attrRs = Db::name('attributes')->where(['goodsCatId'=>['in',$goodsCats],'isShow'=>1,'dataFlag'=>1])
 		    		            ->field('attrId')->select();
@@ -432,7 +432,7 @@ class Goods extends CGoods{
 	}
 	
 	/**
-	 * 获取商品资料方便编辑
+	 * 获取资源资料方便编辑
 	 */
 	public function getById($goodsId){
 		$rs = $this->where(['shopId'=>(int)session('WST_USER.shopId'),'goodsId'=>$goodsId])->find();
@@ -463,7 +463,7 @@ class Goods extends CGoods{
 		return $rs;
 	}
 	/**
-	 * 获取商品资料在前台展示
+	 * 获取资源资料在前台展示
 	 */
      public function getBySale($goodsId){
      	$key = input('key');
@@ -506,11 +506,11 @@ class Goods extends CGoods{
 					$rs['saleSpec'][implode(':',$str)] = $v;
 				}
 			}
-			//获取商品属性
+			//获取资源属性
 			$rs['attrs'] = Db::name('attributes')->alias('a')->join('goods_attributes ga','a.attrId=ga.attrId','inner')
 			                   ->where(['a.isShow'=>1,'dataFlag'=>1,'goodsId'=>$goodsId])->field('a.attrName,ga.attrVal')
 			                   ->order('attrSort asc')->select();
-			//获取商品评分
+			//获取资源评分
 			$rs['scores'] = Db::name('goods_scores')->where('goodsId',$goodsId)->field('totalScore,totalUsers')->find();
 			$rs['scores']['totalScores'] = ($rs['scores']['totalScore']==0)?5:WSTScore($rs['scores']['totalScore'],$rs['scores']['totalUsers'],5,0,3);
 			WSTUnset($rs, 'totalUsers');
@@ -523,7 +523,7 @@ class Goods extends CGoods{
 	}
 	
 	/**
-	 * 删除商品
+	 * 删除资源
 	 */
 	public function del(){
 	    $id = input('post.id/d');
@@ -535,11 +535,11 @@ class Goods extends CGoods{
 	        if(false !== $result){
 	        	WSTUnuseImage('goods','goodsImg',$id);
 	        	WSTUnuseImage('goods','gallery',$id);
-	        	// 商品描述图片
+	        	// 资源描述图片
 	        	$desc = $this->where('goodsId',$id)->value('goodsDesc');
 				WSTEditorImageRocord(0, $id, $desc,'');
 				Db::commit();
-	        	//标记删除购物车
+	        	//标记删除购买车
 	        	return WSTReturn("删除成功", 1);
 	        }
 		}catch (\Exception $e) {
@@ -548,7 +548,7 @@ class Goods extends CGoods{
         return WSTReturn('删除失败',-1);
 	}
 	/**
-	  * 批量删除商品
+	  * 批量删除资源
 	  */
 	 public function batchDel(){
 	 	$shopId = (int)session('WST_USER.shopId');
@@ -558,11 +558,11 @@ class Goods extends CGoods{
 		   	$rs = $this->where(['goodsId'=>['in',$ids],
 		   						'shopId'=>$shopId])->setField('dataFlag',-1);
 			if(false !== $rs){
-				//标记删除购物车
+				//标记删除购买车
 				foreach ($ids as $v){
 					WSTUnuseImage('goods','goodsImg',(int)$v);
 	        	    WSTUnuseImage('goods','gallery',(int)$v);
-	        	    // 商品描述图片
+	        	    // 资源描述图片
 		        	$desc = $this->where('goodsId',(int)$v)->value('goodsDesc');
 					WSTEditorImageRocord(0, (int)$v, $desc,'');
 				}
@@ -576,18 +576,18 @@ class Goods extends CGoods{
 	 }
 	
 	/**
-	 * 批量上架商品
+	 * 批量上架资源
 	 */
 	public function changeSale(){
 		$ids = input('post.ids/a');
 		$isSale = (int)input('post.isSale',1);
-		//判断商品是否满足上架要求
+		//判断资源是否满足上架要求
 		if($isSale==1){
 			$shopId = (int)session('WST_USER.shopId');
 			//0.核对店铺状态
 	 		$shopRs = model('shops')->find($shopId);
 	 		if($shopRs['shopStatus']!=1){
-	 			return 	WSTReturn('上架商品失败!您的店铺权限不能出售商品，如有疑问请与商城管理员联系。',-3);
+	 			return 	WSTReturn('上架资源失败!您的店铺权限不能出售资源，如有疑问请与商城管理员联系。',-3);
 	 		}
 	 		//直接设置上架 返回受影响条数
 	 		$where = [];
@@ -601,25 +601,25 @@ class Goods extends CGoods{
 			if($rs!==false){
 				$status = ($rs==count($ids))?1:2;
 				if($status==1){
-					return WSTReturn('商品上架成功', 1,['num'=>$rs]);
+					return WSTReturn('资源上架成功', 1,['num'=>$rs]);
 				}else{
-					return WSTReturn('已成功上架商品'.$rs.'件，请核对未能上架的商品信息是否完整。', 2,['num'=>$rs]);
+					return WSTReturn('已成功上架资源'.$rs.'件，请核对未能上架的资源信息是否完整。', 2,['num'=>$rs]);
 				}
 			}else{
-	 			return WSTReturn('上架失败，请核对商品信息是否完整!', -2);
+	 			return WSTReturn('上架失败，请核对资源信息是否完整!', -2);
 	 		}
 
 		}else{
 			$rs = $this->where(['goodsId'=>['in',$ids]])->setField('isSale',$isSale);
 			if($rs !== false){
-				return WSTReturn('商品上架成功', 1);
+				return WSTReturn('资源上架成功', 1);
 			}else{
 				return WSTReturn($this->getError(), -1);
 			}
 		}
 	}
 	/**
-	* 修改商品状态
+	* 修改资源状态
 	*/
 	public function changSaleStatus(){
 		$is = input('post.is');
@@ -633,7 +633,7 @@ class Goods extends CGoods{
 		}
 	}
 	/**
-	 * 批量修改商品状态
+	 * 批量修改资源状态
 	 */
 	public function changeGoodsStatus(){
 		//设置为什么 hot new best rec
@@ -652,7 +652,7 @@ class Goods extends CGoods{
 
 	}
 	/**
-	 * 获取商品规格属性
+	 * 获取资源规格属性
 	 */
 	public function getSpecAttrs(){
 		$goodsCatId = Input('post.goodsCatId/d');
@@ -675,7 +675,7 @@ class Goods extends CGoods{
 	}
 	
 	/**
-	 * 检测商品主表的货号或者商品编号
+	 * 检测资源主表的货号或者资源编号
 	 */
 	public function checkExistGoodsKey($key,$val,$id = 0){
 		if(!in_array($key,array('goodsSn','productNo')))return WSTReturn("非法的查询字段");
@@ -686,7 +686,7 @@ class Goods extends CGoods{
 	}
 	
     /**
-     * 获取符合筛选条件的商品ID
+     * 获取符合筛选条件的资源ID
      */
     public function filterByAttributes(){
     	$vs = input('vs');
@@ -694,7 +694,7 @@ class Goods extends CGoods{
     	$vs = explode(',',$vs);
     	$goodsIds = [];
     	$prefix = config('database.prefix');
-		//循环遍历每个属性相关的商品ID
+		//循环遍历每个属性相关的资源ID
 	    foreach ($vs as $v){
 	    	$goodsIds2 = [];
 	    	$attrVal = input('v_'.(int)$v);
@@ -707,7 +707,7 @@ class Goods extends CGoods{
 					$goodsIds2[] = $vg['goodsId'];
 				}
 			}
-			//如果有一个属性是没有商品的话就不需要查了
+			//如果有一个属性是没有资源的话就不需要查了
 			if(empty($goodsIds2))return [-1];
 			//第一次比较就先过滤，第二次以后的就找集合
 			if(empty($goodsIds)){
@@ -720,7 +720,7 @@ class Goods extends CGoods{
     }
 	
 	/**
-	 * 获取分页商品记录
+	 * 获取分页资源记录
 	 */
 	public function pageQuery($goodsCatIds = []){
 		//查询条件
@@ -816,7 +816,7 @@ class Goods extends CGoods{
 	}
 
 	/**
-	 * 修改商品库存/价格
+	 * 修改资源库存/价格
 	 */
 	public function editGoodsBase(){
 		$goodsId = (int)Input("goodsId");
@@ -897,7 +897,7 @@ class Goods extends CGoods{
 				$data['goodsId'] = $goodsId = input('post.goodsId/d');
 				$gs = new GoodsSpecs();
 				$rss = $gs->update($data,['id'=>$id]);
-				//更新商品库存
+				//更新资源库存
 				$goodsStock = 0;
 				if($rss!==false){
 					$specStocks = $gs->where(['shopId'=>$shopId,'goodsId'=>$goodsId,'dataFlag'=>1])->field('specStock')->select();

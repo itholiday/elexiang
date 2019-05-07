@@ -1,5 +1,5 @@
 $(function() {
-	$('.goodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	$('.goodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	$('.shopsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.SHOP_LOGO});//店铺默认头像
 	$('.usersImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.USER_LOGO});//会员默认头像
 });
@@ -76,7 +76,7 @@ WST.searchIpt = function(){
 		$(".j-search-type span").html($(this).html());
 		if($(this).attr("data")==1){
 			$(this).attr("data",0);
-			$(this).html('商品');
+			$(this).html('资源');
 			$('#search-ipt').attr('placeholder',$('#adsShopWordsSearch').val());
 		}else{
 			$(this).attr("data",1);
@@ -425,7 +425,7 @@ WST.addCart = function(goodsId){
 }
 
 WST.delCart = function(id){
-	WST.confirm({content:'您确定要删除该商品吗？',yes:function(index){
+	WST.confirm({content:'您确定要删除该资源吗？',yes:function(index){
 		$.post(WST.U('home/carts/delCart'),{id:id,rnd:Math.random()},function(data,textStatus){
 		     var json = WST.toJson(data);
 		     if(json.status==1){
@@ -484,14 +484,14 @@ WST.checkCart = function(){
 				laytpl(gettpl).render(json, function(html){
 					$('#list-carts').html(html);
 				});
-				$('#list-carts2').html('<div class="comm" id="list-comm">&nbsp;&nbsp;共<span>'+json.goodsTotalNum+'</span>件商品<span class="span2">￥'+json.goodsTotalMoney+'</span></div>');
-				$('#list-carts3').html('<a href="'+window.conf.ROOT+'/home/carts/index" class="btn btn-3">去购物车结算</a>');
-				$('.goodsImgc').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+				$('#list-carts2').html('<div class="comm" id="list-comm">&nbsp;&nbsp;共<span>'+json.goodsTotalNum+'</span>件资源<span class="span2">￥'+json.goodsTotalMoney+'</span></div>');
+				$('#list-carts3').html('<a href="'+window.conf.ROOT+'/home/carts/index" class="btn btn-3">去购买车结算</a>');
+				$('.goodsImgc').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 				if(json.list.length>5){
 					$('#list-carts').css('overflow-y','scroll').css('height','416');
 				}
 			}else{
-				$('#list-carts').html('<p class="carts">购物车中空空如也，赶紧去选购吧～</p>');
+				$('#list-carts').html('<p class="carts">购买车中空空如也，赶紧去选购吧～</p>');
 			}
 			$('#goodsTotalNum').html(json.goodsTotalNum);
 		}
@@ -556,10 +556,10 @@ WST.cancelFavorite = function(obj,type,id,fId){
 		WST.loginWindow();
 		return;
 	}
-	var param = {},str = '商品';
+	var param = {},str = '资源';
 	param.id = fId;
 	param.type = type;
-	str = (type==1)?'店铺':'商品';
+	str = (type==1)?'店铺':'资源';
 	$.post(WST.U('home/favorites/cancel'),param,function(data,textStatus){
 	    var json = WST.toJson(data);
 	    if(json.status=='1'){
@@ -592,7 +592,7 @@ WST.addFavorite = function(obj,type,id,fId){
 	});
 }
 /**
- * 循环调用及设置商品分类
+ * 循环调用及设置资源分类
  * @param id           当前分类ID
  * @param val          当前分类值
  * @param childIds     分类路径值【数组】
@@ -660,7 +660,7 @@ WST.ITSetGoodsCats = function(opts){
 }
 
 /**
- * 循环创建商品分类
+ * 循环创建资源分类
  * @param id            当前分类ID
  * @param val           当前分类值
  * @param className     样式，方便将来获取值

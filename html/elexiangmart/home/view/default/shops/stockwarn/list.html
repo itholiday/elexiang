@@ -6,7 +6,7 @@
 <div class="wst-shop-head"><span>库存预警</span></div>
 <div class="wst-shop-tbar">
   <label>
-    商品分类：
+    资源分类：
     <select name="cat1" id="cat1" onchange="getCat(this.value)" class="s-query">
         <option value="">-请选择-</option>
       {volist name=":WSTShopCats(0)" id="vo"}
@@ -23,7 +23,7 @@
    <table class='wst-list'>
    <thead>
    <tr>
-     <th width="220">商品名称</th>
+     <th width="220">资源名称</th>
      <th>货号</th>
      <th>规格</th>
      <th width="130">现有库存<font color='red'>(双击编辑)</font></th>
@@ -65,7 +65,7 @@
         <input id="ipt_2_{{d[i]['id']}}" onkeyup="javascript:WST.isChinese(this,1)" onkeypress="return WST.isNumberKey(event)" onblur="javascript:editGoodsStock({{d[i]['id']}},2,{{d[i]['goodsId']}})" class="stockin" maxlength="6"/>
         <span id="span_2_{{d[i]['id']}}" style="display: inline;cursor:pointer;color:#f30505;">{{d[i]['warnStock']}}</span>
         </td>
-      <td><a class="g-handle" href='javascript:toEdit({{d[i]['goodsId']}},"sale")'>[进入商品编辑]</a></td>
+      <td><a class="g-handle" href='javascript:toEdit({{d[i]['goodsId']}},"sale")'>[进入资源编辑]</a></td>
       {{# }else{ }}
       <td>
           <div class="goods-img">
@@ -87,7 +87,7 @@
         <input id="ipt_4_{{d[i]['goodsId']}}" onkeyup="javascript:WST.isChinese(this,1)" onkeypress="return WST.isNumberKey(event)" onblur="javascript:editGoodsStock({{d[i]['goodsId']}},4)" class="stockin" maxlength="6"/>
         <span id="span_4_{{d[i]['goodsId']}}" style="display: inline;cursor:pointer;color:#f30505;">{{d[i]['warnStock']}}</span>
         </td>
-        <td><a class="g-handle" href='javascript:toEdit({{d[i]['goodsId']}},"sale")'>[进入商品编辑]</a></td>
+        <td><a class="g-handle" href='javascript:toEdit({{d[i]['goodsId']}},"sale")'>[进入资源编辑]</a></td>
       {{# } }}
    </tr>
    {{# } }}

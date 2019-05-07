@@ -104,7 +104,7 @@ class Shops extends Base{
 	    $this->assign('goodsName',urldecode(input("param.goodsName")));//搜索
 	    // 店长推荐
 	    $data['rec'] = $s->getRecGoods('rec');
-	    // 热销商品
+	    // 热销资源
 	    $data['hot'] = $s->getRecGoods('hot');
 	    $this->assign('data',$data);
 	    return $this->fetch('self_shop');

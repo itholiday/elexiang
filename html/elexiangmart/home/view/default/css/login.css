@@ -33,7 +33,7 @@ input.wst-login-input,input.wst-regist-input{
 }
 .wst-login-input:focus,.wst-regist-input:focus,.wst-login-codein:focus,.wst-regist-codein:focus,.wst-regist-codemo:focus{
 	border-radius:6px;
-	border:1px solid #57b50b;
+	border:1px solid #e4393c;
 }
 .wst-table{
 	margin-top:20px;
@@ -66,7 +66,7 @@ input.wst-login-codein,input.wst-regist-codein{
 .wst-login-but{
  display: block;
  position: relative;
- background:#57b50b;
+ background:#e4393c;
  color: #ffffff;
  text-align: center;
  font-family: 'Ubuntu', sans-serif;
@@ -167,7 +167,7 @@ input.wst-regist-codemo{
 }
 .wst-regist-but{
 	outline: none;
-	background:#57b50b;
+	background:#e4393c;
  	color: #ffffff;
  	border: 1px solid #077f1a;
  	border-radius:3px;
@@ -257,7 +257,7 @@ input.wst-forget-codein,input.wst-forget-codein2{
 }
 .wst-forget-input:focus,.wst-forget-codein:focus,.wst-forget-codein2:focus{
 	border-radius:3px;
-	border:1px solid #57b50b;
+	border:1px solid #e4393c;
 }
 .wst-forget-codeim,.wst-forget-codeim2{
 	width:116px;

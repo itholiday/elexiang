@@ -4,7 +4,7 @@ use elexiangmart\common\model\Carts as M;
 /**
  * ============================================================================
 
- * 购物车控制器
+ * 购买车控制器
  */
 class Carts extends Base{
     /**
@@ -16,7 +16,7 @@ class Carts extends Base{
 		return $rs;
 	}
 	/**
-	 * 查看购物车列表
+	 * 查看购买车列表
 	 */
 	public function index(){
 		$m = new M();
@@ -25,7 +25,7 @@ class Carts extends Base{
 		return $this->fetch('carts');
 	}
 	/**
-	 * 删除购物车里的商品
+	 * 删除购买车里的资源
 	 */
 	public function delCart(){
 		$m = new M();
@@ -33,7 +33,7 @@ class Carts extends Base{
 		return $rs;
 	}
 	/**
-	 * 跳去购物车结算页面
+	 * 跳去购买车结算页面
 	 */
     public function settlement(){
 		$m = new M();
@@ -46,18 +46,18 @@ class Carts extends Base{
 		//获取支付方式
 		$payments = model('Payments')->getByGroup();
 		$this->assign('payments',$payments);
-		//获取已选的购物车商品
+		//获取已选的购买车资源
 		$carts = $m->getCarts(true);
 		$this->assign('carts',$carts);
 		return $this->fetch('settlement');
 	}
 	
 	/**
-	 * 计算运费和总商品价格
+	 * 计算运费和总资源价格
 	 */
 	public function getCartMoney(){
 		$areaId = input('post.areaId2/d',-1);
-		//获取已选的购物车商品
+		//获取已选的购买车资源
 		$m = new M();
 		$carts = $m->getCarts(true);
 		$shopFreight = 0;
@@ -70,7 +70,7 @@ class Carts extends Base{
 		return $data;
 	}
 	/**
-	 * 修改购物车商品状态
+	 * 修改购买车资源状态
 	 */
 	public function changeCartGoods(){
 		$m = new M();
@@ -78,7 +78,7 @@ class Carts extends Base{
 		return $rs;
 	}
 	/**
-	 * 获取购物车商品
+	 * 获取购买车资源
 	 */
     public function getCart(){
 		$m = new M();
@@ -86,7 +86,7 @@ class Carts extends Base{
 		return WSTReturn("", 1,$carts);;
 	}
 	/**
-	 * 获取购物车信息
+	 * 获取购买车信息
 	 */
 	public function getCartInfo(){
 		$m = new M();

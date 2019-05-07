@@ -51,10 +51,10 @@ class Shops extends CShops{
     		$page['Rows'][$key]['goodsScore'] = WSTScore($v['goodsScore'],$v['goodsUsers']);
     		$page['Rows'][$key]['serviceScore'] = WSTScore($v['serviceScore'],$v['serviceUsers']);
     		$page['Rows'][$key]['timeScore'] = WSTScore($v['timeScore'],$v['timeUsers']);
-    		//商品列表
+    		//资源列表
     		$goods = Db::name('goods')->where(['dataFlag'=> 1,'goodsStatus'=>1,'isSale'=>1,'shopId'=> $v["shopId"]])->field('goodsId,goodsName,shopPrice,goodsImg')->limit(10)->order('saleTime desc')->select();
     		$page['Rows'][$key]['goods'] = $goods;
-    		//店铺商品总数
+    		//店铺资源总数
     		$page['Rows'][$key]['goodsTotal'] = count($goods);
 		}
 		$rccredMap = [];

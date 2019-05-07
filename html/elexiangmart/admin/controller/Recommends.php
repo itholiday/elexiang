@@ -8,27 +8,27 @@ use elexiangmart\admin\model\Recommends as M;
  */
 class Recommends extends Base{
     /**
-    * 查看商品推荐
+    * 查看资源推荐
     */
 	public function goods(){
 		return $this->fetch('goods');
 	}
 	/**
-	 * 查询商品
+	 * 查询资源
 	 */
 	public function searchGoods(){
 		$rs = model('Goods')->searchQuery();
 		return WSTReturn("", 1,$rs);
 	}
 	/**
-	 * 推荐商品
+	 * 推荐资源
 	 */
 	public function editGoods(){
 		$m = new M();
 		return $m->editGoods();
 	}
 	/**
-	 * 获取已选择商品
+	 * 获取已选择资源
 	 */
 	public function listQueryByGoods(){
 		$m = new M();

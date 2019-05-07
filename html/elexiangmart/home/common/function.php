@@ -127,7 +127,7 @@ function WSTNavigations($navType){
 	return $data;
 }
 /**
- * 根据指定的商品分类获取其路径
+ * 根据指定的资源分类获取其路径
  */
 function WSTPathGoodsCat($catId,$data = array()){
 	$rs = Db::table('__GOODS_CATS__')->where(['isShow'=>1,'dataFlag'=>1,'catId'=>$catId])->field("parentId,catName,catId")->find();

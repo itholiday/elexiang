@@ -434,9 +434,9 @@ function validator(n){
                 var json = WST.toJson(data);
                 if(json.status==1){
                    var thisbox = $('#app-box'+n);
-                   var html = '<div class="appraise-area"><div class="appraise-item"><div class="appraise-title">商品评分：</div>';
+                   var html = '<div class="appraise-area"><div class="appraise-item"><div class="appraise-title">资源评分：</div>';
                        html += '<div class="appraise-content">';
-                       // 商品评分
+                       // 资源评分
                        for(var i=1;i<=params.goodsScore;i++){
                           html +='<img src="'+WST.conf.STATIC+'/plugins/raty/img/star-on-big.png">';
                        }

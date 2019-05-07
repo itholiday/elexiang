@@ -72,14 +72,14 @@ function initGoodsGrid(id){
         rownumbers:true,
         columns: [
             { display: '订单号', name: 'orderNo',Sort: false},
-	        { display: '商品名称', name: 'goodsName',Sort: false},
-	        { display: '商品规格', name: 'goodsSpecNames',Sort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源名称', name: 'goodsName',Sort: false},
+	        { display: '资源规格', name: 'goodsSpecNames',Sort: false,render: function (rowdata, rowindex, value){
 	            if(WST.blank(value)!=''){
 	            	value = value.split('@@_@@');
 	                return value.join('，');
 	            }
 	        }},
-	        { display: '商品价格', name: 'goodsPrice',Sort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源价格', name: 'goodsPrice',Sort: false,render: function (rowdata, rowindex, value){
 	            return '¥'+value;
 	        }},
 	        { display: '购买数量', name: 'goodsNum',Sort: false},

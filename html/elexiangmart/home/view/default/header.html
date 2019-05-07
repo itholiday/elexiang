@@ -14,21 +14,24 @@
 
 
 <div class='wst-search-container'>
-   <div class='wst-logo'>
-   <a href='{$Request.root.true}' title="{:WSTConf('CONF.mallName')}" >
-      <img src="__ROOT__/{:WSTConf('CONF.mallLogo')}" height="120" width='240' title="{:WSTConf('CONF.mallName')}" alt="{:WSTConf('CONF.mallName')}">
-   </a>
+   <!--<div class='wst-logo'>-->
+   <!--<a href='{$Request.root.true}' title="{:WSTConf('CONF.mallName')}" >-->
+      <!--<img src="__ROOT__/{:WSTConf('CONF.mallLogo')}" height="120" width='240' title="{:WSTConf('CONF.mallName')}" alt="{:WSTConf('CONF.mallName')}">-->
+   <!--</a>-->
+   <!--</div>-->
+    <div class='wst-logo'>
+   <a href='{$Request.root.true}' title="{:WSTConf('CONF.mallName')}" >企鹅资源网</a>
    </div>
    <div class="wst-search-box">
       <div class='wst-search'>
       	  <input type="hidden" id="search-type" value="{:isset($keytype)?1:0}"/>
           <ul class="j-search-box">
         	  <li class="j-search-type">
-              搜<span>{if isset($keytype)}店铺{else}商品{/if}</span>&nbsp;<i class="arrow"> </i>
+              搜<span>{if isset($keytype)}店铺{else}资源{/if}</span>&nbsp;<i class="arrow"> </i>
             </li>
         	  <li class="j-type-list">
         	  	{if isset($keytype)}
-              <div data="0">商品</div>
+              <div data="0">资源</div>
               {else}
         	  	<div data="1">店铺</div>
               {/if}
@@ -48,7 +51,7 @@
       </div>
    </div>
    <div class="wst-cart-box">
-   <a href="{:url('home/carts/index')}" target="_blank"><span class="word j-word">共 <span class="num" id="goodsTotalNum">0</span> 件商品</span></a>
+   <a href="{:url('home/carts/index')}" target="_blank"><span class="word j-word">共 <span class="num" id="goodsTotalNum">0</span> 件资源</span></a>
    	<div class="wst-cart-boxs hide">
    		<div id="list-carts"></div>
    		<div id="list-carts2"></div>
@@ -56,7 +59,7 @@
 	   	<div class="wst-clear"></div>
    	</div>
    </div>
-{/* 购物车 */}
+{/* 购买车 */}
 <script id="list-cart" type="text/html">
 {{# for(var i = 0; i < d.list.length; i++){ }}
 	<div class="goods" id="j-goods{{ d.list[i].cartId }}">
@@ -74,7 +77,7 @@
       <div class="w-spacer"></div>
       <div class="dorpdown {if isset($hideCategory)}j-index{/if}" id="wst-categorys">
          <div class="dt j-cate-dt">
-             <a href="{:Url('home/goods/lists')}" target="_blank">全部商品分类</a>
+             <a href="{:Url('home/goods/lists')}" target="_blank">全部资源分类</a>
          </div>
          <div class="dd j-cate-dd" {if !isset($hideCategory)}style="display:none" {/if}>
             <div class="dd-inner">

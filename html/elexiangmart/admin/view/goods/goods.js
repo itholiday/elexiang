@@ -13,10 +13,10 @@ function initSaleGrid(){
             { display: '&nbsp;', name: 'goodsName',width:60,align:'left',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
             	return "<img style='height:60px;width:60px;' src='"+WST.conf.ROOT+"/"+rowdata['goodsImg']+"'>";
             }},
-	        { display: '商品名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
 	            return rowdata['goodsName'];
 	        }},
-	        { display: '商品编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
 	        	return "<div class='goods-valign-m'>"+rowdata['goodsSn']+"</div>";
 	        }},
 	        { display: '价格', name: 'shopPrice',isSort: false,render: function (rowdata, rowindex, value){
@@ -49,7 +49,7 @@ function loadSaleGrid(){
 }
 
 function del(id,type){
-	var box = WST.confirm({content:"您确定要删除该商品吗?",yes:function(){
+	var box = WST.confirm({content:"您确定要删除该资源吗?",yes:function(){
 	           var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
 	           $.post(WST.U('admin/goods/del'),{id:id},function(data,textStatus){
 	           			layer.close(loading);
@@ -69,7 +69,7 @@ function del(id,type){
 	            }});
 }
 function illegal(id){
-	var w = WST.open({type: 1,title:"商品违规原因",shade: [0.6, '#000'],border: [0],
+	var w = WST.open({type: 1,title:"资源违规原因",shade: [0.6, '#000'],border: [0],
 	    content: '<textarea id="illegalRemarks" rows="7" style="width:96%" maxLength="200"></textarea>',
 	    area: ['500px', '260px'],btn: ['确定', '关闭窗口'],
         yes: function(index, layero){
@@ -108,10 +108,10 @@ function initAuditGrid(){
 	        { display: '&nbsp;', name: 'goodsName',width:60,align:'left',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
             	return "<img style='height:60px;width:60px;' src='"+WST.conf.ROOT+"/"+rowdata['goodsImg']+"'>";
             }},
-	        { display: '商品名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
 	            return rowdata['goodsName'];
 	        }},
-	        { display: '商品编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
 	        	return "<div class='goods-valign-m'>"+rowdata['goodsSn']+"</div>";
 	        }},
 	        { display: '价格', name: 'shopPrice',isSort: false,render: function (rowdata, rowindex, value){
@@ -143,7 +143,7 @@ function loadAuditGrid(){
 	grid.set('url',WST.U('admin/goods/auditByPage',params));
 }
 function allow(id,type){
-	var box = WST.confirm({content:"您确定审核通过该商品吗?",yes:function(){
+	var box = WST.confirm({content:"您确定审核通过该资源吗?",yes:function(){
         var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
         $.post(WST.U('admin/goods/allow'),{id:id},function(data,textStatus){
         			layer.close(loading);
@@ -177,10 +177,10 @@ function initIllegalGrid(){
 	        { display: '&nbsp;', name: 'goodsName',width:60,align:'left',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
             	return "<img style='height:60px;width:60px;' src='"+WST.conf.ROOT+"/"+rowdata['goodsImg']+"'>";
             }},
-	        { display: '商品名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源名称', name: 'goodsName',heightAlign:'left',isSort: false,render: function (rowdata, rowindex, value){
 	            return rowdata['goodsName'];
 	        }},
-	        { display: '商品编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
+	        { display: '资源编号', name: 'goodsSn',isSort: false,render: function (rowdata, rowindex, value){
 	        	return "<div class='goods-valign-m'>"+rowdata['goodsSn']+"</div>";
 	        }},
 	        { display: '所属店铺', name: 'shopName',isSort: false,render: function (rowdata, rowindex, value){

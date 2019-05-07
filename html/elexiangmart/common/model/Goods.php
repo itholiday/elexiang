@@ -4,11 +4,11 @@ use think\Db;
 /**
  * ============================================================================
 
- * 商品类
+ * 资源类
  */
 class Goods extends Base{
 	/**
-	 * 获取店铺商品列表
+	 * 获取店铺资源列表
 	 */
 	public function shopGoods($shopId){
 		$msort = input("param.msort/d");

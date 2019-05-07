@@ -3,7 +3,7 @@ namespace elexiangmart\admin\model;
 /**
  * ============================================================================
 
- * 商品评价业务处理
+ * 资源评价业务处理
  */
 class GoodsAppraises extends Base{
 	/**

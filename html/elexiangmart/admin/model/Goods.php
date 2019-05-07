@@ -4,11 +4,11 @@ use think\Db;
 /**
  * ============================================================================
 
- * 商品类
+ * 资源类
  */
 class Goods extends Base{
      /**
-      *  上架商品列表
+      *  上架资源列表
       */
 	public function saleByPage(){
 		$where = [];
@@ -45,7 +45,7 @@ class Goods extends Base{
 		return implode("→",$catNames);
 	}
 	/**
-	 * 审核中的商品
+	 * 审核中的资源
 	 */
     public function auditByPage(){
     	$where['goodsStatus'] = 0;
@@ -72,7 +72,7 @@ class Goods extends Base{
 		return $rs;
 	}
 	/**
-	 * 违规的商品 
+	 * 违规的资源
 	 */
 	public function illegalByPage(){
 		$where['goodsStatus'] = -1;
@@ -100,7 +100,7 @@ class Goods extends Base{
 	}
 	
 	/**
-	 * 获取商品资料方便编辑
+	 * 获取资源资料方便编辑
 	 */
 	public function getById($goodsId){
 		$rs = $this->where(['shopId'=>(int)session('WST_USER.shopId'),'goodsId'=>$goodsId])->find();
@@ -130,7 +130,7 @@ class Goods extends Base{
 		return $rs;
 	}
 	/**
-	 * 获取商品资料在前台展示
+	 * 获取资源资料在前台展示
 	 */
      public function getBySale($goodsId){
      	$key = input('key');
@@ -170,7 +170,7 @@ class Goods extends Base{
 					$rs['saleSpec'][implode(':',$str)] = $v;
 				}
 			}
-			//获取商品属性
+			//获取资源属性
 			$rs['attrs'] = Db::name('attributes')->alias('a')->join('__GOODS_ATTRIBUTES__ ga','a.attrId=ga.attrId','inner')
 			                   ->where(['a.isShow'=>1,'dataFlag'=>1,'goodsId'=>$goodsId])->field('a.attrName,ga.attrVal')
 			                   ->order('attrSort asc')->select();
@@ -179,7 +179,7 @@ class Goods extends Base{
 	}
 	
 	/**
-	 * 删除商品
+	 * 删除资源
 	 */
 	public function del(){
 	    $id = input('post.id/d');
@@ -193,7 +193,7 @@ class Goods extends Base{
 	        	WSTUnuseImage('goods','goodsImg',$id);
 		        WSTUnuseImage('goods','gallery',$id);
 		        Db::commit();
-		        //标记删除购物车
+		        //标记删除购买车
 	        	return WSTReturn("删除成功", 1);
 	        }
 		}catch (\Exception $e) {
@@ -202,7 +202,7 @@ class Goods extends Base{
         return WSTReturn('删除失败',-1);
 	}
 	/**
-	  * 批量删除商品
+	  * 批量删除资源
 	  */
 	 public function batchDel(){
 	 	$shopId = (int)session('WST_USER.shopId');
@@ -213,7 +213,7 @@ class Goods extends Base{
 		   						'shopId'=>$shopId])->setField('dataFlag',-1);
 			if(false !== $rs){
 				Db::name('carts')->where(['goodsId'=>['in',$ids]])->delete();
-				//标记删除购物车
+				//标记删除购买车
 			    foreach ($ids as $v){
 					WSTUnuseImage('goods','goodsImg',(int)$v);
 			        WSTUnuseImage('goods','gallery',(int)$v);
@@ -228,24 +228,24 @@ class Goods extends Base{
 	 }
 
 	/**
-	* 设置商品违规状态
+	* 设置资源违规状态
 	*/
 	public function illegal(){
 		$illegalRemarks = input('post.illegalRemarks');		
 		$id = (int)input('post.id');
 		if($illegalRemarks=='')return WSTReturn("请输入违规原因");
-		//判断商品状态
+		//判断资源状态
 		$rs = $this->alias('g')->join('__SHOPS__ s','g.shopId=s.shopId','left')->where('goodsId',$id)
 		           ->field('s.userId,g.goodsName,g.goodsSn,g.goodsStatus,g.goodsId')->find();
-		if((int)$rs['goodsId']==0)return WSTReturn("无效的商品");
-		if((int)$rs['goodsStatus']!=1)return WSTReturn("操作失败，商品状态已发生改变，请刷新后再尝试");
+		if((int)$rs['goodsId']==0)return WSTReturn("无效的资源");
+		if((int)$rs['goodsStatus']!=1)return WSTReturn("操作失败，资源状态已发生改变，请刷新后再尝试");
 		Db::startTrans();
 		try{
 			$res = $this->setField(['goodsId'=>$id,'goodsStatus'=>-1,'illegalRemarks'=>$illegalRemarks]);
 			if($res!==false){
 				Db::name('carts')->where(['goodsId'=>$id])->delete();
 				//发送一条商家信息
-				WSTSendMsg($rs['userId'],"您的商品".$rs['goodsName']."【".$rs['goodsSn']."】因【".$illegalRemarks."】被下架处理。",['from'=>2,'dataId'=>$id]);
+				WSTSendMsg($rs['userId'],"您的资源".$rs['goodsName']."【".$rs['goodsSn']."】因【".$illegalRemarks."】被下架处理。",['from'=>2,'dataId'=>$id]);
 				Db::commit();
 				return WSTReturn('操作成功',1);
 			}
@@ -255,21 +255,21 @@ class Goods extends Base{
         return WSTReturn('删除失败',-1);
 	}
    /**
-	* 通过商品审核
+	* 通过资源审核
 	*/
 	public function allow(){	
 		$id = (int)input('post.id');
-		//判断商品状态
+		//判断资源状态
 		$rs = $this->alias('g')->join('__SHOPS__ s','g.shopId=s.shopId','left')->where('goodsId',$id)
 		           ->field('s.userId,g.goodsName,g.goodsSn,g.goodsStatus,g.goodsId')->find();
-		if((int)$rs['goodsId']==0)return WSTReturn("无效的商品");
-		if((int)$rs['goodsStatus']==1)return WSTReturn("操作失败，商品状态已发生改变，请刷新后再尝试");
+		if((int)$rs['goodsId']==0)return WSTReturn("无效的资源");
+		if((int)$rs['goodsStatus']==1)return WSTReturn("操作失败，资源状态已发生改变，请刷新后再尝试");
 		Db::startTrans();
 		try{
 			$res = $this->setField(['goodsId'=>$id,'goodsStatus'=>1]);
 			if($res!==false){
 				//发送一条商家信息
-				WSTSendMsg($rs['userId'],"您的商品".$rs['goodsName']."【".$rs['goodsSn']."】已审核通过。",['from'=>2,'dataId'=>$id]);
+				WSTSendMsg($rs['userId'],"您的资源".$rs['goodsName']."【".$rs['goodsSn']."】已审核通过。",['from'=>2,'dataId'=>$id]);
 				Db::commit();
 				return WSTReturn('操作成功',1);
 			}
@@ -280,7 +280,7 @@ class Goods extends Base{
 	}
 
 	/**
-	 * 查询商品
+	 * 查询资源
 	 */
 	public function searchQuery(){
 		$goodsCatatId = (int)input('post.goodsCatId');

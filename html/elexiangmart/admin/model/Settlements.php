@@ -76,7 +76,7 @@ class Settlements extends Base{
 	}
 
 	/**
-	 * 获取订单商品
+	 * 获取订单资源
 	 */
 	public function pageGoodsQuery(){
         $id = (int)input('id');

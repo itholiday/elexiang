@@ -1,5 +1,5 @@
 $(function(){
-	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	WST.dropDownLayer(".item",".dorp-down-layer");
 	$('.item-more').click(function(){
 		if($(this).attr('v')==1){
@@ -121,7 +121,7 @@ function searchOrder(orderby){
 }
 
 
-/*加入购物车*/
+/*加入购买车*/
 $('.goods').hover(function(){
 	$(this).find('.sale-num').hide();
 	$(this).find('.p-add-cart').show();

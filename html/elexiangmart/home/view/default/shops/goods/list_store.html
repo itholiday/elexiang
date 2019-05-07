@@ -1,10 +1,10 @@
 {extend name="default/shops/base" /}
-{block name="title"}仓库中的商品-会员中心{__block__}{/block}
+{block name="title"}仓库中的资源-会员中心{__block__}{/block}
 {block name="content"}
-<div class="wst-shop-head"><span>仓库中的商品</span></div>
+<div class="wst-shop-head"><span>仓库中的资源</span></div>
 <div class="wst-shop-tbar">
 <label>
-  商品分类：
+  资源分类：
   <select name="cat1" id="cat1" onchange="getCat(this.value)" class="s-query">
       <option value="">-请选择-</option>
     {volist name=":WSTShopCats(0)" id="vo"}
@@ -14,7 +14,7 @@
   <select name="cat2" id="cat2" class="s-query"><option value="">-请选择-</option></select>
 </label>
 <label>
-  商品名称：<input type="text" name="goodsName" id="goodsName" class="s-query" /><button class="s-btn" id="store-query" onclick="storeByPage()">查询</button>
+  资源名称：<input type="text" name="goodsName" id="goodsName" class="s-query" /><button class="s-btn" id="store-query" onclick="storeByPage()">查询</button>
 </label>
 </div>
 <div class="wst-clear"></div>
@@ -39,8 +39,8 @@
            <label for="all"></label>
           </div>
         </th>
-		     <th>商品名称</th>
-		     <th>商品编号</th>
+		     <th>资源名称</th>
+		     <th>资源编号</th>
 		     <th>价格</th>
 		     <th>推荐</th>
 		     <th>精品</th>

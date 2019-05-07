@@ -1,5 +1,5 @@
 {extend name="default/base" /}
-{block name="title"}我的购物车 - {:WSTConf('CONF.mallName')}{__block__}{/block}
+{block name="title"}我的购买车 - {:WSTConf('CONF.mallName')}{__block__}{/block}
 {block name="css"}
 <link href="__STYLE__/css/carts.css?v={$v}" rel="stylesheet">
 {/block}
@@ -29,10 +29,10 @@
 					        <td colspan="3" class="wst-right-noborder wst-align-right">订单金额：￥{$order['needPay']}【运费：￥{$order['deliverMoney']}】</td>
 					 	</tr>
 					 	<tr class='head'>
-					         <td colspan="2" class="wst-left-noborder">商品</th>
-					         <th width="150">商品单价</th>
+					         <td colspan="2" class="wst-left-noborder">资源</th>
+					         <th width="150">资源单价</th>
 					         <th width="150">数量</th>
-					         <th width="150" class="wst-right-noborder">商品总价</th>
+					         <th width="150" class="wst-right-noborder">资源总价</th>
 					   	</tr>
 				   </thead>
 				   <tbody class="otbody">

@@ -9,7 +9,7 @@ use elexiangmart\common\model\Shops;
  */
 class Favorites extends Base{
 	/**
-	 * 关注的商品列表
+	 * 关注的资源列表
 	 */
 	public function listGoodsQuery(){
 		$pagesize = input("param.pagesize/d");
@@ -42,7 +42,7 @@ class Favorites extends Base{
 		->order('f.favoriteId desc')
 		->paginate($pagesize)->toArray();
 		foreach ($page['Rows'] as $key =>$v){
-			//商品列表
+			//资源列表
 			$goods = db('goods')->where(['dataFlag'=> 1,'isSale'=>1,'shopId'=> $v["shopId"]])->field('goodsId,goodsName,shopPrice,goodsImg')
 			->limit(10)->order('saleTime desc')->select();
 			$page['Rows'][$key]['goods'] = $goods;

@@ -93,15 +93,15 @@ function toEdit(pid,id){
 }
 
 function editsBox(id,v){
-	var title =(id>0)?"修改商品分类":"新增商品分类";
+	var title =(id>0)?"修改资源分类":"新增资源分类";
 	var box = WST.open({title:title,type:1,content:$('#goodscatsBox'),area: ['465px', '300px'],btn:['确定','取消'],yes:function(){
 		$('#goodscatsForm').submit();
 	          }});
 	$('#goodscatsForm').validator({
 	    fields: {
 	    	catName: {
-	    		tip: "请输入商品分类名称",
-	    		rule: '商品分类名称:required;length[~10];'
+	    		tip: "请输入资源分类名称",
+	    		rule: '资源分类名称:required;length[~10];'
 	    	},
 	    	commissionRate: {
 	    		tip: "请输入分类的佣金",
@@ -132,7 +132,7 @@ function editsBox(id,v){
 }
 
 function toDel(pid,id){
-	var box = WST.confirm({content:"您确定要删除该商品分类吗?",yes:function(){
+	var box = WST.confirm({content:"您确定要删除该资源分类吗?",yes:function(){
 	           var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
 	           	$.post(WST.U('admin/goodscats/del'),{id:id},function(data,textStatus){
 	           			  layer.close(loading);

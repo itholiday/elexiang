@@ -303,7 +303,7 @@ class Orders extends Base{
 	*/
 	public function orderAppraise(){
 		$m = new M();
-		//根据订单id获取 商品信息跟商品评价
+		//根据订单id获取 资源信息跟资源评价
 		$data = $m->getOrderInfoAndAppr();
 		$this->assign(['data'=>$data['Rows'],
 					   'count'=>$data['count'],

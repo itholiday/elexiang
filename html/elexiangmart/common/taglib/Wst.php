@@ -21,9 +21,9 @@ class Wst extends TagLib{
     ];
 
     /**
-     * 商品数据调用    
+     * 资源数据调用
      *  type:推荐/新品/热销/精品/浏览历史/看了又看  - recom/new/hot/best/history/visit
-     *   cat:商品分类
+     *   cat:资源分类
      *   num:获取记录数量
      * cache:缓存时间
      *   key:序号
@@ -125,7 +125,7 @@ class Wst extends TagLib{
     }
     
     /**
-     * 店铺商品数据调用    
+     * 店铺资源数据调用
      *  type:推荐/新品/热销/精品  - recom/new/hot/best
      *   shop:店铺ID
      *   num:获取记录数量
@@ -161,7 +161,7 @@ class Wst extends TagLib{
     }
 
     /**
-     * 自营店铺楼层商品数据调用    
+     * 自营店铺楼层资源数据调用
      *   shop:店铺ID
      *   num:获取记录数量
      * cache:缓存时间

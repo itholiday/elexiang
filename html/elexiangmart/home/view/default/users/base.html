@@ -38,10 +38,11 @@ $(function() {
 {include file="default/header_top" /}
 <div class='wst-lite-bac'>
 <div class='wst-lite-container'>
-   <div class='wst-logo'><a href='{$Request.root.true}'><img src="__ROOT__/{:WSTConf('CONF.mallLogo')}" height="80" width='160'></a></div>
+   <!--<div class='wst-logo'><a href='{$Request.root.true}'><img src="__ROOT__/{:WSTConf('CONF.mallLogo')}" height="80" width='160'></a></div>-->
+   <div class='wst-logo'><a href='{$Request.root.true}'>企鹅资源网</a></div>
    <div class="wst-lite-tit"><span>买家中心</span><a class="wst-lite-in" href='{$Request.root.true}'>返回商城首页</a></div>
    <div class="wst-lite-cart">
-   	<a href="{:url('home/carts/index')}" target="_blank"><span class="word j-word">共 <span class="num" id="goodsTotalNum">0</span> 件商品</span></a>
+   	<a href="{:url('home/carts/index')}" target="_blank"><span class="word j-word">共 <span class="num" id="goodsTotalNum">0</span> 件资源</span></a>
    	<div class="wst-lite-carts hide">
    		<div id="list-carts"></div>
    		<div id="list-carts2"></div>
@@ -64,11 +65,11 @@ $(function() {
           
       	  <ul class="j-search-box">
             <li class="j-search-type">
-              搜<span>{if isset($keytype)}店铺{else}商品{/if}</span>&nbsp;<i class="arrow"> </i>
+              搜<span>{if isset($keytype)}店铺{else}资源{/if}</span>&nbsp;<i class="arrow"> </i>
             </li>
             <li class="j-type-list">
               {if isset($keytype)}
-              <div data="0">商品</div>
+              <div data="0">资源</div>
               {else}
               <div data="1">店铺</div>
               {/if}
@@ -123,42 +124,42 @@ $(function() {
           <div style='clear:both;'></div>
           <div class="wst-bottom" style='display:none'>
           	<div class="wst-bottom-m">
-          	<span class="wst-bottom-ml wst-bottom-ms">我的专属推荐</span><span class="wst-bottom-ml">我关注的商品</span><span class="wst-bottom-ml">我的足迹</span>
+          	<span class="wst-bottom-ml wst-bottom-ms">我的专属推荐</span><span class="wst-bottom-ml">我关注的资源</span><span class="wst-bottom-ml">我的足迹</span>
           	<span class="wst-bottom-mr"><img class="wst-lfloat" src="__STYLE__/img/user_icon_hyp.png"><a href="" class="wst-lfloat">换一批</a></span>
           	</div>
           	<div style='clear:both;'></div>
           	<div class="wst-bottom-g">
           		<div class="wst-bottom-gs">
           			<div class="wst-bottom-i"><img class="goodsImg" data-original="__STYLE__/img/img_hot_02.jpg"></div>
-          			<div class="wst-bottom-n1">商品名称商品名称商品名称商品名称商品名称</div>
+          			<div class="wst-bottom-n1">资源名称资源名称资源名称资源名称资源名称</div>
           			<span class="wst-bottom-n2"><span class="wst-bottom-n2l">￥100.00</span><span class="wst-bottom-n2r">成交数：<span>123</span></span></span>
           			<span class="wst-bottom-n3"><span class="wst-bottom-n3l">市场价：￥100.00</span><span class="wst-bottom-n3r">已有<span>123</span>人评价</span></span>
           			<span class="wst-bottom-n4"><span class="wst-lfloat">店铺名称店铺名称</span><img class="wst-lfloat" style="margin: 2px 0px 0px 5px;" src="__STYLE__/img/icon_dianpujie_03.png"></span>
           		</div>
           		          		<div class="wst-bottom-gs">
           			<div class="wst-bottom-i"><img class="goodsImg" data-original="__STYLE__/img/img_hot_02.jpg"></div>
-          			<div class="wst-bottom-n1">商品名称商品名称商品名称商品名称商品名称</div>
+          			<div class="wst-bottom-n1">资源名称资源名称资源名称资源名称资源名称</div>
           			<span class="wst-bottom-n2"><span class="wst-bottom-n2l">￥100.00</span><span class="wst-bottom-n2r">成交数：<span>123</span></span></span>
           			<span class="wst-bottom-n3"><span class="wst-bottom-n3l">市场价：￥100.00</span><span class="wst-bottom-n3r">已有<span>123</span>人评价</span></span>
           			<span class="wst-bottom-n4"><span class="wst-lfloat">店铺名称店铺名称</span><img class="wst-lfloat" style="margin: 2px 0px 0px 5px;" src="__STYLE__/img/icon_dianpujie_03.png"></span>
           		</div>
           		          		<div class="wst-bottom-gs">
           			<div class="wst-bottom-i"><img class="goodsImg" data-original="__STYLE__/img/img_hot_02.jpg"></div>
-          			<div class="wst-bottom-n1">商品名称商品名称商品名称商品名称商品名称</div>
+          			<div class="wst-bottom-n1">资源名称资源名称资源名称资源名称资源名称</div>
           			<span class="wst-bottom-n2"><span class="wst-bottom-n2l">￥100.00</span><span class="wst-bottom-n2r">成交数：<span>123</span></span></span>
           			<span class="wst-bottom-n3"><span class="wst-bottom-n3l">市场价：￥100.00</span><span class="wst-bottom-n3r">已有<span>123</span>人评价</span></span>
           			<span class="wst-bottom-n4"><span class="wst-lfloat">店铺名称店铺名称</span><img class="wst-lfloat" style="margin: 2px 0px 0px 5px;" src="__STYLE__/img/icon_dianpujie_03.png"></span>
           		</div>
           		          		<div class="wst-bottom-gs">
           			<div class="wst-bottom-i"><img class="goodsImg" data-original="__STYLE__/img/img_hot_02.jpg"></div>
-          			<div class="wst-bottom-n1">商品名称商品名称商品名称商品名称商品名称</div>
+          			<div class="wst-bottom-n1">资源名称资源名称资源名称资源名称资源名称</div>
           			<span class="wst-bottom-n2"><span class="wst-bottom-n2l">￥100.00</span><span class="wst-bottom-n2r">成交数：<span>123</span></span></span>
           			<span class="wst-bottom-n3"><span class="wst-bottom-n3l">市场价：￥100.00</span><span class="wst-bottom-n3r">已有<span>123</span>人评价</span></span>
           			<span class="wst-bottom-n4"><span class="wst-lfloat">店铺名称店铺名称</span><img class="wst-lfloat" style="margin: 2px 0px 0px 5px;" src="__STYLE__/img/icon_dianpujie_03.png"></span>
           		</div>
           		          		<div class="wst-bottom-gs">
           			<div class="wst-bottom-i"><img class="goodsImg" data-original="__STYLE__/img/img_hot_02.jpg"></div>
-          			<div class="wst-bottom-n1">商品名称商品名称商品名称商品名称商品名称</div>
+          			<div class="wst-bottom-n1">资源名称资源名称资源名称资源名称资源名称</div>
           			<span class="wst-bottom-n2"><span class="wst-bottom-n2l">￥100.00</span><span class="wst-bottom-n2r">成交数：<span>123</span></span></span>
           			<span class="wst-bottom-n3"><span class="wst-bottom-n3l">市场价：￥100.00</span><span class="wst-bottom-n3r">已有<span>123</span>人评价</span></span>
           			<span class="wst-bottom-n4"><span class="wst-lfloat">店铺名称店铺名称</span><img class="wst-lfloat" style="margin: 2px 0px 0px 5px;" src="__STYLE__/img/icon_dianpujie_03.png"></span>

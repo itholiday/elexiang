@@ -68,7 +68,7 @@
                <div class='dd price' id='j-shop-price'>￥{$goods['shopPrice']}</div>
              </div>
              <div class='item'>
-               <div class='dt'>商品评分：</div>
+               <div class='dt'>资源评分：</div>
                <div class='dd'>
 		        {for start="0" end="$goods['scores']['totalScores']"}
 					<img src="__STATIC__/plugins/raty/img/star-on.png">
@@ -80,7 +80,7 @@
 				</div>
              </div>
              <div class='item'>
-               <div class='dt'>商品编号：</div>
+               <div class='dt'>资源编号：</div>
                <div class='dd'>{$goods['goodsSn']}</div>
              </div>
              </div>
@@ -125,17 +125,17 @@
              </div>
              <div class='item' style='padding-left:75px;margin-top:20px;'>
                {if $goods['read']}
-                 <a id='addBtn' href='javascript:void(0);' class='addBtn un-buy' >加入购物车</a>
+                 <a id='addBtn' href='javascript:void(0);' class='addBtn un-buy' >加入购买车</a>
                  <a id='buyBtn' href='javascript:void(0);' class='buyBtn un-buy'>立即购买</a>
                {else}
-                 <a id='addBtn' href='javascript:addCart(0,"#buyNum")' class='addBtn' >加入购物车</a>
+                 <a id='addBtn' href='javascript:addCart(0,"#buyNum")' class='addBtn' >加入购买车</a>
                  <a id='buyBtn' href='javascript:addCart(1,"#buyNum")' class='buyBtn'>立即购买</a>
                {/if}
                <div class="wst-favorite">
                {if ($goods['favGood']>0)}
                  <a href='javascript:void(0);' onclick='WST.cancelFavorite(this,0,{$goods["goodsId"]},{$goods['favGood']})' class='favorite j-fav'>已关注</a>
                {else}
-                 <a href='javascript:void(0);' onclick='WST.addFavorite(this,0,{$goods["goodsId"]},{$goods["goodsId"]})' class='favorite j-fav2 j-fav3'>关注商品</a>
+                 <a href='javascript:void(0);' onclick='WST.addFavorite(this,0,{$goods["goodsId"]},{$goods["goodsId"]})' class='favorite j-fav2 j-fav3'>关注资源</a>
                {/if}
                </div>
              </div>
@@ -171,7 +171,7 @@
                 <div class='title'>{$shop['shopName']}</div>
                 <div class='body'>
                     <div class='totalScore'><img class="shopsImg" data-original="__ROOT__/{$shop['shopImg']}" title="{$shop['shopName']}" style="width:75px;height:75px;"></div>
-                    <div class='itemScore'>商品评价：{if ($shop['goodsScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
+                    <div class='itemScore'>资源评价：{if ($shop['goodsScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
                     <div class='itemScore'>服务评分：{if ($shop['serviceScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
                     <div class='itemScore'>物流速度：{if ($shop['timeScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
                 </div>
@@ -197,7 +197,7 @@
 					{/wst:goods}
 				</div>
 				<div class="hot-goods">
-					<div class="title">热销商品</div>
+					<div class="title">热销资源</div>
 					{wst:goods type='hot' num='3'}
 					<div class="item">
 						<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" src="__ROOT__/{:WSTImg($vo['goodsImg'])}"></a></div>
@@ -211,9 +211,9 @@
 		<div class='goods-desc'>
 		    <div id='tab' class="wst-tab-box">
 				<ul class="wst-tab-nav">
-				   <li>商品介绍</li>
-				   <li>商品属性</li>
-				   <li>商品评价</li>
+				   <li>资源介绍</li>
+				   <li>资源属性</li>
+				   <li>资源评价</li>
 				</ul>
 			    <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
 			       <div class="wst-tab-item" style="position: relative;">

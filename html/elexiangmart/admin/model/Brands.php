@@ -62,7 +62,7 @@ class Brands extends Base{
 			if(false !== $result){
 				//启用上传图片
 			    WSTUseImages(1, $this->brandId, $data['brandImg']);
-				//商品描述图片
+				//资源描述图片
 				WSTEditorImageRocord(1, $this->brandId, '',$data['brandDesc']);
 				foreach ($ids as $key =>$v){
 					$d = array();

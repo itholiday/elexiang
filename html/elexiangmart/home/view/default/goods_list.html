@@ -1,5 +1,5 @@
 {extend name="default/base" /}
-{block name="title"}商品列表 -{:WSTConf('CONF.mallName')}{__block__}{/block}
+{block name="title"}资源列表 -{:WSTConf('CONF.mallName')}{__block__}{/block}
 {block name="meta"}
 <meta name="description" content="{:WSTConf('CONF.seoMallDesc')}">
 <meta name="Keywords" content="{:WSTConf('CONF.seoMallKeywords')}">
@@ -24,7 +24,7 @@
      		<div class="p-sale">已售{$vo['saleNum']}件</div>
      		<div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
      		<div class="p-price">￥{$vo['shopPrice']}</div>
-     		<div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
+     		<div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购买车</a></div>
      	</div>
       </li>
      {/wst:goods}
@@ -74,14 +74,14 @@
    {/volist}
    {else}
    <div class='item'>
-      <a class='link' href='javascript:void(0);'>全部商品分类</a>
+      <a class='link' href='javascript:void(0);'>全部资源分类</a>
    </div>
    {/if}
    <div class='wst-clear'></div>
 </div>
 {/* 筛选条件  */}
 <div class="wst-selector">
-    <div class='head'>商品筛选条件</div>
+    <div class='head'>资源筛选条件</div>
     <div class="main">
        {php}$selectorNum = 0;{/php}
        {if !empty($brandFilter)}
@@ -133,7 +133,7 @@
     <div class='wst-clear'></div>
 </div>
 
-{/* 商品展示  */}
+{/* 资源展示  */}
 <div class="wst-container">
 	<div class='goods-side'>
 		<div class="guess-like">
@@ -147,7 +147,7 @@
 			{/wst:goods}
 		</div>
 		<div class="hot-goods">
-			<div class="title">热销商品</div>
+			<div class="title">热销资源</div>
 			{wst:goods type='hot' cat="$catId" num='3'}
 			<div class="item">
 				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
@@ -270,7 +270,7 @@
 	      		<div class="p-price">￥{$vo['shopPrice']}</div>
 	      		<div class="p-hsale">
 	      			<div class="sale-num">成交数：<span class="wst-fred">{$vo['saleNum']}</span></div>
-		      		<a class="p-add-cart" style="display:none;" href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+		      		<a class="p-add-cart" style="display:none;" href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 	      		</div>
 	      		<div class='wst-clear'></div>
 	      	</div>
@@ -293,10 +293,10 @@
 	<div class='wst-clear'></div>
 	<div style="height: 50px;"></div>
 	
-	{/* 您最近浏览的商品 */}
+	{/* 您最近浏览的资源 */}
 	{if cookie("history_goods")!=''}
 	<div class="wst-gview">
-		<div class="title">您最近浏览的商品</div>
+		<div class="title">您最近浏览的资源</div>
 		<div class="view-goods">
 	       {wst:goods type='history' cat="$catId" num='7'}
 			<div class="item">

@@ -15,7 +15,7 @@
 			<a href="javascript:getShop({{ d[i].shopId }})" class="wst-favo-shopa">进入店铺</a><a href="javascript:cancelFavorite({{ d[i].favoriteId }},1)" class="wst-favo-shopa">取消关注</a>
 		</div>
 		<div class="wst-favo-shopr">
-			<div class="wst-favo-more"><span class="wst-lfloat">推荐商品</span><a href="javascript:getShop({{ d[i].shopId }})" class="wst-rfloat">查看更多 ></a></div>
+			<div class="wst-favo-more"><span class="wst-lfloat">推荐资源</span><a href="javascript:getShop({{ d[i].shopId }})" class="wst-rfloat">查看更多 ></a></div>
 			<div class="wst-favo-good wst-lfloat">
 			<div class="als-container" id="{{# if(d[i].goods.length>5){ }}js-goods{{i}}{{# } }}">
 			  {{# if(d[i].goods.length>5){ }}<span class="als-prev"><img src="__STYLE__/img/icon_left.png" alt="prev" title="previous" /></span>{{# } }}

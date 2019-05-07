@@ -11,7 +11,7 @@
       {if condition="$data['complainStatus'] eq 0"}
             <input type='hidden' id='orderId' class='ipt' value="{$data['order']['orderId']}"/>
           <div class='wst-complain-left'>
-             <div class='wst-complain-order-head'>订单商品</div>
+             <div class='wst-complain-order-head'>订单资源</div>
              <div class='wst-complain-order-goods'>
              {volist name="$data['order']['goodsList']" id="goods" key='key2'}
               <a target='_blank' href="{:Url('Home/Goods/detail',array('id'=>$goods['goodsId']))}" title="{$goods['goodsName']}">

@@ -30,19 +30,19 @@
 	</div>
 </div>
 <div class='wst-main'>
-   {/* 横栏商品-推荐/最新/精品/热销 */}
+   {/* 横栏资源-推荐/最新/精品/热销 */}
 	<div class='wst-container'>
 	<div class="buy-new-best-hot">
 		<ul class="rec">
 				<li class="rec-item j-rec-selected" id="fl_f_0" onmouseover="gpanelOver1(this);">
 					<em></em>
-					<a href="javascript:void(0)">商品推荐</a>
+					<a href="javascript:void(0)">实战推荐</a>
 				</li>
-				<li class="rec-item" id="fl_f_1" onmouseover="gpanelOver1(this);"><em></em><a href="javascript:void(0)">最新上架</a></li>
+				<li class="rec-item" id="fl_f_1" onmouseover="gpanelOver1(this);"><em></em><a href="javascript:void(0)">新上资源</a></li>
 				<li class="rec-item" id="fl_f_2" onmouseover="gpanelOver1(this);"><em></em><a href="javascript:void(0)">精品促销</a></li>
-				<li class="rec-item" id="fl_f_3" onmouseover="gpanelOver1(this);"><em></em><a href="javascript:void(0)">热销商品</a></li>
+				<li class="rec-item" id="fl_f_3" onmouseover="gpanelOver1(this);"><em></em><a href="javascript:void(0)">热门资源</a></li>
 		</ul>
-		{/* 推荐商品  */}
+		{/* 推荐资源  */}
 		<div class="rec-goods-list" id="fl_f_0_pl">
 			<ul class="rec-goods-list">
 			    {wst:goods type='recom' cache="86400" num='5'}
@@ -53,7 +53,7 @@
 					<p class="rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$vo["goodsId"])}' target='_blank'>{$vo['goodsName']}</a></p>
 					<div class="rec-goods-bottom">
 					   <p class="rec-goods-price">价格:<span>￥{$vo['shopPrice']}</span></p>
-					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 					</div>
 				</li>
 				{/wst:goods}
@@ -71,7 +71,7 @@
 					<p class="rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$vo["goodsId"])}' target='_blank'>{$vo['goodsName']}</a></p>
 					<div class="rec-goods-bottom">
 					  <p class="rec-goods-price">价格:<span>￥{$vo['shopPrice']}</span></p>
-					  <a href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+					  <a href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 					</div>
 				</li>
 				{/wst:goods}
@@ -89,14 +89,14 @@
 					<p class="rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$vo["goodsId"])}' target='_blank'>{$vo['goodsName']}</a></p>
 					<div class="rec-goods-bottom">
 					   <p class="rec-goods-price">价格:<span>￥{$vo['shopPrice']}</span></p>
-					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 				    </div>
 				</li>
 				{/wst:goods}
 			</ul>
 			<div class="wst-clear"></div>
 		</div>
-		{/* 热销商品 */}
+		{/* 热销资源 */}
 		<div class="rec-goods-list hide" id="fl_f_3_pl">
 			<ul class="rec-goods-list">
 				{wst:goods type='hot' cache="86400" num='5'}
@@ -107,7 +107,7 @@
 					<p class="rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$vo["goodsId"])}' target='_blank'>{$vo['goodsName']}</a></p>
 					<div class="rec-goods-bottom">
 					   <p class="rec-goods-price">价格:<span>￥{$vo['shopPrice']}</span></p>
-					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 					</div>
 				</li>
 				{/wst:goods}
@@ -115,7 +115,7 @@
 			<div class="wst-clear"></div>
 		</div>
 	</div>
-    {/* 楼层商品 */}
+    {/* 楼层资源 */}
 	{volist name="$floors" id="vo" key="l" length="10"}
 	{/* 楼层顶部广告 */}
 	{php}$adsCode = "ads-".$l."-1";{/php}
@@ -152,7 +152,7 @@
 				{/wst:ads}
 			</div>
 			<div class="floor-left-goods">
-			    {/* 楼层左侧推荐商品 */}
+			    {/* 楼层左侧推荐资源 */}
 				{wst:goods type='recom' cat="vo['catId']" cache="86400" num='8' id="gvo"}
 				<div class='item'>
 				{$key+1}.&nbsp;<a href="{:Url('home/goods/detail','id='.$gvo['goodsId'])}" title="{$gvo['goodsName']}">{$gvo['goodsName']}</a>
@@ -160,7 +160,7 @@
 				{/wst:goods}
 			</div>
 		</div>
-		{/* 热门下的商品,含右侧广告 */}
+		{/* 热门下的资源,含右侧广告 */}
 		<div class="floor-right" id="fl_{$l}_0_pl">
 			<div class="floor-right-ads">
 				<div class="wst-floor-slide-{$l}" id="wst-floor-slide-{$l}">
@@ -189,7 +189,7 @@
 			</div>
 
 			<div class="goods-list">
-		     {/* 楼层分类下的商品 */}
+		     {/* 楼层分类下的资源 */}
 			  {wst:goods type='hot' cat="vo['catId']" cache="86400" num='6' id='cs'}
 		      <div class="goods goods-f{$l}">
 		      	<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$cs['goodsId'])}" title="{$cs['goodsName']}"><img title="{$cs['goodsName']}" class='goodsImg' data-original="__ROOT__/{$cs['goodsImg']}"/></a></div>
@@ -198,7 +198,7 @@
 		      		<div class="p-price">￥{$cs['shopPrice']}</div>
 		      		<div class="p-hsale">
 		      			<div class="sale-num">成交数：<span class="wst-fred">{$cs['saleNum']}</span></div>
-		      			<a class="f-add-cart" style="display:none;" href="javascript:WST.addCart({$cs['goodsId']});">加入购物车</a>
+		      			<a class="f-add-cart" style="display:none;" href="javascript:WST.addCart({$cs['goodsId']});">加入购买车</a>
 		      		</div>
 		      		<div class='wst-clear'></div>
 		      	</div>
@@ -209,11 +209,11 @@
 			<div class="wst-clear"></div>
 		</div> 
 
-		{/* 二级分类下的商品,不含右侧广告  */}
+		{/* 二级分类下的资源,不含右侧广告  */}
 		{volist name="vo['children']" id="vo1" key="l2"}
 		<div class="floor-right" id="fl_{$l}_{$l2}_pl" style="display:none;">
 			<div class="goods-list">
-		     {/* 楼层分类下的商品 */}
+		     {/* 楼层分类下的资源 */}
 			 {wst:goods type='recom' cat="vo1['catId']" cache="86400" num='8' id='vo2'}
 		      <div class="goods goods-f{$l}">
 		      	<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo2['goodsId'])}" title="{$vo2['goodsName']}"><img title="{$vo2['goodsName']}" class='goodsImg' data-original="__ROOT__/{$vo2['goodsImg']}"/></a></div>
@@ -222,7 +222,7 @@
 		      		<div class="p-price">￥{$vo2['shopPrice']}</div>
 		      		<div class="p-hsale">
 		      			<div class="sale-num">成交数：<span class="wst-fred">{$vo2['saleNum']}</span></div>
-		      			<a class="f-add-cart" style="display:none;" href="javascript:WST.addCart({$vo2['goodsId']});">加入购物车</a>
+		      			<a class="f-add-cart" style="display:none;" href="javascript:WST.addCart({$vo2['goodsId']});">加入购买车</a>
 		      		</div>
 		      		<div class='wst-clear'></div>
 		      	</div>
@@ -233,9 +233,9 @@
 		</div>
 		{/volist}
 		<div class="wst-clear"></div>
-		{/* 商品排行 */}
+		{/* 资源排行 */}
 		<div class="floor-bottom">
-			<p>商品排行</p>
+			<p>资源排行</p>
 				<ul class="floor-bottom-goods style-main" id="styleMain{$l}">
 				  {wst:goods type='recom' cat="vo['catId']" cache="86400" num='10' id='gr'}
 				  <li>
@@ -244,7 +244,7 @@
 					   <p class="floor-goods-title"><a href="{:url('home/goods/detail',['id'=>$gr['goodsId']])}">{:WSTMSubstr($gr['goodsName'],0,13)}</a></p>
 					   <span>￥{:sprintf('%.1f',$gr['shopPrice'])}&nbsp;&nbsp;<em>￥{:sprintf('%.1f',$gr['marketPrice'])}</em></span>
 					   <br />
-					   <a class="floor-buy" href="javascript:WST.addCart({$gr['goodsId']})">加入购物车</a>
+					   <a class="floor-buy" href="javascript:WST.addCart({$gr['goodsId']})">加入购买车</a>
 					</div>
 				  </li>
 				  {/wst:goods}

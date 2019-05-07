@@ -5,7 +5,7 @@
 <div class="wst-shop-head"><span>评价列表</span></div>
 <div class="wst-shop-tbar">
   <label>
-    商品分类：
+    资源分类：
     <select name="cat1" id="cat1" onchange="getCat(this.value)" class="s-query">
         <option value="">-请选择-</option>
       {volist name=":WSTShopCats(0)" id="vo"}
@@ -15,7 +15,7 @@
     <select name="cat2" id="cat2" class="s-query"><option value="">-请选择-</option></select>
   </label>
   <label>
-    商品名称：<input type="text" name="goodsName" id="goodsName" class="s-query" /><button class="s-btn" onclick="queryByPage()">查询</button>
+    资源名称：<input type="text" name="goodsName" id="goodsName" class="s-query" /><button class="s-btn" onclick="queryByPage()">查询</button>
   </label>
 </div>
 <div class="wst-shop-content"> 
@@ -23,8 +23,8 @@
    <thead>
    <tr>
      <th width="100">序号</th>
-     <th width="400">商品</th>
-     <th>商品评分</th>
+     <th width="400">资源</th>
+     <th>资源评分</th>
      <th>服务评分</th>
      <th>时效评分</th>
    </tr>

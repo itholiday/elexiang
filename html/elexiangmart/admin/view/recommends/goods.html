@@ -7,7 +7,7 @@
 <form autocomplete='off'>
 <table class='wst-form wst-box-top'>
 	  <tr>
-	     <th width='120'>商品分类<font color='red'>*</font>：</th>
+	     <th width='120'>资源分类<font color='red'>*</font>：</th>
 	     <td colspan='2'>
 	        <select id="cat12_0" class='ipt pgoodsCats1_2' level="0" onchange="WST.ITGoodsCats({id:'cat12_0',val:this.value,isRequire:false,className:'pgoodsCats1_2'});">
 	          <option value=''>请选择</option>
@@ -17,7 +17,7 @@
 	        </select>
 	     </td>
 	     <td>
-	        商品分类<font color='red'>*</font>：
+	        资源分类<font color='red'>*</font>：
 	        <select id="cat22_0" class='ipt pgoodsCats2_2' level="0" onchange="WST.ITGoodsCats({id:'cat22_0',val:this.value,isRequire:false,className:'pgoodsCats2_2',afterFunc:'listQueryByGoods'});">
 	          <option value=''>所有分类</option>
 	          {volist name=":WSTGoodsCats(0)" id="vo"}
@@ -28,7 +28,7 @@
 	  <tr>
 	     <th width='120'>搜索：</th>
 	     <td colspan='2'>
-	        <input type='text' id='key_2' style='width:250px' placeholder='商品名称、店铺名称'/>
+	        <input type='text' id='key_2' style='width:250px' placeholder='资源名称、店铺名称'/>
 	        <input type='button' value='搜索' class='btn btn-blue' onclick='javascript:loadGoods("_2")'>
 	     </td>
 	     <td style='padding-left:30px;'>
@@ -47,7 +47,7 @@
 	       <div class="recom-lbox">
 	            <div class="trow head">
 	              <div class="tck"><input onclick="WST.checkChks(this,'.lchk_2')" type="checkbox"></div>
-	              <div class="ttxt">商品</div>
+	              <div class="ttxt">资源</div>
 	            </div>
 	            <div id="llist_2" style="width:350px;"></div>
 	       </div>
@@ -62,7 +62,7 @@
 	       <div class="recom-rbox">
 	            <div class="trow head">
 		            <div class="tck"><input onclick="WST.checkChks(this,'.rchk_2')" type="checkbox"></div>
-		            <div class="ttxt">商品</div>
+		            <div class="ttxt">资源</div>
 		            <div class="top">排序</div>
 		        </div>
 	            <div id="rlist_2"></div>

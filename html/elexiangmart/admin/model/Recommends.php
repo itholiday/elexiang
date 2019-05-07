@@ -8,7 +8,7 @@ namespace elexiangmart\admin\model;
 use think\Db;
 class Recommends extends Base{
 	/**
-	 * 获取已推荐商品
+	 * 获取已推荐资源
 	 */
 	public function listQueryByGoods(){
 		$dataType = (int)input('post.dataType');
@@ -25,17 +25,17 @@ class Recommends extends Base{
 		return $data;        
 	}
 	/**
-	 * 推荐商品
+	 * 推荐资源
 	 */
     public function editGoods(){
 	    $ids = input('post.ids');
 	    $dataType = (int)input('post.dataType');
 	    $goodsCatId = (int)input('post.goodsCatId');
-	    if($ids=='')return WSTReturn("请选择要推荐的商品");
+	    if($ids=='')return WSTReturn("请选择要推荐的资源");
 	    $ids = explode(',',$ids);
-	    //查看商品是否有效
+	    //查看资源是否有效
 	    $rs = Db::name('goods')->where(['goodsStatus'=>1,'dataFlag'=>1,'goodsId'=>['in',$ids]])->field('goodsId')->select();
-	    if(!$rs)return WSTReturn("请选择要推荐的商品");
+	    if(!$rs)return WSTReturn("请选择要推荐的资源");
 	    Db::startTrans();
 	    try{
 		    $this->where(['dataSrc'=>0,'dataType'=>$dataType,'goodsCatId'=>$goodsCatId])->delete();
@@ -84,7 +84,7 @@ class Recommends extends Base{
 	    $goodsCatId = (int)input('post.goodsCatId');
 	    if($ids=='')return WSTReturn("请选择要推荐的店铺");
 	    $ids = explode(',',$ids);
-	    //查看商品是否有效
+	    //查看资源是否有效
 	    $rs = Db::name('shops')->where(['shopStatus'=>1,'dataFlag'=>1,'shopId'=>['in',$ids]])->field('shopId')->select();
 	    if(!$rs)return WSTReturn("请选择要推荐的店铺");
 	    Db::startTrans();
@@ -136,7 +136,7 @@ class Recommends extends Base{
 	    $goodsCatId = (int)input('post.goodsCatId');
 	    if($ids=='')return WSTReturn("请选择要推荐的品牌");
 	    $ids = explode(',',$ids);
-	    //查看商品是否有效
+	    //查看资源是否有效
 	    $rs = Db::name('brands')->where(['dataFlag'=>1,'brandId'=>['in',$ids]])->field('brandId')->select();
 	    if(!$rs)return WSTReturn("请选择要推荐的品牌");
 	    Db::startTrans();

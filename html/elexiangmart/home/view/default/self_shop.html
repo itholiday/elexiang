@@ -62,7 +62,7 @@
 	<div class="s-buy-new-best-hot">
 		<ul class="s-rec">
 				<li class="s-rec-item j-s-rec-selected" id="fl_f_0" onmouseover="gpanelOver2(this);"><a href="javascript:void(0)">店长推荐</a></li>
-				<li class="s-rec-item" id="fl_f_1" onmouseover="gpanelOver2(this);"><a href="javascript:void(0)">热卖商品</a></li>
+				<li class="s-rec-item" id="fl_f_1" onmouseover="gpanelOver2(this);"><a href="javascript:void(0)">热卖资源</a></li>
 		</ul>
 		{/* 店长推荐  */}
 		<div class="s-rec-goods-list" id="fl_f_0_pl">
@@ -75,7 +75,7 @@
 					<p class="s-rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$vo["goodsId"])}' target='_blank'>{$vo['goodsName']}</a></p>
 					<div class="s-rec-goods-bottom">
 					   <p class="s-rec-goods-price">价格:<span>￥{$vo['shopPrice']}</span></p>
-					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+					   <a href="javascript:WST.addCart({$vo['goodsId']});">加入购买车</a>
 					</div>
 				</li>
 				{/volist}
@@ -93,7 +93,7 @@
 					<p class="s-rec-goods-desc"><a href='{:Url("home/goods/detail","id=".$hot["goodsId"])}' target='_blank'>{$hot['goodsName']}</a></p>
 					<div class="s-rec-goods-bottom">
 					   <p class="s-rec-goods-price">价格:<span>￥{$hot['shopPrice']}</span></p>
-					   <a href="javascript:WST.addCart({$hot['goodsId']});">加入购物车</a>
+					   <a href="javascript:WST.addCart({$hot['goodsId']});">加入购买车</a>
 					</div>
 				</li>
 				{/volist}
@@ -129,14 +129,14 @@
 
 			<div class="s-goods-list">
 
-				{/* 楼层分类下的商品 */}
+				{/* 楼层分类下的资源 */}
 			 	{wst:shopfloorgoods shop="data['shop']['shopId']"  cat="cat2['catId']" cache="86400" num='10' id='sgf'}
 
 			 	<div class="s-goods s-goods-f{$l}">
 		      	<div class="img">
 		      		<a target="_blank" href="{:Url('home/goods/detail','id='.$sgf['goodsId'])}" title="{$sgf['goodsName']}">
 		      		<img class='goodsImg' data-original="__ROOT__/{:WSTImg($sgf['goodsImg'])}" alt="{$sgf['goodsName']}" title="{$sgf['goodsName']}"/></a>
-		      		<span class="s-add-cart" onclick="WST.addCart({$sgf['goodsId']})">加入购物车</span>
+		      		<span class="s-add-cart" onclick="WST.addCart({$sgf['goodsId']})">加入购买车</span>
 		      	</div>
 		      	<div class="p-name"><a target="_blank" href="{:Url('home/goods/detail','id='.$sgf['goodsId'])}" class="wst-redlink" title="{$sgf['goodsName']}">
 		      		{:WSTMSubstr($sgf['goodsName'],0,13)}</a></div>
@@ -167,18 +167,18 @@
 		
 	</div>
 
-	{/* 您最近浏览的商品 */}
+	{/* 您最近浏览的资源 */}
 	{if cookie("history_goods")!=''}
 	<div class="history-box">
 		<div class="history-title">
-		<p>您最近浏览了以下商品</p> 
+		<p>您最近浏览了以下资源</p>
 		</div>
 		<div class="history-goods-list">
 			{wst:goods type='history'  num='5'}
 		      <div class="s-goods s-goods-h">
 		      	<div class="img">
 		      		<a target="_blank" href="{:Url('home/goods/detail','id='.$vo['goodsId'])}" title="{$vo['goodsName']}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a>
-		      		<span class="s-add-cart" onclick="WST.addCart({$vo['goodsId']})">加入购物车</a>
+		      		<span class="s-add-cart" onclick="WST.addCart({$vo['goodsId']})">加入购买车</a>
 		      	</div>
 		      	<div class="p-name"><a target="_blank" href="{:Url('home/goods/detail','id='.$vo['goodsId'])}" class="wst-redlink" title="{$vo['goodsName']}">
 		      		{:WSTMSubstr($vo['goodsName'],0,13)}</a></div>

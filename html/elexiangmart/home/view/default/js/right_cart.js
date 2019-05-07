@@ -54,7 +54,7 @@ $(document).ready(function(){
 		if($('.toolbar-wrap').hasClass('toolbar-open')){
 			if($(this).find('.tab-text').length > 0){
 				if(! $('.tbar-tab-cart').find('.tab-text').length > 0){
-					var info = "<em class='tab-text '>购物车</em>";
+					var info = "<em class='tab-text '>购买车</em>";
 					$('.tbar-tab-cart').append(info);
 					$('.tbar-tab-cart').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-cart').css({'visibility':"hidden","z-index":"-1"});
@@ -97,7 +97,7 @@ $(document).ready(function(){
 					$('.tbar-panel-follow').css({'visibility':"hidden","z-index":"-1"});
 				}
 				if(! $('.tbar-tab-cart').find('.tab-text').length > 0){
-					var info = "<em class='tab-text '>购物车</em>";
+					var info = "<em class='tab-text '>购买车</em>";
 					$('.tbar-tab-cart').append(info);
 					$('.tbar-tab-cart').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-cart').css({'visibility':"hidden","z-index":"-1"});
@@ -138,7 +138,7 @@ function getRightCart(){
 				$('#j-goods-count').html(json.goodsTotalNum);
 				$('#j-goods-total-money').html(json.goodsTotalMoney);
 			}else{
-				$('#cart-panel').html('<p class="right-carts-empty">购物车空空如也，赶紧去选购吧～</p>');
+				$('#cart-panel').html('<p class="right-carts-empty">购买车空空如也，赶紧去选购吧～</p>');
 			}
 		}
 	});
@@ -161,7 +161,7 @@ function delRightCart(obj,id){
 }
 function jumpSettlement(){
 	if($('#cart-panel').children().size()==0){
-		WST.msg("您的购物车没有商品哦，请先添加商品~",{icon:2});
+		WST.msg("您的购买车没有资源哦，请先添加资源~",{icon:2});
 		return;
 	}
 	location.href=WST.U('home/carts/settlement');

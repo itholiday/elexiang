@@ -48,10 +48,10 @@ td,th{padding:2px;}
 </table>
 <table width='100%' border='1' style='border-collapse:collapse;border-color:#000;'>
   <tr style='background:#cccccc;'>
-    <th align="left">商品名称</th>
-    <th align="left">商品规格</th>
-    <th align="left" align="left">商品价格</th>
-    <th align="left">商品数量</th>
+    <th align="left">资源名称</th>
+    <th align="left">资源规格</th>
+    <th align="left" align="left">资源价格</th>
+    <th align="left">资源数量</th>
     <th align="left">小计</th>
   </tr>
   {volist name='$object["goods"]' id='vo2'}
@@ -66,7 +66,7 @@ td,th{padding:2px;}
   </table>
   <table width='100%' border='0'>
   <tr>
-    <td colspan='6' align="right">商品总金额：¥{$object['goodsMoney']}</td>
+    <td colspan='6' align="right">资源总金额：¥{$object['goodsMoney']}</td>
   </tr>
   <tr>
     <td colspan='6' align="right">运费：¥{$object['deliverMoney']}</td>

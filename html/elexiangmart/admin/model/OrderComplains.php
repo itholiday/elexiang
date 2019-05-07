@@ -70,7 +70,7 @@ class OrderComplains extends Base{
 									      ->join('__SHOPS__ s','u.userType=1 and s.userId=u.userId','left')
 									      ->where(['orderId'=>$data['orderId']])
 									      ->select();
-			//获取相关商品
+			//获取相关资源
 			$rs['goodslist'] = Db::name('order_goods')->where(['orderId'=>$data['orderId']])->select();
 			$data['order'] = $rs;
 	 	}

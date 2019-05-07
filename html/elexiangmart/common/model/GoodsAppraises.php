@@ -86,9 +86,9 @@ class GoodsAppraises extends Base{
 		$orders = model('orders')->where(['orderId'=>$orderId,'dataFlag'=>1])->field('orderStatus,orderNo,isAppraise,orderScore,shopId')->find();
 		if(empty($orders))return WSTReturn("无效的订单");
 		if($orders['orderStatus']!=2)return WSTReturn("订单状态已改变，请刷新订单后再尝试!");
-		//检测商品是否已评价
+		//检测资源是否已评价
 		$apCount = $this->where(['orderId'=>$orderId,'goodsId'=>$goodsId,'goodsSpecId'=>$goodsSpecId])->count();
-		if($apCount>0)return WSTReturn("该商品已评价!");
+		if($apCount>0)return WSTReturn("该资源已评价!");
 		Db::startTrans();
 		try{	
 			//增加订单评价
@@ -107,7 +107,7 @@ class GoodsAppraises extends Base{
 			$rs = $this->validate('GoodsAppraises.add')->allowField(true)->save($data);
 			if($rs !==false){
 				WSTUseImages(0, $this->id, $data['images']);
-				//增加商品评分
+				//增加资源评分
 				$prefix = config('database.prefix');
 				$updateSql = "update ".$prefix."goods_scores set 
 				             totalScore=totalScore+".(int)($goodsScore+$serviceScore+$timeScore).",
@@ -117,7 +117,7 @@ class GoodsAppraises extends Base{
 				             totalUsers=totalUsers+1,goodsUsers=goodsUsers+1,serviceUsers=serviceUsers+1,timeUsers=timeUsers+1
 				             where goodsId=".$goodsId;
 				Db::execute($updateSql);
-				//增加商品评价数
+				//增加资源评价数
 				Db::name('goods')->where('goodsId',$goodsId)->setInc('appraiseNum');
 				//增加店铺评分
 				$updateSql = "update ".$prefix."shop_scores set 
@@ -139,7 +139,7 @@ class GoodsAppraises extends Base{
 						break;
 					}
 				}
-				//订单商品全部评价完则修改订单状态
+				//订单资源全部评价完则修改订单状态
 				if($isFinish){
 					if(WSTConf("isAppraisesScore")==1){
 						//给用户增加积分
@@ -169,7 +169,7 @@ class GoodsAppraises extends Base{
 
 	}
 	/**
-	* 根据商品id取评论
+	* 根据资源id取评论
 	*/
 	public function getById(){
 		// 处理匿名

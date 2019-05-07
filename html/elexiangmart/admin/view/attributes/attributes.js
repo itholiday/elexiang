@@ -10,7 +10,7 @@ $(function(){
         rownumbers:true,
         columns: [
 	        { display: '属性名称', name: 'attrName', isSort: false,align: 'left'},
-	        { display: '所属商品分类', name: 'goodsCatNames', isSort: false,align: 'left'},
+	        { display: '所属资源分类', name: 'goodsCatNames', isSort: false,align: 'left'},
 	        { display: '属性类型', name: 'attrType', isSort: false,align: 'left',render :function(rowdata, rowindex, value){
 	        	return (value==1)?'多选项':(value==2?'下拉框':'输入框');
 	        }},

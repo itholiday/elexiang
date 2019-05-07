@@ -42,7 +42,7 @@ function initOrderGrid(id){
         columns: [
             { display: '订单号', name: 'orderNo',isSort: false},
 	        { display: '支付方式', name: 'payTypeName',isSort: false},
-	        { display: '商品金额', name: 'goodsMoney',isSort: false},
+	        { display: '资源金额', name: 'goodsMoney',isSort: false},
 	        { display: '运费', name: 'deliverMoney',isSort: false,render: function (rowdata, rowindex, value){
 	        	return '¥'+value;
 	        }},

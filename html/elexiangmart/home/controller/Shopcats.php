@@ -41,7 +41,7 @@ class Shopcats extends Base{
     	return $rs;
     }
     /**
-     * 批量保存商品分类
+     * 批量保存资源分类
      */
     public function batchSaveCats(){
     	$m = new M();

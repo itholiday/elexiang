@@ -86,7 +86,7 @@ class CronJobs extends Base{
 		    	//提前锁定订单
 		    	Db::name('orders')->where(['orderId'=>['in',$orderIds]])->update(['isAppraise'=>1,'isClosed'=>1]);
 		    	foreach ($rs as $okey => $order){;
-		    	    //获取订单相关的商品
+		    	    //获取订单相关的资源
 		    	    $ordergoods = Db::name('order_goods')->where('orderId',$order->orderId)->field('goodsId,orderId,goodsSpecId')->select();
 		    	    foreach($ordergoods as $goods){
 		    	    	//增加订单评价
@@ -103,7 +103,7 @@ class CronJobs extends Base{
 						$data['createTime'] = date('Y-m-d H:i:s');
 						Db::name('goods_appraises')->insert($data);
 		    	    }
-					//增加商品评分
+					//增加资源评分
 					$updateSql = "update ".$prefix."goods_scores set 
 						             totalScore=totalScore+15,
 					             goodsScore=goodsScore+5,
@@ -112,7 +112,7 @@ class CronJobs extends Base{
 					             totalUsers=totalUsers+1,goodsUsers=goodsUsers+1,serviceUsers=serviceUsers+1,timeUsers=timeUsers+1
 					             where goodsId=".$goods['goodsId'];
 					Db::execute($updateSql);
-					//增加商品评价数
+					//增加资源评价数
 					Db::name('goods')->where('goodsId',$goods['goodsId'])->setInc('appraiseNum');
 					//增加店铺评分
 					$updateSql = "update ".$prefix."shop_scores set 
@@ -134,7 +134,7 @@ class CronJobs extends Base{
 								break;
 						}
 					}
-					//订单商品全部评价完则修改订单状态
+					//订单资源全部评价完则修改订单状态
 					if($isFinish){
 						if(WSTConf("isAppraisesScore")==1){
 							//给用户增加积分

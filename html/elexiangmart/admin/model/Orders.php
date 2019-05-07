@@ -156,7 +156,7 @@ class Orders extends Base{
 		if(empty($orders))return WSTReturn("无效的订单信息");
 		//获取订单信息
 		$orders['log'] = Db::name('log_orders')->where('orderId',$orderId)->order('logId asc')->select();
-		//获取订单商品
+		//获取订单资源
 		$orders['goods'] = Db::name('order_goods')->where('orderId',$orderId)->order('id asc')->select();
 		return $orders;
 	}

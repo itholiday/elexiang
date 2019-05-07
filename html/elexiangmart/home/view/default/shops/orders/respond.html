@@ -18,7 +18,7 @@
     <div style='width:990px;overflow:hidden;'>
             <input type='hidden' id='complainId' class='ipt' value="{$data['complainId']}"/>
           <div class='wst-complain-left'>
-             <div class='wst-complain-order-head'>订单商品</div>
+             <div class='wst-complain-order-head'>订单资源</div>
              <div class='wst-complain-order-goods'>
              {volist name="$data['goodsList']" id="goods" key='key2'}
               <a target='_blank' href="{:Url('Home/Goods/Detail',array('id'=>$goods['goodsId']))}" title="{$goods['goodsName']}">

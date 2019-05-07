@@ -103,7 +103,7 @@ select{
 .wst-menu li:hover,li.wst-menua{
 	font-weight: bolder;
 	color: #077f1a;
-	border-left: 2px solid #57b50b;
+	border-left: 2px solid #e4393c;
 }
 
 .wst-menu .selected {
@@ -213,7 +213,7 @@ select{
 }
 
 .wst-tab-nav .on {
-	background: none repeat scroll 0 0 #e45050;
+	background: none repeat scroll 0 0 #e4393c;
     border-bottom: 0 none;
     color: #ffffff;
     font-weight:bold;
@@ -264,7 +264,7 @@ select{
 }
 
 .wst-shop-nav {
-	border-bottom:6px solid #57b50b;
+	border-bottom:6px solid #e4393c;
 	text-align: center;
 }
 
@@ -416,7 +416,7 @@ select{
 }
 .wst-lite-tit span{
 	float:left;
-	color: #e45050;
+	color: #e4393c;
 	font-size: 19px;
 	margin-left:10px;
 	font-family:"microsoft yahei";
@@ -425,22 +425,22 @@ a.wst-lite-in{
 	float:left;
 	margin-top:6px;
 	padding:3px 8px;
-	color: #e45050;
-	border:1px solid #e45050;
+	color: #e4393c;
+	border:1px solid #e4393c;
 }
 a.wst-lite-in:hover{
 	color: #ffffff;
 	border:1px solid #ffffff;
-	background:#e45050;
+	background:#e4393c;
 }
 .wst-lite-sea{
 	float:right;
 	background:#ffffff;
 	margin-top:20px;
 }
-.wst-lite-sea .search{border:2px solid #57b50b;height: 35px;position: relative;}
-.wst-lite-sea .search .j-search-type{width:78px;top:0;line-height:36px;position: absolute;padding:0;border-right:2px solid #57b50b;border-left:2px solid #57b50b;cursor: pointer;left:-2px;text-align:center;}
-.wst-lite-sea .search .j-type-list{width:70px;top:35px;line-height:36px;position: absolute;padding:0 4px;border:2px solid #57b50b;cursor: pointer;background-color: #fff;left:-2px;z-index: 100;border-top:0;display: none;text-align: center;}
+.wst-lite-sea .search{border:2px solid #e4393c;height: 35px;position: relative;}
+.wst-lite-sea .search .j-search-type{width:78px;top:0;line-height:36px;position: absolute;padding:0;border-right:2px solid #e4393c;border-left:2px solid #e4393c;cursor: pointer;left:-2px;text-align:center;}
+.wst-lite-sea .search .j-type-list{width:70px;top:35px;line-height:36px;position: absolute;padding:0 4px;border:2px solid #e4393c;cursor: pointer;background-color: #fff;left:-2px;z-index: 100;border-top:0;display: none;text-align: center;}
 .wst-lite-sea .search .j-search-type i {
   top: 15px;
   right: 6px;
@@ -578,14 +578,14 @@ a.wst-lite-in:hover{
 .wst-shop-head{
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #e45050;
+	border-bottom: 1px solid #e4393c;
 }
 .wst-shop-head span{
 	float: left;
 	line-height:28px;
 	padding:0px 28px;
 	color:#ffffff;
-	background:#e45050;
+	background:#e4393c;
 }
 .wst-shop-head a{
 	float: right;
@@ -621,7 +621,7 @@ a.wst-lite-in:hover{
 
 
 
-/********************************************** 新增商品页面 ****************************************************/
+/********************************************** 新增资源页面 ****************************************************/
 /*自定义单选框样式*/
 .wst-radio + label {
   -webkit-appearance: none;
@@ -732,7 +732,7 @@ a.wst-lite-in:hover{
 	cursor:pointer;
 }
 .s-btn{
-  background: #e45050 none repeat scroll 0 0;
+  background: #e4393c none repeat scroll 0 0;
   border-color: transparent;
   color: #fff;
   border-radius: 0px;
@@ -781,7 +781,7 @@ a.wst-lite-in:hover{
 .spec-line{border-top:1px dashed #cccccc;margin:5px 0px 7px 0px}
 .spec-head{font-weight:bold;height:30px;line-height:30px;background:url(../img/img_seller_ggjt.png) no-repeat 0px 7px;padding-left:25px;}
 .spec-body{border:1px solid #cccccc;padding:5px;margin-bottom:10px;}
-/************************ 商家商品管理页面 **************************/
+/************************ 商家资源管理页面 **************************/
 .goods-img{
 	width:60px; 
 	height:60px;

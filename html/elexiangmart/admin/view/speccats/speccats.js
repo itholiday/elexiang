@@ -10,7 +10,7 @@ $(function(){
         rownumbers:true,
         columns: [
 	        { display: '规格类型', name: 'name', id:'catName', isSort: false,align: 'left'},
-	        { display: '所属商品分类', name: 'goodsCatNames', isSort: false,align: 'left'},
+	        { display: '所属资源分类', name: 'goodsCatNames', isSort: false,align: 'left'},
 	        { display: '是否允许上传图片', name: 'isAllowImg', isSort: false,width: 100,render :function(rowdata, rowindex, value){
 	        	return (value==1)?'允许':'';
 	        }},

@@ -19,7 +19,7 @@ class Useraddress extends Base{
 	}
     /**
     * 获取地址信息
-    * 1.购物车结算有引用
+    * 1.购买车结算有引用
     */
     public function listQuery(){
         //获取用户信息

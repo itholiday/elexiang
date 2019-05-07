@@ -71,7 +71,7 @@ class Weixinpays extends Base{
 			if($needPay>0){
 				// 使用统一支付接口
 				$wxQrcodePay = new \WxQrcodePay ();
-				$wxQrcodePay->setParameter ( "body", "支付订单费用" ); // 商品描述
+				$wxQrcodePay->setParameter ( "body", "支付订单费用" ); // 资源描述
 				$out_trade_no = $obj["orderId"];
 				$wxQrcodePay->setParameter ( "out_trade_no", "$out_trade_no" ); // 商户订单号
 				$wxQrcodePay->setParameter ( "total_fee", $needPay * 100 ); // 总金额

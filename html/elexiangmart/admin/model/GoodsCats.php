@@ -3,7 +3,7 @@ namespace elexiangmart\admin\model;
 /**
  * ============================================================================
 
- * 商品分类业务处理
+ * 资源分类业务处理
  */
 use think\Db;
 class GoodsCats extends Base{
@@ -21,7 +21,7 @@ class GoodsCats extends Base{
 	}
 	
 	/**
-	 *获取商品分类名值对
+	 *获取资源分类名值对
 	 */
 	public function listKeyAll(){
 		$rs = $this->field("catId,catName")->where(['dataFlag'=>1])->order('catSort asc,catName asc')->select();
@@ -117,7 +117,7 @@ class GoodsCats extends Base{
 			$result = $this->where("catId in(".implode(',',$ids).")")->update(['isShow' => $isShow]);
 			if(false !== $result){
 				if($isShow==0){
-					//删除购物车里的相关商品
+					//删除购买车里的相关资源
 					$goods = Db::name('goods')->where(["goodsCatId"=>['in',$ids],'isSale'=>1])->field('goodsId')->select();
 					if(count($goods)>0){
 						$goodsIds = [];
@@ -126,7 +126,7 @@ class GoodsCats extends Base{
 						}
 						Db::name('carts')->where(['goodsId'=>['in',$goodsIds]])->delete();
 					}
-					//把相关的商品下架了
+					//把相关的资源下架了
 					Db::name('goods')->where("goodsCatId in(".implode(',',$ids).")")->update(['isSale' => 0]);
 				}
 		    }
@@ -169,7 +169,7 @@ class GoodsCats extends Base{
 		$this->where("catId in(".implode(',',$ids).")")->update(['isShow' => (int)$data['isShow'],'isFloor'=> $data['isFloor']]);
 		if(false !== $result){
 			if($data['isShow']==0){
-				//删除购物车里的相关商品
+				//删除购买车里的相关资源
 				$goods = Db::name('goods')->where(["goodsCatId"=>['in',$ids],'isSale'=>1])->field('goodsId')->select();
 				if(count($goods)>0){
 					$goodsIds = [];
@@ -178,7 +178,7 @@ class GoodsCats extends Base{
 					}
 					Db::name('carts')->where(['goodsId'=>['in',$goodsIds]])->delete();
 				}
-		    	//把相关的商品下架了
+		    	//把相关的资源下架了
 		        Db::name('goods')->where("goodsCatId in(".implode(',',$ids).")")->update(['isSale' => 0]);
 			}
 			return WSTReturn("修改成功", 1);
@@ -200,7 +200,7 @@ class GoodsCats extends Base{
 		    $data['dataFlag'] = -1;
 		    $result = $this->where("catId in(".implode(',',$ids).")")->update($data);
 		    if(false !== $result){
-		        //删除购物车里的相关商品
+		        //删除购买车里的相关资源
 				$goods = Db::name('goods')->where(["goodsCatId"=>['in',$ids],'isSale'=>1])->field('goodsId')->select();
 				if(count($goods)>0){
 					$goodsIds = [];
@@ -209,7 +209,7 @@ class GoodsCats extends Base{
 					}
 					Db::name('carts')->where(['goodsId'=>['in',$goodsIds]])->delete();
 				}
-		    	//把相关的商品下架了
+		    	//把相关的资源下架了
 		        Db::name('goods')->where("goodsCatId in(".implode(',',$ids).")")->update(['isSale' => 0]);
 		    }
             Db::commit();

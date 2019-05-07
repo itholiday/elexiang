@@ -1,5 +1,5 @@
 {extend name="default/shops/base" /}
-{block name="title"}<?=($object['goodsId']>0)?"编辑":"新增";?>商品-卖家中心{__block__}{/block}
+{block name="title"}<?=($object['goodsId']>0)?"编辑":"新增";?>资源-卖家中心{__block__}{/block}
 {block name="css"}
 <link rel="stylesheet" type="text/css" href="__STATIC__/plugins/webuploader/webuploader.css?v={$v}" />
 <link rel="stylesheet" type="text/css" href="__STATIC__/plugins/webuploader/batchupload.css?v={$v}" />
@@ -12,9 +12,9 @@ label{margin-right:10px;}
 </style>
 <div id='tab' class="wst-tab-box">
 	<ul class="wst-tab-nav">
-	   <li>商品信息</li>
+	   <li>资源信息</li>
 	   <li>规格属性</li>
-	   <li>商品相册</li>
+	   <li>资源相册</li>
 	</ul>
     <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;border:0px;'>
       <form id='editform' autocomplete='off'>

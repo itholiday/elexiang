@@ -3,11 +3,11 @@ namespace elexiangmart\home\model;
 /**
  * ============================================================================
 
- * 商品属性分类
+ * 资源属性分类
  */
 class Attributes extends Base{
 	/**
-	 * 获取可供筛选的商品属性
+	 * 获取可供筛选的资源属性
 	 */
 	public function listQueryByFilter($catId){
 		$ids = model('GoodsCats')->getParentIs($catId);

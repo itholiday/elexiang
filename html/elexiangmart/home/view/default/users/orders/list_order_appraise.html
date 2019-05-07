@@ -16,13 +16,13 @@
       <input type="hidden" id="oid{$k}" value="{$vo['orderId']}">
       <input type="hidden" id="gsid{$k}" value="{$vo['goodsSpecId']}">
       <div class="o-goods-info">
-        <img src="__ROOT__/{$vo['goodsImg']}" title="商品名称"  />
+        <img src="__ROOT__/{$vo['goodsImg']}" title="资源名称"  />
         <p class="o-goodsName" title="{$vo['goodsName']}">{$vo['goodsName']}</p>
         <p class="o-goodsSpec" title="{$vo['goodsSpecNames']}">{$vo['goodsSpecNames']}</p>
       </div>
       <div class="appraise-area" id="app-box{$k}">
                 <div class="appraise-item goodsScore{$k}">
-                  <div class="appraise-title">商品评分：</div>
+                  <div class="appraise-title">资源评分：</div>
                   <div class="appraise-content">
                     <div class="{$vo['id']}_goodsScore"  style='float:left'></div>
                     <div id="{$vo['id']}_goodsScore_hint"  style='float:left'></div>
@@ -83,14 +83,14 @@
     {else /}
     <div class="appraise-complate">
       <div class="o-goods-info">
-        <img src="__ROOT__/{$vo['goodsImg']}" title="商品名称"  />
+        <img src="__ROOT__/{$vo['goodsImg']}" title="资源名称"  />
         <p class="o-goodsName" title="{$vo['goodsName']}">{$vo['goodsName']}</p>
         <p class="o-goodsSpec" title="{$vo['goodsSpecNames']}">{$vo['goodsSpecNames']}</p>
       </div>
 
       <div class="appraise-area">
                 <div class="appraise-item">
-                  <div class="appraise-title">商品评分：</div>
+                  <div class="appraise-title">资源评分：</div>
                   <div class="appraise-content">
                     {for start="0" end="$vo['appraise']['goodsScore']"}
                       <img src="__STATIC__/plugins/raty/img/star-on-big.png">

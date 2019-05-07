@@ -4,7 +4,7 @@ use elexiangmart\admin\model\GoodsAppraises as M;
 /**
  * ============================================================================
 
- * 商品评价控制器
+ * 资源评价控制器
  */
 class Goodsappraises extends Base{
 	

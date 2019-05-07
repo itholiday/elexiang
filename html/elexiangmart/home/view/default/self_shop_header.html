@@ -29,7 +29,7 @@
       {/if}
       </div>
       <div class="wst-shop-info3">
-        <span class="wst-shop-eva">商品评价：<span class="wst-shop-red">{$data['shop']['scores']['goodsScore']}</span></span>
+        <span class="wst-shop-eva">资源评价：<span class="wst-shop-red">{$data['shop']['scores']['goodsScore']}</span></span>
         <span class="wst-shop-eva">时效评价：<span class="wst-shop-red">{$data['shop']['scores']['timeScore']}</span></span>
         <span class="wst-shop-eva">服务评价：<span class="wst-shop-red">{$data['shop']['scores']['serviceScore']}</span></span>
         {if($data['shop']['favShop']>0)}
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="wst-shop-sea">
-      <input type="text" id="goodsName" value="{$goodsName}" placeholder="输入商品名称">
+      <input type="text" id="goodsName" value="{$goodsName}" placeholder="输入资源名称">
       <a class="search" href="javascript:void(0);" onclick="javascript:WST.goodsSearch($('#goodsName').val());">搜全站</a>
       <a class="search" href="javascript:void(0);" onclick="javascript:searchShopsGoods(0);">搜本店</a>
       <div class="wst-shop-word">
@@ -59,7 +59,7 @@
 <div class="s-wst-nav-menus">
       <div id="s-wst-nav-items">
            <ul>
-               <li class="s-nav-li s-cat-head"><a href="{:Url('home/shops/home',['shopId'=>$data['shop']['shopId']])}" target="_blank"><em></em>本店商品分类</a></li>
+               <li class="s-nav-li s-cat-head"><a href="{:Url('home/shops/home',['shopId'=>$data['shop']['shopId']])}" target="_blank"><em></em>本店资源分类</a></li>
                {volist name="$data['shopcats']" id="cat1" key="l" length="6"}
                <li class="s-nav-li">
                     <a href="{:url('home/shops/home',['shopId'=>$data['shop']['shopId'],'ct1'=>$cat1['catId']])}" target="_blank">{$cat1['catName']}</a>

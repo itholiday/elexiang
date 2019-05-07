@@ -1,6 +1,6 @@
 /**删除批量上传的图片**/
 function delBatchUploadImg(obj){
-	var c = WST.confirm({content:'您确定要删除商品图片吗?',yes:function(){
+	var c = WST.confirm({content:'您确定要删除资源图片吗?',yes:function(){
 		$(obj).parent().remove("li");
 		layer.close(c);
 	}});
@@ -134,7 +134,7 @@ function getBrands(objId,catId,objVal){
 function toEdit(id,src){
 	location.href = WST.U('home/goods/edit','id='+id+'&src='+src);
 }
-/**保存商品数据**/
+/**保存资源数据**/
 function save(){
 	$('#editform').isValid(function(v){
 		if(v){
@@ -375,7 +375,7 @@ function addSpecSaleCol(){
 		key++;
 	}
 	$('#spec-sale-tby').append(html.join(''));
-	//判断是否禁用商品价格和库存字段
+	//判断是否禁用资源价格和库存字段
 	if($('#spec-sale-tby').html()!=''){
 		$('#goodsStock').attr('disalbed',true);
 		$('#shopPrice').attr('disalbed',true);
@@ -400,7 +400,7 @@ function batchChangeTxt(v,catId,num){
 		$(this).html(v);
 	});
 }
-/**检测商品销售规格值是否重复**/
+/**检测资源销售规格值是否重复**/
 function checkProductNo(obj){
 	v = $.trim(obj.value);
 	var num = 0;
@@ -412,7 +412,7 @@ function checkProductNo(obj){
 		obj.value = '';
 	}
 }
-/**获取商品规格和属性**/
+/**获取资源规格和属性**/
 function getSpecAttrs(goodsCatId){
 	$('#specsAttrBox').empty();
 	specNum = 0;
@@ -421,7 +421,7 @@ function getSpecAttrs(goodsCatId){
 		if(json.status==1 && json.data){
 			var html = [],tmp,str;
 			if(json.data.spec0 || json.data.spec1){
-				html.push('<div class="spec-head">商品规格</div>');
+				html.push('<div class="spec-head">资源规格</div>');
 				html.push('<div class="spec-body">');
 				if(json.data.spec0){
 					tmp = json.data.spec0;
@@ -457,7 +457,7 @@ function getSpecAttrs(goodsCatId){
 						);
 			}
 			if(json.data.attrs){
-				html.push('<div class="spec-head">商品属性</div>');
+				html.push('<div class="spec-head">资源属性</div>');
 				html.push('<div class="spec-body">');
 				html.push('<table class="attr-table">');
 				for(var i=0;i<json.data.attrs.length;i++){
@@ -499,7 +499,7 @@ function getSpecAttrs(goodsCatId){
 					}
 				}
 				addSpecSaleCol();
-				//设置商品属性值
+				//设置资源属性值
 				var tmp = null;
 				if(OBJ.attrs.length){
 					for(var i=0;i<OBJ.attrs.length;i++){
@@ -539,7 +539,7 @@ function saleByPage(p){
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
 	       		$('#list').html(html);
-	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	       	});
 	       	if(json.TotalPage>1){
 	       		laypage({
@@ -572,7 +572,7 @@ function auditByPage(p){
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
 	       		$('#list').html(html);
-	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	       	});
 	       	if(json.TotalPage>1){
 	       		laypage({
@@ -605,7 +605,7 @@ function storeByPage(p){
 	       	var gettpl = document.getElementById('tblist1').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
 	       		$('#list1').html(html);
-	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	       		$('.j-lazyGoodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	       	});
 	       	if(json.TotalPage>1){
 	       		laypage({
@@ -660,7 +660,7 @@ function illegalByPage(p){
 	});
 }
 function del(id,func){
-	var c = WST.confirm({content:'您确定要删除商品吗?',yes:function(){
+	var c = WST.confirm({content:'您确定要删除资源吗?',yes:function(){
 		layer.close(c);
 		var load = WST.load({msg:'正在删除，请稍后...'});
 		$.post(WST.U('home/goods/del'),{id:id},function(data,textStatus){
@@ -684,7 +684,7 @@ function del(id,func){
 function changeSale(i,func){
 	var ids = WST.getChks('.chk');
 	if(ids==''){
-		WST.msg('请先选择商品!', {icon: 5});
+		WST.msg('请先选择资源!', {icon: 5});
 		return;
 	}
 	var params = {};
@@ -723,7 +723,7 @@ function changeSale(i,func){
 function changeGoodsStatus(isWhat,func){
 	var ids = WST.getChks('.chk');
 	if(ids==''){
-		WST.msg('请先选择商品!', {icon: 5});
+		WST.msg('请先选择资源!', {icon: 5});
 		return;
 	}
 	var params = {};
@@ -779,7 +779,7 @@ function changSaleStatus(isWhat, obj, id){
 //双击修改
 function toEditGoodsBase(fv,goodsId,flag){	
 	if((fv==2 || fv==3) && flag==1){
-		WST.msg('该商品存在商品属性，不能直接修改，请进入编辑页修改', {icon: 5});
+		WST.msg('该资源存在资源属性，不能直接修改，请进入编辑页修改', {icon: 5});
 		return;
 	}else{
 		$("#ipt_"+fv+"_"+goodsId).show();
@@ -828,7 +828,7 @@ function benchDel(func,flag){
 	}
 	
 	if(ids==''){
-		WST.msg('请先选择商品!', {icon: 5});
+		WST.msg('请先选择资源!', {icon: 5});
 		return;
 	}
 	var params = {};

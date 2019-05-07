@@ -39,7 +39,7 @@ class Systems extends Base{
 		    $data['userorder']['5'] = Db::name('orders')->where(['userId'=>$userId,'orderStatus'=>1,'dataFlag'=>1])->count();
 		    $data['userorder']['6'] = Db::name('orders')->where(['userId'=>$userId,'orderStatus'=>2,'isAppraise'=>0,'dataFlag'=>1])->count();
 		}
-		//获取用户购物车数量
+		//获取用户购买车数量
 		if(in_array('cart',$tasks)){
 			$cartNum = 0;
 			$cartGoodsNum = 0;

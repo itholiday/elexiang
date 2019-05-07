@@ -61,17 +61,17 @@ function toSettlement(){
 		if($(this).prop('checked'))isChk = true;
 	});
 	if(!isChk){
-		WST.msg('请选择要结算的商品!',{icon:1});
+		WST.msg('请选择要结算的资源!',{icon:1});
 		return;
 	}
 	var msg = '';
 	$('.j-gchk').each(function(){
 		if($(this).prop('checked')){
 			if($(this).attr('allowbuy')==0){
-				msg = '所选商品库存不足';
+				msg = '所选资源库存不足';
 				return;
 			}else if($(this).attr('allowbuy')==1){
-				msg = '所选商品购买量大于商品库存';
+				msg = '所选资源购买量大于资源库存';
 				return;
 			}
 		}

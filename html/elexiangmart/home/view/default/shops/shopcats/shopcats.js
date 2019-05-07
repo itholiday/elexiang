@@ -34,7 +34,7 @@ function treeCatOpen(obj,id){
 }
 
 function delCat(id){
-	var box = WST.confirm({content:"您确定要删除该商品分类吗？",yes:function(){
+	var box = WST.confirm({content:"您确定要删除该资源分类吗？",yes:function(){
 		var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
 		$.post(WST.U('home/shopcats/del'),{id:id},function(data,textStatus){
 			layer.close(loading);
@@ -60,7 +60,7 @@ function batchSaveCats(){
 		var pobj = $(this).find(".tr_new");
 		params['catName_'+fristNo] = $.trim(pobj.find(".catname").val());
 		if(params['catName_'+fristNo]==''){
-			WST.msg('请输入商品分类名称!', {icon: 5});
+			WST.msg('请输入资源分类名称!', {icon: 5});
 			return;
 		}
 		params['catSort_'+fristNo] = pobj.find(".catsort").val();
@@ -69,7 +69,7 @@ function batchSaveCats(){
 			params['catId_'+fristNo+'_'+secondNo] = fristNo;
 			params['catName_'+fristNo+'_'+secondNo] = $.trim($(this).find(".catname").val());
 			if(params['catName_'+fristNo+'_'+secondNo]==''){
-				WST.msg('请输入商品分类名称!', {icon: 5});
+				WST.msg('请输入资源分类名称!', {icon: 5});
 				return;
 			}
 			params['catSort_'+fristNo+'_'+secondNo] = $(this).find(".catsort").val();
@@ -83,7 +83,7 @@ function batchSaveCats(){
 		params['catId_o_'+otherNo] = $(this).attr('catId');
 		params['catName_o_'+otherNo] = $.trim($(this).find(".catname").val());
 		if(params['catName_o_'+otherNo]==''){
-			WST.msg('请输入商品分类名称!', {icon: 5});
+			WST.msg('请输入资源分类名称!', {icon: 5});
 			return;
 		}
 		params['catSort_o_'+otherNo] = $(this).find(".catsort").val();

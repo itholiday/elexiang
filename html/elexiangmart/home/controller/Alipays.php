@@ -42,7 +42,7 @@ class Alipays extends Base{
 					'notify_url'        => $notify_url,
 					'return_url'        => $return_url,
 					/* 业务参数 */
-					'subject'           => '支付购买商品费用'.$orderAmount.'元',
+					'subject'           => '支付购买资源费用'.$orderAmount.'元',
 					'body'  	        => '支付订单费用',
 					'out_trade_no'      => $obj["orderId"],
 					'total_fee'         => $orderAmount,

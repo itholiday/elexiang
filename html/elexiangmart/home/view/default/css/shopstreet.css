@@ -30,7 +30,7 @@ img{
 .wst-shopstr-cat span:hover{
 	cursor:pointer;
 	color: #ffffff;
-	background: #57b50b;
+	background: #e4393c;
     border-radius: 3px;
 }
 .js-selected{
@@ -45,7 +45,7 @@ img{
 	border:1px solid #dddbdb;
 }
 .wst-shopstr-shop:hover{
-	border:1px solid #57b50b;
+	border:1px solid #e4393c;
 }
 .wst-shopstr-shopl{
 	float:left;

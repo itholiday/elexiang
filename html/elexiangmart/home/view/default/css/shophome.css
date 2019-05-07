@@ -97,7 +97,7 @@
 	width: 360px;
 	margin-right:3px;
 	padding-left:8px;
-	border:1px solid #57b50b;
+	border:1px solid #e4393c;
 }
 .wst-shop-sea .search{
 	float:left;
@@ -132,7 +132,7 @@
 
 
 .wst-shop-nav {
-	background-color: #57b50b;
+	background-color: #e4393c;
 	text-align: 100%;
 }
 .wst-nav-box {
@@ -380,8 +380,8 @@
 }
 .wst-shop-rect .wst-shop-recta:hover{
 	color:#ffffff;
-	background:#57b50b;
-	border: 1px solid #57b50b;
+	background:#e4393c;
+	border: 1px solid #e4393c;
 }
 .wst-shop-list{
 	padding:10px 0px;
@@ -401,12 +401,12 @@
 	border: 1px solid #e9e7e7;
 }
 .wst-shop-listh a:hover{
-	border: 1px solid #57b50b;
+	border: 1px solid #e4393c;
 }
 a.wst-shop-a{
 	color:#ffffff;
-	background:#57b50b;
-	border: 1px solid #57b50b;
+	background:#e4393c;
+	border: 1px solid #e4393c;
 }
 .wst-shop-store,.wst-shop-store2,.wst-shop-store3{
 	float:right;
@@ -435,7 +435,7 @@ input.wst-price-ipt{
 	border: 1px solid #e9e7e7;
 }
 input.wst-price-ipt:focus{
-	border: 1px solid #57b50b;
+	border: 1px solid #e4393c;
 }
 .wst-price-ipt1{
 	position: absolute;

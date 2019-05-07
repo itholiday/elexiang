@@ -12,7 +12,7 @@ function stockByPage(p){
 	       	var gettpl = document.getElementById('tblist').innerHTML;
 	       	laytpl(gettpl).render(json.Rows, function(html){
 	       		$('#list').html(html);
-	       		$('.j-goodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	       		$('.j-goodsImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	       	});
 	       	if(json.TotalPage>1){
 	       		laypage({

@@ -29,15 +29,15 @@
 		<table class='wst-form wst-box-top'>
 		  <tr>
 		      <th width='150'>
-		    	 所属商品分类<font color='red'>*</font>：</th>
+		    	 所属资源分类<font color='red'>*</font>：</th>
 		     	<td id="bcat_0_box">
-		            <select id="bcat_0" class='ipt goodsCats' level="0" onchange="WST.ITGoodsCats({id:'bcat_0',val:this.value,isRequire:false,className:'goodsCats'});" data-rule='所属商品分类:required;' data-target="#msg_bcat_0">
+		            <select id="bcat_0" class='ipt goodsCats' level="0" onchange="WST.ITGoodsCats({id:'bcat_0',val:this.value,isRequire:false,className:'goodsCats'});" data-rule='所属资源分类:required;' data-target="#msg_bcat_0">
 		                <option value="">-请选择-</option>
 		                {volist name=":WSTGoodsCats(0)" id="vo"}
 				        <option value="{$vo['catId']}">{$vo['catName']}</option>
 				        {/volist}
 		           	</select>
-		           	<span class='msg-box' id='msg_bcat_0' style='color:red;'>(至少选择一个商品分类)</span>
+		           	<span class='msg-box' id='msg_bcat_0' style='color:red;'>(至少选择一个资源分类)</span>
 		          </td>
 		       </tr>
 		       <tr>

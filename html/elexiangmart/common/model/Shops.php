@@ -90,7 +90,7 @@ class Shops extends Base{
     	return $rs;
     }
     /**
-     * 获取自营店铺 店长推荐 热卖商品
+     * 获取自营店铺 店长推荐 热卖资源
      */
     public function getRecGoods($type){
     	$arr = ['rec'=>'isRecom','hot'=>'isHot'];

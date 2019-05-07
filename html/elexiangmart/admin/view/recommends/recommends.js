@@ -22,13 +22,13 @@ function moveLeft(suffix){
 		$('#llist'+suffix).append(html.join(''));
 	})
 }
-/**商品**/
+/**资源**/
 function loadGoods(suffix){
 	var params = WST.getParams('.ipt'+suffix);
 	params.key = params['key'+suffix];
 	params.goodsCatId = WST.ITGetGoodsCatVal('pgoodsCats1'+suffix);
 	if(params.goodsCatId==''){
-		WST.msg('请选择一个商品分类',{icon:2});
+		WST.msg('请选择一个资源分类',{icon:2});
 		return;
 	}
 	var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
@@ -89,7 +89,7 @@ function editGoods(suffix){
 		ids.push($(this).val());
 	});
 	if(ids.length==0){
-		WST.msg('请选择要推荐的商品');
+		WST.msg('请选择要推荐的资源');
 		return;
 	}
 	$('.s-ipt'+suffix).each(function(){
@@ -204,7 +204,7 @@ function loadBrands(suffix){
 	params.key = params['key'+suffix];
 	params.goodsCatId = WST.ITGetGoodsCatVal('pgoodsCats1'+suffix);
 	if(params.goodsCatId==''){
-		WST.msg('请选择一个商品分类',{icon:2});
+		WST.msg('请选择一个资源分类',{icon:2});
 		return;
 	}
 	var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});

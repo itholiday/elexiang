@@ -17,9 +17,9 @@ class Orders extends Base{
 		$invoiceClient = ($isInvoice==1)?input('post.invoiceClient'):'';
 		$payType = ((int)input('post.payType')!=0)?1:0;
 		$userId = (int)session('WST_USER.userId');
-		//检测购物车
+		//检测购买车
 		$carts = model('carts')->getCarts(true);
-		if(empty($carts['carts']))return WSTReturn("请选择要购买的商品");
+		if(empty($carts['carts']))return WSTReturn("请选择要购买的资源");
 		//检测地址是否有效
 		$address = Db::name('user_address')->where(['userId'=>$userId,'addressId'=>$addressId,'dataFlag'=>1])->find();
 		if(empty($address)){
@@ -93,7 +93,7 @@ class Orders extends Base{
 					$orderId = $this->orderId;
 					$orderTotalGoods = [];
 					foreach ($shopOrder['list'] as $gkey =>$goods){
-						//创建订单商品记录
+						//创建订单资源记录
 						$orderGgoods = [];
 						$orderGoods['orderId'] = $orderId;
 						$orderGoods['goodsId'] = $goods['goodsId'];
@@ -133,7 +133,7 @@ class Orders extends Base{
 					WSTSendMsg($shopOrder['userId'],"您有一笔新的订单【".$orderNo."】待处理。",['from'=>1,'dataId'=>$orderId]);
 				}
 			}
-			//删除已选的购物车商品
+			//删除已选的购买车资源
 			Db::name('carts')->where(['userId'=>$userId,'isCheck'=>1])->delete();
 			Db::commit();
 			return WSTReturn("提交订单成功", 1,$orderunique);
@@ -170,9 +170,9 @@ class Orders extends Base{
 		}
 		$data['totalMoney'] = $totalMoney;
 		$data['payType'] = $payType;
-		//如果是在线支付的话就要加载商品信息和支付信息
+		//如果是在线支付的话就要加载资源信息和支付信息
 		if($data['payType']==1){
-			//获取商品信息
+			//获取资源信息
 			$goods = Db::name('order_goods')->where(['orderId'=>['in',$orderIds]])->select();
 			foreach ($goods as $key =>$v){
 				if($v['goodsSpecNames']!=''){
@@ -418,7 +418,7 @@ class Orders extends Base{
 				$data = ['orderStatus'=>-1,'cancelReason'=>$reason];
 			    $result = $this->where('orderId',$order['orderId'])->update($data);
 				if(false != $result){
-					//返还商品库存
+					//返还资源库存
 					$goods = Db::name('order_goods')->alias('og')->join('__GOODS__ g','og.goodsId=g.goodsId','inner')
 					           ->where('orderId',$orderId)->field('og.*,g.isSpec')->select();
 					foreach ($goods as $key => $v){
@@ -548,7 +548,7 @@ class Orders extends Base{
 		
 		//获取订单信息
 		$orders['log'] =Db::name('log_orders')->where('orderId',$orderId)->order('logId asc')->select();
-		//获取订单商品
+		//获取订单资源
 		$orders['goods'] = Db::name('order_goods')->where('orderId',$orderId)->order('id asc')->select();
 		return $orders;
 	}
@@ -556,7 +556,7 @@ class Orders extends Base{
 
 
 	/**
-	* 根据订单id获取 商品信息跟商品评价
+	* 根据订单id获取 资源信息跟资源评价
 	*/
 	public function getOrderInfoAndAppr(){
 		$orderId = (int)input('oId');
@@ -566,9 +566,9 @@ class Orders extends Base{
 					->field('id,orderId,goodsName,goodsId,goodsSpecNames,goodsImg,goodsSpecId')
 					->where(['orderId'=>$orderId])
 					->select();
-		//根据商品id 与 订单id 取评价
-		$alreadys = 0;// 已评价商品数
-		$count = count($goodsInfo);//订单下总商品数
+		//根据资源id 与 订单id 取评价
+		$alreadys = 0;// 已评价资源数
+		$count = count($goodsInfo);//订单下总资源数
 		if($count>0){
 			foreach($goodsInfo as $k=>$v){
 				$goodsInfo[$k]['goodsSpecNames'] = str_replace('@@_@@', ';', $v['goodsSpecNames']);

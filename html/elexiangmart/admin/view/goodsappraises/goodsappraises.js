@@ -10,14 +10,14 @@ function initGrid(){
         rownumbers:true,
         columns: [
 	        { display: '订单号', name: 'orderNo', isSort: false},
-	        { display: '商品', name: 'goodsName', isSort: false},
-	        { display: '商品主图', name: 'goodsImg', isSort: false,render:function(rowdata, rowindex, value){
+	        { display: '资源', name: 'goodsName', isSort: false},
+	        { display: '资源主图', name: 'goodsImg', isSort: false,render:function(rowdata, rowindex, value){
 	        	var thumb = rowdata['goodsImg'];
 	        		thumb = thumb.replace('.','_thumb.');
 	        	return "<img src='"+WST.conf.ROOT+"/"+thumb+"' height='28' width='28'/>";
 	        	
 	        }},
-	        { display: '商品评分', name: 'goodsScore', isSort: false,render:function(rowdata, rowindex, value){
+	        { display: '资源评分', name: 'goodsScore', isSort: false,render:function(rowdata, rowindex, value){
 	        	var s="<div style='line-height:28px;'>";
 	        	for(var i=0;i<value;++i){
 	        		s +="<img src='"+WST.conf.ROOT+"/elexiangmart/admin/view/goodsappraises/icon_score_yes.png'>";

@@ -128,7 +128,7 @@ WST.arrayParams = function(v){
 	return params;
 }
 /**
- * 循环调用及设置商品分类
+ * 循环调用及设置资源分类
  * @param id           当前分类ID
  * @param val          当前分类值
  * @param childIds     分类路径值【数组】
@@ -195,7 +195,7 @@ WST.ITSetGoodsCats = function(opts){
 }
 
 /**
- * 循环创建商品分类
+ * 循环创建资源分类
  * @param id            当前分类ID
  * @param val           当前分类值
  * @param className     样式，方便将来获取值

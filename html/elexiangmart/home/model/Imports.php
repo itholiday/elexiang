@@ -9,7 +9,7 @@ use think\Loader;
  */
 class Imports{
 	/**
-	 * 上传商品数据
+	 * 上传资源数据
 	 */
 	public function importGoods($data){
 		Loader::import('phpexcel.PHPExcel.IOFactory');
@@ -22,12 +22,12 @@ class Imports{
         $readData = [];
         $shopId = (int)session('WST_USER.shopId');
         $importNum = 0;
-        $goodsCatMap = []; //记录最后一级商品分类
-        $goodsCatPathMap = [];//记录商品分类路径
+        $goodsCatMap = []; //记录最后一级资源分类
+        $goodsCatPathMap = [];//记录资源分类路径
         $shopCatMap = [];//记录店铺分类
-        $goodsCat1Map = [];//记录最后一级商品分类对应的一级分类
+        $goodsCat1Map = [];//记录最后一级资源分类对应的一级分类
         $tmpGoodsCatId = 0;
-        $goodsCatBrandMap = [];//商品分类和品牌的对应关系
+        $goodsCatBrandMap = [];//资源分类和品牌的对应关系
         //生成订单
 		Db::startTrans();
 		try{
@@ -121,7 +121,7 @@ class Imports{
 	        }
             if(count($readData)>0){
             	$list = model('Goods')->saveAll($readData);
-            	//建立商品评分记录
+            	//建立资源评分记录
             	$goodsScores = [];
             	foreach ($list as $key =>$v){
 					$gs = [];
@@ -136,7 +136,7 @@ class Imports{
 		}catch (\Exception $e) {
 			print_r($e);
             Db::rollback();
-            return json_encode(WSTReturn('导入商品失败',-1));
+            return json_encode(WSTReturn('导入资源失败',-1));
         }
 	}
 }

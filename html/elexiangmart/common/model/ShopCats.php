@@ -8,7 +8,7 @@ namespace elexiangmart\common\model;
 class ShopCats extends Base{
 	
 	/**
-	 * 批量保存商品分类
+	 * 批量保存资源分类
 	 */
 	public function batchSaveCats(){
 		
@@ -146,13 +146,13 @@ class ShopCats extends Base{
 	 	$id = input("post.id/d");
 	 	if($id==0)return $rd;
 		$shopId = (int)session('WST_USER.shopId');
-		//把相关的商品下架了
+		//把相关的资源下架了
 		$data = array();
 		$data['isSale'] = 0;
 		$gm = new \elexiangmart\home\model\Goods();
 		$gm->save($data,['shopId'=>$shopId,"shopCatId1"=>$id]);
 		$gm->save($data,['shopId'=>$shopId,"shopCatId2"=>$id]);
-		//删除商品分类
+		//删除资源分类
 		$data = array();
 		$data["dataFlag"] = -1;
 	 	$rs = $this->where("catId|parentId",$id)->where(["shopId"=>$shopId])->update($data);
@@ -166,7 +166,7 @@ class ShopCats extends Base{
 	 
 	 
 	/**
-	  * 获取店铺商品分类列表
+	  * 获取店铺资源分类列表
 	*/
     public function getShopCats($shopId = 0){
 		$data = [];
@@ -213,7 +213,7 @@ class ShopCats extends Base{
 		if($parentId>0 && $isShow==1){
 			$this->save($data,["catId"=>$parentId,"shopId"=>$shopId]);
 		}
-		//如果是隐藏的话还要下架的商品
+		//如果是隐藏的话还要下架的资源
 		if($isShow==0){
 			$gm = new \elexiangmart\home\model\Goods();
 			$data = array();

@@ -4,13 +4,13 @@ use think\Db;
 /**
  * ============================================================================
 
- * 购物车业务处理类
+ * 购买车业务处理类
  */
 
 class Carts extends Base{
 	
 	/**
-	 * 加入购物车
+	 * 加入购买车
 	 */
 	public function addCart(){
 		$userId = (int)session('WST_USER.userId');
@@ -18,11 +18,11 @@ class Carts extends Base{
 		$goodsSpecId = (int)input('post.goodsSpecId');
 		$cartNum = (int)input('post.buyNum',1);
 		$cartNum = ($cartNum>0)?$cartNum:1;
-		//验证传过来的商品是否合法
+		//验证传过来的资源是否合法
 		$chk = $this->checkGoodsSaleSpec($goodsId,$goodsSpecId);
 		if($chk['status']==-1)return $chk;
 		//检测库存是否足够
-		if($chk['data']['stock']<$cartNum)return WSTReturn("加入购物车失败，商品库存不足", -1);
+		if($chk['data']['stock']<$cartNum)return WSTReturn("加入购买车失败，资源库存不足", -1);
 		$goodsSpecId = $chk['data']['goodsSpecId'];
 		$goods = $this->where(['userId'=>$userId,'goodsId'=>$goodsId,'goodsSpecId'=>$goodsSpecId])->select();
 		if(empty($goods)){
@@ -42,20 +42,20 @@ class Carts extends Base{
 				return WSTReturn("添加成功", 1);
 			}
 		}
-		return WSTReturn("加入购物车失败", -1);
+		return WSTReturn("加入购买车失败", -1);
 	}
 	/**
-	 * 验证商品是否合法
+	 * 验证资源是否合法
 	 */
 	public function checkGoodsSaleSpec($goodsId,$goodsSpecId){
 		$goods = model('Goods')->where(['goodsStatus'=>1,'dataFlag'=>1,'isSale'=>1,'goodsId'=>$goodsId])->field('goodsId,isSpec,goodsStock')->find();
-		if(empty($goods))return WSTReturn("添加失败，无效的商品信息", -1);
+		if(empty($goods))return WSTReturn("添加失败，无效的资源信息", -1);
 		$goodsStock = (int)$goods['goodsStock'];
 		//有规格的话查询规格是否正确
 		if($goods['isSpec']==1){
 			$specs = Db::name('goods_specs')->where(['goodsId'=>$goodsId,'dataFlag'=>1])->field('id,isDefault,specStock')->select();
 			if(count($specs)==0){
-				return WSTReturn("添加失败，无效的商品信息", -1);
+				return WSTReturn("添加失败，无效的资源信息", -1);
 			}
 			$defaultGoodsSpecId = 0;
 			$defaultGoodsSpecStock = 0;
@@ -71,7 +71,7 @@ class Carts extends Base{
 				}
 			}
 			
-			if($defaultGoodsSpecId==0)return WSTReturn("添加失败，无效的商品信息", -1);//有规格却找不到规格的话就报错
+			if($defaultGoodsSpecId==0)return WSTReturn("添加失败，无效的资源信息", -1);//有规格却找不到规格的话就报错
 			if(!$isFindSpecId)return WSTReturn("", 1,['goodsSpecId'=>$defaultGoodsSpecId,'stock'=>$defaultGoodsSpecStock]);//如果没有找到的话就取默认的规格
 			return WSTReturn("", 1,['goodsSpecId'=>$goodsSpecId,'stock'=>$goodsStock]);
 		}else{
@@ -79,7 +79,7 @@ class Carts extends Base{
 		}
 	}
 	/**
-	 * 删除购物车里的商品
+	 * 删除购买车里的资源
 	 */
 	public function delCart(){
 		$userId = (int)session('WST_USER.userId');
@@ -90,14 +90,14 @@ class Carts extends Base{
 		return WSTReturn("删除成功", 1);
 	}
 	/**
-	 * 取消购物车商品选中状态
+	 * 取消购买车资源选中状态
 	 */
 	public function disChkGoods($goodsId,$goodsSpecId,$userId){
 		$this->save(['isCheck'=>0],['userId'=>$userId,'goodsId'=>$goodsId,'goodsSpecId'=>$goodsSpecId]);
 	}
 	
 	/**
-	 * 获取购物车列表
+	 * 获取购买车列表
 	 */
 	public function getCarts($isSettlement = false){
 		$userId = (int)session('WST_USER.userId');
@@ -132,7 +132,7 @@ class Carts extends Base{
 			}else if($v['goodsStock']<$v['cartNum']){
 				$v['allowBuy'] = 1;//库存比购买数小
 			}
-			//如果是结算的话，则要过滤了不符合条件的商品
+			//如果是结算的话，则要过滤了不符合条件的资源
 			if($isSettlement && $v['allowBuy']!=10){
 				$this->disChkGoods($v['goodsId'],(int)$v['goodsSpecId'],(int)session('WST_USER.userId'));
 				continue;
@@ -174,7 +174,7 @@ class Carts extends Base{
 	}
 	
 	/**
-	 * 获取购物车商品列表
+	 * 获取购买车资源列表
 	 */
 	public function getCartInfo($isSettlement = false){
 		$userId = (int)session('WST_USER.userId');
@@ -220,7 +220,7 @@ class Carts extends Base{
 	}
 	
 	/**
-	 * 修改购物车商品状态
+	 * 修改购买车资源状态
 	 */
 	public function changeCartGoods(){
 		$isCheck = Input('post.isCheck/d',-1);

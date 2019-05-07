@@ -123,7 +123,7 @@ function imagesMove(opts){
 }
 
 
-/****************** 商品评价 ******************/
+/****************** 资源评价 ******************/
 function showImg(id){
   layer.photos({
       photos: '#img-file-'+id
@@ -178,7 +178,7 @@ function addCart(type,iptId){
 			specIds.push($(this).attr('data-val'));
 		});
 		if(specIds.length==0){
-			WST.msg('请选择你要购买的商品信息',{icon:2});
+			WST.msg('请选择你要购买的资源信息',{icon:2});
 		}
 		specIds.sort();
 		if(goodsInfo.sku[specIds.join(':')]){

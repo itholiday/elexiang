@@ -8,7 +8,7 @@ use elexiangmart\common\model\Favorites as M;
  */
 class Favorites extends Base{
 	/**
-	 * 关注的商品
+	 * 关注的资源
 	 */
 	public function goods(){
 		return $this->fetch('users/favorites/list_goods');
@@ -20,7 +20,7 @@ class Favorites extends Base{
 		return $this->fetch('users/favorites/list_shops');
 	}
 	/**
-	 * 关注的商品列表
+	 * 关注的资源列表
 	 */
 	public function listGoodsQuery(){
 		$m = new M();

@@ -15,7 +15,7 @@ class Imports extends Base{
 	}
 	
     /**
-     * 上传商品数据
+     * 上传资源数据
      */
     public function importGoods(){
     	$rs = WSTUploadFile();

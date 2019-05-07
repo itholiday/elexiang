@@ -39,7 +39,7 @@ class GoodsAppraises extends Base{
 
 	}
 	/**
-	* 根据商品id取评论
+	* 根据资源id取评论
 	*/
 	public function getById(){
 		$m = new M();

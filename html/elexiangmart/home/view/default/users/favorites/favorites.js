@@ -1,4 +1,4 @@
-//关注的商品列表
+//关注的资源列表
 function freGoodsList(pages){
 	var param = {};
 	param.pagesize = 8;
@@ -35,7 +35,7 @@ function freGoodsList(pages){
 	    	},function(){
 	    		$(this).find(".js-operate").slideUp();
 	    	});
-	    	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	    	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
         }
     });
 }
@@ -79,7 +79,7 @@ function freShopList(pages){
 	        laytpl(gettpl).render(json.Rows, function(html){
 	            $('#list-shops').html(html);
 	        });
-	        //商品滑动
+	        //资源滑动
 	    	var goodsNum = json.Rows.length;
 	    	for(var i=0;i<goodsNum;++i){
 		    	$("#js-goods"+i).als({
@@ -91,7 +91,7 @@ function freShopList(pages){
 		    		start_from: 2
 		    	});
 	    	}
-	    	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//商品默认图片
+	    	$('.goodsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//资源默认图片
 	        $('.shopsImg2').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.SHOP_LOGO});//店铺默认头像
 	        if(json.TotalPage>1){
 	            laypage({

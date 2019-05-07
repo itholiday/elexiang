@@ -4,7 +4,7 @@ use elexiangmart\common\model\GoodsCats as M;
 /**
  * ============================================================================
 
- * 商品分类控制器
+ * 资源分类控制器
  */
 class Goodscats extends Base{
     /**

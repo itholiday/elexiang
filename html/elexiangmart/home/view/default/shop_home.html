@@ -31,7 +31,7 @@
 			{/if}
 			</div>
 			<div class="wst-shop-info3">
-				<span class="wst-shop-eva">商品评价：<span class="wst-shop-red">{$data['shop']['scores']['goodsScore']}</span></span>
+				<span class="wst-shop-eva">资源评价：<span class="wst-shop-red">{$data['shop']['scores']['goodsScore']}</span></span>
 				<span class="wst-shop-eva">时效评价：<span class="wst-shop-red">{$data['shop']['scores']['timeScore']}</span></span>
 				<span class="wst-shop-eva">服务评价：<span class="wst-shop-red">{$data['shop']['scores']['serviceScore']}</span></span>
 				{if($data['shop']['favShop']>0)}
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="wst-shop-sea">
-			<input type="text" id="goodsName" value="{$goodsName}" placeholder="输入商品名称">
+			<input type="text" id="goodsName" value="{$goodsName}" placeholder="输入资源名称">
 			<a class="search" href="javascript:void(0);" onclick="javascript:WST.goodsSearch($('#goodsName').val());">搜全站</a>
 			<a class="search" href="javascript:void(0);" onclick="javascript:searchShopsGoods(0);">搜本店</a>
 			<div class="wst-shop-word">
@@ -60,7 +60,7 @@
 	 <div class='wst-header'>
 		<div class="wst-shop-nav">
 			<div class="wst-nav-box">
-				<a href="{:url('home/shops/home',array('shopId'=>$data['shop']['shopId']))}"><li class="liselect wst-lfloat {if condition="$ct1 eq 0"}wst-nav-boxa{/if}">本店全部商品</li></a>
+				<a href="{:url('home/shops/home',array('shopId'=>$data['shop']['shopId']))}"><li class="liselect wst-lfloat {if condition="$ct1 eq 0"}wst-nav-boxa{/if}">本店全部资源</li></a>
 				{volist name="$data['shopcats']" id="sc" offset="0" length='8'}
 					<a href="{:url('home/shops/home',array('shopId'=>$sc['shopId'],'ct1'=>$sc['catId']))}"><li class="liselect wst-lfloat {if condition="$ct1 eq $sc['catId']"}wst-nav-boxa{/if}">{$sc['catName']}</li></a>
 				{/volist}
@@ -121,7 +121,7 @@
 			</div>
 		</div>
 		<div class="wst-shop-best">
-			<p class="wst-shop-conlp">热卖商品</p>
+			<p class="wst-shop-conlp">热卖资源</p>
 			{wst:shopgoods type='hot' num='5' id='ho' shop="$data['shop']['shopId']"}
 			<a href="{:url('home/goods/detail',array('id'=>$ho['goodsId']))}" target="_blank">
 			<div class="wst-shop-bestg">
@@ -160,9 +160,9 @@
 					<div class="wst-shop-rect">
 					<span>￥{$re['shopPrice']}</span>
 					{if($re['goodsStock'])}
-					<a class="wst-shop-recta" href="javascript:WST.addCart({$re['goodsId']})">加入购物车</a>
+					<a class="wst-shop-recta" href="javascript:WST.addCart({$re['goodsId']})">加入购买车</a>
 					{else}
-					<a class="wst-shop-recta2" href="javascript:void(0);">暂无商品</a>
+					<a class="wst-shop-recta2" href="javascript:void(0);">暂无资源</a>
 					{/if}
 					</div>
 				</div>
@@ -189,7 +189,7 @@
 			<div class="wst-shop-listg">
 				{volist name="$data['list']['Rows']" id="li"}
 				<div class="wst-shop-goods">
-					<div class="wst-shop-goimg"><a href="{:url('home/goods/detail',array('id'=>$li['goodsId']))}" target="_blank"><img class="goodsImg" data-original="__ROOT__/{$li['goodsImg']}" title="{$li['goodsName']}"></a><a href="javascript:WST.addCart({$li['goodsId']});"><span class="js-cart">加入购物车</span></a></div>
+					<div class="wst-shop-goimg"><a href="{:url('home/goods/detail',array('id'=>$li['goodsId']))}" target="_blank"><img class="goodsImg" data-original="__ROOT__/{$li['goodsImg']}" title="{$li['goodsName']}"></a><a href="javascript:WST.addCart({$li['goodsId']});"><span class="js-cart">加入购买车</span></a></div>
 					<p class="wst-shop-gonam"><a href="{:url('home/goods/detail',array('id'=>$li['goodsId']))}" target="_blank">{:WSTMSubstr($li['goodsName'],0,15)}</a></p>
 					<p class="wst-shop-goodp1"><span class="wst-shop-goodpr">￥{$li['shopPrice']}</span><span class="wst-rfloat">成交数：<span class="wst-shop-goodpr2">{$li['saleNum']}</span></span></p>
 					<p class="wst-shop-goodp2"><span class="wst-shop-goodpr3">市场价：￥{$li['marketPrice']}</span><span class="wst-rfloat">已有<span class="wst-shop-goodpr4">{$li['appraiseNum']}</span>人评价</span></p>

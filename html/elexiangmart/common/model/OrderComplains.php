@@ -62,7 +62,7 @@ class OrderComplains extends Base{
 									 ->where($where)
 									 ->find();
 			if($order){
-				//获取相关商品
+				//获取相关资源
 			    $goods = $this->getOrderGoods($orderId);
 				$order["goodsList"] = $goods;
 			}
@@ -76,7 +76,7 @@ class OrderComplains extends Base{
 	public function alreadyComplain($orderId,$userId){
 		return $this->field('complainId')->where("orderId=$orderId and complainTargetId=$userId")->find();
 	}
-	//获取相关商品
+	//获取相关资源
 	public function getOrderGoods($orderId){
 	  return db('goods')->alias('g')
 						->field('og.orderId, og.goodsId ,g.goodsSn, og.goodsName , og.goodsPrice shopPrice,og.goodsImg')
@@ -150,7 +150,7 @@ class OrderComplains extends Base{
 			if($rs['complainAnnex']!='')$rs['complainAnnex'] = explode(',',$rs['complainAnnex']);
 			if($rs['respondAnnex']!='')$rs['respondAnnex'] = explode(',',$rs['respondAnnex']);
 
-			//获取相关商品
+			//获取相关资源
 			$goods = $this->getOrderGoods($rs['orderId']);
 			$rs["goodsList"] = $goods;
 		}

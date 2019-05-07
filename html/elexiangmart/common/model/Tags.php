@@ -8,7 +8,7 @@ use think\Db;
  */
 class Tags extends Base{
 	/**
-	 * 获取指定商品
+	 * 获取指定资源
 	 */
 	public function listGoods($type,$catId = 0,$num,$cache = 0){
 		$type = strtolower($type);
@@ -19,7 +19,7 @@ class Tags extends Base{
 		}
 	}
 	/**
-	 * 浏览商品
+	 * 浏览资源
 	 */
 	public function historyByGoods($num){
 		$hids = $ids = cookie("history_goods");
@@ -57,7 +57,7 @@ class Tags extends Base{
         return $hGoods;
 	}
 	/**
-	 * 推荐商品
+	 * 推荐资源
 	 */
 	public function listByGoods($type,$catId,$num,$cache = 0){
 		if(!in_array($type,[0,1,2,3]))return [];
@@ -201,7 +201,7 @@ class Tags extends Base{
 	}
 	
     /**
-	 * 获取指定店铺商品
+	 * 获取指定店铺资源
 	 */
 	public function listShopGoods($type,$shopId,$num,$cache = 0){
 		$cacheData = cache('TAG_SHOP_GOODS_'.$type."_".$shopId);
@@ -237,7 +237,7 @@ class Tags extends Base{
         return $goods;
 	}
 	/**
-	* 获取店铺分类下的商品
+	* 获取店铺分类下的资源
 	*/
 	public function listShopFloorGoods($catId,$shopId,$num,$cache = 0){
 		$cacheData = cache('TAG_SHOP_CAT_GOODS_'.$catId."_".$shopId);

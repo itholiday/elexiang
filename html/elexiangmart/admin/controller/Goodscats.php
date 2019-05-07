@@ -4,7 +4,7 @@ use elexiangmart\admin\model\GoodsCats as M;
 /**
  * ============================================================================
 
- * 商品分类控制器
+ * 资源分类控制器
  */
 class GoodsCats extends Base{
 	
@@ -28,7 +28,7 @@ class GoodsCats extends Base{
     	return WSTReturn("", 1,$rs);
     }
     /**
-     * 获取商品分类
+     * 获取资源分类
      */
     public function get(){
     	$m = new M();

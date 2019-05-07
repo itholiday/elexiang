@@ -5,18 +5,18 @@ use elexiangmart\common\model\Goods as CM;
 /**
  * ============================================================================
 
- * 商品控制器
+ * 资源控制器
  */
 class Goods extends Base{
     /**
-      * 批量删除商品
+      * 批量删除资源
       */
      public function batchDel(){
         $m = new M();
         return $m->batchDel();
      }
     /**
-     * 修改商品库存/价格
+     * 修改资源库存/价格
      */
     public function editGoodsBase(){
         $m = new M();
@@ -24,14 +24,14 @@ class Goods extends Base{
     }
 
     /**
-    * 修改商品状态
+    * 修改资源状态
     */
     public function changSaleStatus(){
         $m = new M();
         return $m->changSaleStatus();
     }
     /**
-    * 批量修改商品状态 新品/精品/热销/推荐
+    * 批量修改资源状态 新品/精品/热销/推荐
     */
     public function changeGoodsStatus(){
          $m = new M();
@@ -45,13 +45,13 @@ class Goods extends Base{
         return $m->changeSale();
     }
    /**
-    *  上架商品列表
+    *  上架资源列表
     */
 	public function sale(){
 		return $this->fetch('shops/goods/list_sale');
 	}
 	/**
-	 * 获取上架商品列表
+	 * 获取上架资源列表
 	 */
 	public function saleByPage(){
 		$m = new M();
@@ -60,19 +60,19 @@ class Goods extends Base{
 		return $rs;
 	}
 	/**
-	 * 仓库中商品
+	 * 仓库中资源
 	 */
     public function store(){
 		return $this->fetch('shops/goods/list_store');
 	}
     /**
-	 * 审核中的商品
+	 * 审核中的资源
 	 */
     public function audit(){
 		return $this->fetch('shops/goods/list_audit');
 	}
 	/**
-	 * 获取审核中的商品
+	 * 获取审核中的资源
 	 */
     public function auditByPage(){
 		$m = new M();
@@ -81,7 +81,7 @@ class Goods extends Base{
 		return $rs;
 	}
 	/**
-	 * 获取仓库中的商品
+	 * 获取仓库中的资源
 	 */
     public function storeByPage(){
 		$m = new M();
@@ -90,13 +90,13 @@ class Goods extends Base{
 		return $rs;
 	}
 	/**
-	 * 违规商品
+	 * 违规资源
 	 */
     public function illegal(){
 		return $this->fetch('shops/goods/list_illegal');
 	}
 	/**
-	 * 获取违规的商品
+	 * 获取违规的资源
 	 */
 	public function illegalByPage(){
 		$m = new M();
@@ -119,7 +119,7 @@ class Goods extends Base{
     } 
     
     /**
-     * 新增商品
+     * 新增资源
      */
     public function toAdd(){
     	$m = new M();
@@ -138,31 +138,31 @@ class Goods extends Base{
     }
     
     /**
-     * 编辑商品
+     * 编辑资源
      */
     public function toEdit(){
     	$m = new M();
     	return $m->edit();
     }
     /**
-     * 删除商品
+     * 删除资源
      */
     public function del(){
     	$m = new M();
     	return $m->del();
     }
     /**
-     * 获取商品规格属性
+     * 获取资源规格属性
      */
     public function getSpecAttrs(){
     	$m = new M();
     	return $m->getSpecAttrs();
     }
     /**
-     * 进行商品搜索
+     * 进行资源搜索
      */
     public function search(){
-    	//获取商品记录
+    	//获取资源记录
     	$m = new M();
     	$data = [];
     	$data['isStock'] = Input('isStock/d');
@@ -213,7 +213,7 @@ class Goods extends Base{
     }
     
     /**
-     * 获取商品列表
+     * 获取资源列表
      */
     public function lists(){
     	$catId = Input('cat/d');
@@ -314,7 +314,7 @@ class Goods extends Base{
     	}
     	$data['selector'] = $selector;
     	$data['goodsFilter'] = $ngoodsFilter;
-    	//获取商品记录
+    	//获取资源记录
     	$m = new M();
     	$data['priceGrade'] = $m->getPriceGrade($goodsCatIds);
     	$data['goodsPage'] = $m->pageQuery($goodsCatIds);
@@ -322,7 +322,7 @@ class Goods extends Base{
     }
     
     /**
-     * 查看商品详情
+     * 查看资源详情
      */
     public function detail(){
     	$m = new M();
@@ -367,7 +367,7 @@ class Goods extends Base{
     }
     
 	/**
-	 * 获取商品浏览记录
+	 * 获取资源浏览记录
 	 */
 	public function historyByGoods(){
 		$rs = model('Tags')->historyByGoods(8);

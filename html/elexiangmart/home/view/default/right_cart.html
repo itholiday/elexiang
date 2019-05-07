@@ -5,7 +5,7 @@
 			<div class="toolbar-panels j-panel">
 				<div style="visibility: hidden;" class="j-content toolbar-panel tbar-panel-cart toolbar-animate-out">
 					<h3 class="tbar-panel-header j-panel-header">
-						<a href="" class="title"><i></i><em class="title">购物车</em></a>
+						<a href="" class="title"><i></i><em class="title">购买车</em></a>
 						<span class="close-panel j-close" title='关闭'></span>
 					</h3>
 					<div class="tbar-panel-main">
@@ -13,7 +13,7 @@
 						    {if condition="session('WST_USER.userId') == 0"}
 							<div id="j-cart-tips" class="tbar-tipbox hide">
 								<div class="tip-inner">
-									<span class="tip-text">还没有登录，登录后商品将被保存</span>
+									<span class="tip-text">还没有登录，登录后资源将被保存</span>
 									<a href="#none" onclick='WST.loginWindow()' class="tip-btn j-login">登录</a>
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 					</div>
 					<div class="tbar-panel-footer j-panel-footer">
 						<div class="tbar-checkout">
-							<div class="jtc-number">已选<strong id="j-goods-count">0</strong>件商品 </div>
+							<div class="jtc-number">已选<strong id="j-goods-count">0</strong>件资源 </div>
 							<div class="jtc-sum"> 共计：¥<strong id="j-goods-total-money">0</strong> </div>
 							<a class="jtc-btn j-btn" href="#none" onclick='javascript:jumpSettlement()'>去结算</a>
 						</div>
@@ -102,7 +102,7 @@
                                  }}
 								   <li class="jth-item">
 										<a target='_blank' href="{{WST.U('home/goods/detail','id='+d[i].goodsId)}}" class="img-wrap"><img src="{{d[i].goodsImg}}" height="100" width="100"> </a>
-										<a class="add-cart-button" href="javascript:WST.addCart({{d[i].goodsId}});">加入购物车</a>
+										<a class="add-cart-button" href="javascript:WST.addCart({{d[i].goodsId}});">加入购买车</a>
 										<a href="#none" class="price">￥498.00</a>
 									</li>
 								{{# } }}
@@ -119,7 +119,7 @@
 			<div class="toolbar-tabs j-tab">
 				<div class="toolbar-tab tbar-tab-cart">
 					<i class="tab-ico"></i>
-					<em class="tab-text">购物车</em>
+					<em class="tab-text">购买车</em>
 					<span class="tab-sub j-cart-count hide"></span>
 				</div>
 				<div class="toolbar-tab tbar-tab-follow" style='display:none'>

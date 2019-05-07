@@ -305,7 +305,7 @@ function WSTStrReplace($str,$repStr,$start,$splilt = ''){
 }
 
 /**
- * 获取指定商品分类的子分类列表
+ * 获取指定资源分类的子分类列表
  */
 function WSTGoodsCats($parentId = 0,$isFloor = -1){
 	$dbo = Db::name('goods_cats')->where(['dataFlag'=>1, 'isShow' => 1,'parentId'=>$parentId]);
@@ -493,7 +493,7 @@ function WSTUploadFile(){
 	}
 }
 /**
- * 生成默认商品编号/货号
+ * 生成默认资源编号/货号
  */
 function WSTGoodsNo($pref = ''){
 	return $pref.(round(microtime(true),4)*10000).mt_rand(0,9);
@@ -591,8 +591,8 @@ function WSTUseImages($fromType, $dataId, $imgPath, $fromTable='', $imgFieldName
 * 编辑器图片记录
 * @param $fromType 0：  用户/商家 1：平台管理员
 * @param $dataId        来源记录id
-* @param $oldDesc       旧商品描述
-* @param $newDesc       新商品描述
+* @param $oldDesc       旧资源描述
+* @param $newDesc       新资源描述
 * @param $fromTable     该记录来自哪张表
 */
 function WSTEditorImageRocord($fromTable, $dataId, $oldDesc, $newDesc){
@@ -724,7 +724,7 @@ function WSTLangOrderStatus($v){
  */
 function WSTLangScore($v){
     switch($v){
-		case 1:return '商品订单';
+		case 1:return '资源订单';
 		case 2:return '评价订单';
 	}
 }
@@ -733,7 +733,7 @@ function WSTLangScore($v){
  */
 function WSTLangMoneySrc($v){
     switch($v){
-		case 1:return '商品订单';
+		case 1:return '资源订单';
 		case 2:return '订单结算';
 		case 3:return '提现申请';
 	}

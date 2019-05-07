@@ -10,7 +10,7 @@ class Shopconfigs extends Base{
     * 店铺设置
     */
     public function toShopCfg(){
-        //获取商品信息
+        //获取资源信息
         $m = model('ShopConfigs');
         $this->assign('object',$m->getShopCfg((int)session('WST_USER.shopId')));
         return $this->fetch('shops/shopconfigs/shop_cfg');
