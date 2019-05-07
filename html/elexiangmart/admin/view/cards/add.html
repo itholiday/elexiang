@@ -1,0 +1,55 @@
+{extend name="base" /}
+{block name="css"}{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<form id='editFrom' autocomplete='off'>
+<table class='wst-form wst-box-top'>
+  <tr>
+     <td colspan='2' class='head-ititle'>技巧提示</td>
+  </tr>
+  <tr>
+      <td colspan='2'>生成卡密时，简单的规则或较小的生成张数可能导致实际生成张数小于预设生成张数。</td>
+  </tr>
+    <tr>
+        <td colspan='2' class='head-ititle'>生成规则</td>
+    </tr>
+  <tr>
+     <td><input type="text" name="rule" id="rule" class="ipt" value="" width="100"/></td>
+      <td>"@"代表任意随机英文字符，"#"代表任意随机数字，"*"代表任意英文或数字
+          卡密规则样本："DZ2011@@@@@#####*****"
+          注意：规则位数过小会造成卡密生成重复概率增大，过多的重复卡密会造成卡密生成终止
+          卡密规则中不能带有中文及其他特殊符号
+          为了避免卡密重复，随机位数最好不要少于8位
+      </td>
+  </tr>
+    <tr>
+        <th>生成数量<font color='red'>*</font>：</th>
+        <td><input type="text" name="num" id='num' class='ipt' value="1"/></td>
+    </tr>
+  <tr>
+     <td colspan='2' align='center'>
+       <input type='button' value='提交' class='btn btn-blue' onclick='javascript:save()'>
+     </td>
+  </tr>
+</table>
+</form>
+<script>
+    function save(){
+        var params = {rule:$('#rule').val(),num:$('#num').val()};
+        var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
+        $.post(WST.U("admin/cards/add"),params,function(data) {
+            layer.close(loading);
+            var json = WST.toAdminJson(data);
+            if (json.status == '1') {
+                WST.msg("操作成功", {icon: 1});
+                location.href = WST.U('admin/cards/index');
+            } else {
+                WST.msg(json.msg, {icon: 2});
+            }
+        })
+    }
+</script>
+{/block}
+{block name="js"}
+<script src="__ADMIN__/cards/cards.js?v={$v}" type="text/javascript"></script>
+{/block}
