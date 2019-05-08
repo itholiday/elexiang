@@ -15,39 +15,39 @@ class Orders extends Base{
 		$deliverType = ((int)input('post.deliverType')!=0)?1:0;
 		$isInvoice = ((int)input('post.isInvoice')!=0)?1:0;
 		$invoiceClient = ($isInvoice==1)?input('post.invoiceClient'):'';
-		$payType = ((int)input('post.payType')!=0)?1:0;
+		$payType = 1;
 		$userId = (int)session('WST_USER.userId');
 		//检测购买车
 		$carts = model('carts')->getCarts(true);
 		if(empty($carts['carts']))return WSTReturn("请选择要购买的资源");
 		//检测地址是否有效
-		$address = Db::name('user_address')->where(['userId'=>$userId,'addressId'=>$addressId,'dataFlag'=>1])->find();
-		if(empty($address)){
-			return WSTReturn("无效的用户地址");
-		}
-	    $areaIds = [];
-        $areaMaps = [];
-        $tmp = explode('_',$address['areaIdPath']);
-        $address['areaId2'] = $tmp[1];//记录配送城市
-        foreach ($tmp as $vv){
-         	if($vv=='')continue;
-         	if(!in_array($vv,$areaIds))$areaIds[] = $vv;
-        }
-        if(!empty($areaIds)){
-	         $areas = Db::name('areas')->where(['dataFlag'=>1,'areaId'=>['in',$areaIds]])->field('areaId,areaName')->select();
-	         foreach ($areas as $v){
-	         	 $areaMaps[$v['areaId']] = $v['areaName'];
-	         }
-	         $tmp = explode('_',$address['areaIdPath']);
-	         $areaNames = [];
-		     foreach ($tmp as $vv){
-	         	 if($vv=='')continue;
-	         	 $areaNames[] = $areaMaps[$vv];
-	         	 $address['areaName'] = implode('',$areaNames);
-	         }
-         }
-		$address['userAddress'] = $address['areaName'].$address['userAddress'];
-		WSTUnset($address, 'isDefault,dataFlag,createTime,userId');
+//		$address = Db::name('user_address')->where(['userId'=>$userId,'addressId'=>$addressId,'dataFlag'=>1])->find();
+//		if(empty($address)){
+//			return WSTReturn("无效的用户地址");
+//		}
+//	    $areaIds = [];
+//        $areaMaps = [];
+//        $tmp = explode('_',$address['areaIdPath']);
+//        $address['areaId2'] = $tmp[1];//记录配送城市
+//        foreach ($tmp as $vv){
+//         	if($vv=='')continue;
+//         	if(!in_array($vv,$areaIds))$areaIds[] = $vv;
+//        }
+//        if(!empty($areaIds)){
+//	         $areas = Db::name('areas')->where(['dataFlag'=>1,'areaId'=>['in',$areaIds]])->field('areaId,areaName')->select();
+//	         foreach ($areas as $v){
+//	         	 $areaMaps[$v['areaId']] = $v['areaName'];
+//	         }
+//	         $tmp = explode('_',$address['areaIdPath']);
+//	         $areaNames = [];
+//		     foreach ($tmp as $vv){
+//	         	 if($vv=='')continue;
+//	         	 $areaNames[] = $areaMaps[$vv];
+//	         	 $address['areaName'] = implode('',$areaNames);
+//	         }
+//         }
+//		$address['userAddress'] = $address['areaName'].$address['userAddress'];
+//		WSTUnset($address, 'isDefault,dataFlag,createTime,userId');
 		//生成订单
 		Db::startTrans();
 		try{
@@ -57,7 +57,7 @@ class Orders extends Base{
 				$orderScore = 0;
 				//创建订单
 				$order = [];
-				$order = array_merge($order,$address);
+//				$order = array_merge($order,$address);
 				$order['orderNo'] = $orderNo;
 				$order['userId'] = $userId;
 				$order['shopId'] = $shopOrder['shopId'];
@@ -70,8 +70,8 @@ class Orders extends Base{
 				}
 				$order['goodsMoney'] = $shopOrder['goodsMoney'];
 				$order['deliverType'] = $deliverType;
-				$order['deliverMoney'] = ($deliverType==1)?0:WSTOrderFreight($shopOrder['shopId'],$order['areaId2']);
-				$order['totalMoney'] = $order['goodsMoney']+$order['deliverMoney'];
+//				$order['deliverMoney'] = ($deliverType==1)?0:WSTOrderFreight($shopOrder['shopId'],$order['areaId2']);
+				$order['totalMoney'] = $order['goodsMoney'];
 				$order['realTotalMoney'] = $order['totalMoney'];
 				$order['needPay'] = $order['realTotalMoney'];
 				//积分
@@ -139,7 +139,7 @@ class Orders extends Base{
 			return WSTReturn("提交订单成功", 1,$orderunique);
 		}catch (\Exception $e) {
             Db::rollback();
-            return WSTReturn('提交订单失败',-1);
+            return WSTReturn('提交订单失败'.$e->getMessage(),-1);
         }
 	}
 	
@@ -607,7 +607,7 @@ class Orders extends Base{
 			$where['orderId'] = $orderId;
 		}
 		$rs = $this->field('orderId,orderNo')->where($where)->select();
-		if(count($rs)>0){
+		if($rs){
 			return WSTReturn('',1);
 		}else{
 			return WSTReturn('订单已支付',-1);

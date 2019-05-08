@@ -120,6 +120,8 @@ input[type="text"].buy-num{height:16px;text-align:center;width:40px;float:left;b
 .wst-payCode-weixinpays-curr {height:69px;width:167px;text-align: center;margin:10px auto;background: url(../img/weixinpays.png) no-repeat 0px -75px;background-size: cover;float: left;margin-right:10px;cursor:pointer;}
 .wst-payCode-alipays {height:69px;width:167px;text-align: center;margin:10px auto;background: url(../img/alipays.png) no-repeat 0px 0px;background-size: cover;float: left;margin-right:10px;cursor:pointer;}
 .wst-payCode-alipays-curr {height:69px;width:167px;text-align: center;margin:10px auto;background: url(../img/alipays.png) no-repeat 0px -75px;background-size: cover;float: left;margin-right:10px;cursor:pointer;}
+.wst-payCode-usermoney {height:69px;width:167px;text-align: center;margin:10px auto;background: url(../img/usermoney.png) no-repeat 0px 0px;background-size: cover;float: left;margin-right:10px;cursor:pointer;}
+.wst-payCode-usermoney-curr {height:69px;width:167px;text-align: center;margin:10px auto;background: url(../img/usermoney.png) no-repeat 0px -75px;background-size: cover;float: left;margin-right:10px;cursor:pointer;}
 
 .pay-sbox .wst-pay-bnt {height:40px;width:132px;text-align: center;margin:10px auto;background: url(../img/btn_pay.png) no-repeat 0px 0px;cursor:pointer;}
 .pay-sbox .wst-pay-bnt:hover {height:40px;width:132px;text-align: center;margin:10px auto;background: url(../img/btn_pay.png) no-repeat 0px -57px;cursor:pointer;}
