@@ -19,4 +19,15 @@ class Test extends Base{
         echo '<pre>';
         print_r($card->cardlist);
 	}
+
+    public function demo2()
+    {
+        echo getcwd();
+        echo '<br>';
+        echo __DIR__;
+        echo '<br>';
+        echo __FILE__;
+        echo '<br>';
+        echo dirname(__DIR__);
+	}
 }
